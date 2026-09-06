@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>hexo的基本操作 | Alioth玉衡</title>
+  <title>PCB布线原则（8条布线原则 + 2条安全载流原则） | Alioth玉衡</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        hexo的基本操作
+        PCB布线原则（8条布线原则 + 2条安全载流原则）
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2026-03-08 |
+          <i class="fas fa-calendar"></i> Published in：2026-09-06 |
         </span>
       
 
@@ -392,8 +392,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> category：
           
-            <a href="/categories/%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%9F%BA%E7%A1%80%E7%B4%A0%E5%85%BB/" class="post-detail-header_category">
-              工程师基础素养
+            <a href="/categories/%E7%A1%AC%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-detail-header_category">
+              硬件工程
             </a>
           
         </span>
@@ -417,36 +417,181 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="hexo的基本操作及应用"><a href="#hexo的基本操作及应用" class="headerlink" title="hexo的基本操作及应用"></a>hexo的基本操作及应用</h1><h2 id="hexo的基本文件框架"><a href="#hexo的基本文件框架" class="headerlink" title="hexo的基本文件框架"></a>hexo的基本文件框架</h2><p>hexo框架</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">my-hexo-blog/</span><br><span class="line">├── _config.yml       # 博客全局配置（主题、标题、作者等）</span><br><span class="line">├── source/           # 文章源文件（核心）</span><br><span class="line">│   └── _posts/       # 所有博客文章（.md 格式）</span><br><span class="line">├── themes/           # 主题文件夹（存放下载的主题）</span><br><span class="line">├── public/           # 生成的静态网页（hexo g 后自动生成）</span><br><span class="line">└── scaffolds/        # 文章模板（新建文章时的默认格式）</span><br></pre></td></tr></table></figure>
+        <p>本文整理自PCB布线原则教学视频，包含 <strong>8条基础布线原则</strong> + <strong>2条安全载流原则</strong>，共10条。</p>
+<span id="more"></span>
 
-<h2 id="日常写作"><a href="#日常写作" class="headerlink" title="日常写作"></a>日常写作</h2><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;my_first post&quot;</span><br></pre></td></tr></table></figure>
-<p>执行后，会在 source&#x2F;_posts&#x2F; 下生成 我的第一篇Hexo博客.md 文件，打开该文件即可用 Markdown 写作。</p>
-<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;about&quot;</span><br></pre></td></tr></table></figure>
-<p>会在 source&#x2F;about&#x2F; 下生成 index.md，可自定义 “关于我” 页面内容。</p>
-<h2 id="启动显示窗口及生成和上传博客"><a href="#启动显示窗口及生成和上传博客" class="headerlink" title="启动显示窗口及生成和上传博客"></a>启动显示窗口及生成和上传博客</h2><h3 id="生成静态网页文件"><a href="#生成静态网页文件" class="headerlink" title="生成静态网页文件"></a>生成静态网页文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 第一步：生成静态文件（hexo generate 的简写）</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 一键生成并且上传到git</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动本地服务器显示窗口"><a href="#启动本地服务器显示窗口" class="headerlink" title="启动本地服务器显示窗口"></a>启动本地服务器显示窗口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 第二步：启动本地服务器（hexo server 的简写）</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>执行后，访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 即可在浏览器预览博客效果。<br>常用参数：hexo s -p 5000（修改端口为 5000）、hexo s -i 0.0.0.0（允许局域网访问）。</p>
-<h3 id="上传git仓库"><a href="#上传git仓库" class="headerlink" title="上传git仓库"></a>上传git仓库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># hexo deploy 的简写，会先自动执行 hexo g，再推送到 Git 仓库</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>部署完成后，访问 https:&#x2F;&#x2F;你的用户名.github.io 即可看到线上博客。</p>
-<h2 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  # 清理 public 文件夹和缓存</span><br></pre></td></tr></table></figure>
-<p>如果修改配置 &#x2F; 文章后预览没变化，先清理缓存和生成的静态文件：清理后重新执行 hexo g &amp;&amp; hexo s 即可</p>
+<h2 id="一、八条基础布线原则"><a href="#一、八条基础布线原则" class="headerlink" title="一、八条基础布线原则"></a>一、八条基础布线原则</h2><h3 id="1-连线精简"><a href="#1-连线精简" class="headerlink" title="1. 连线精简"></a>1. 连线精简</h3><p><img src="/img/pcb-01_%E8%BF%9E%E7%BA%BF%E7%B2%BE%E7%AE%80.jpg" class="lazyload placeholder" data-srcset="/img/pcb-01_%E8%BF%9E%E7%BA%BF%E7%B2%BE%E7%AE%80.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="1.连线精简"></p>
+<p>在一般电路板布线过程中，要尽量寻求最短的路径布线，走线精简；尽量不拐弯，能不换层就不换层。</p>
+<h3 id="2-避免直角布线"><a href="#2-避免直角布线" class="headerlink" title="2. 避免直角布线"></a>2. 避免直角布线</h3><p><img src="/img/pcb-02_%E9%81%BF%E5%85%8D%E7%9B%B4%E8%A7%92%E5%B8%83%E7%BA%BF.jpg" class="lazyload placeholder" data-srcset="/img/pcb-02_%E9%81%BF%E5%85%8D%E7%9B%B4%E8%A7%92%E5%B8%83%E7%BA%BF.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="2.避免直角布线"></p>
+<p>拐角可以等效为传输线上的容性负载，减缓信号上升时间；阻抗不连续会造成信号反射；直角尖端会产生电磁干扰（EMI）。</p>
+<blockquote>
+<p>不同拐角形式的等效线宽对比：直角拐角等效线宽为 W×1.414，45°斜角为 W×1.082，圆弧拐角效果最优。实际布线中优先采用 45° 斜角或圆弧拐角，避免 90° 直角。</p>
+</blockquote>
+<h3 id="3-差分走线"><a href="#3-差分走线" class="headerlink" title="3. 差分走线"></a>3. 差分走线</h3><p><img src="/img/pcb-03_%E5%B7%AE%E5%88%86%E8%B5%B0%E7%BA%BF.jpg" class="lazyload placeholder" data-srcset="/img/pcb-03_%E5%B7%AE%E5%88%86%E8%B5%B0%E7%BA%BF.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="3.差分走线"></p>
+<p>差分走线的优点：<strong>抗干扰能力强、有效抑制EMI、时序定位精确</strong>。</p>
+<p>差分走线的两大核心要求：<strong>等长、等距</strong>。</p>
+<ul>
+<li><strong>等长</strong>：为了保证差分信号时刻保持极性相反，减少共模分量。</li>
+<li><strong>等距</strong>：主要为了保证两条线路差分阻抗一致，减少信号反射。</li>
+</ul>
+<h3 id="4-蛇形线等长（蛇皮走位）"><a href="#4-蛇形线等长（蛇皮走位）" class="headerlink" title="4. 蛇形线等长（蛇皮走位）"></a>4. 蛇形线等长（蛇皮走位）</h3><p><img src="/img/pcb-04_%E8%9B%87%E5%BD%A2%E7%BA%BF%E7%AD%89%E9%95%BF.jpg" class="lazyload placeholder" data-srcset="/img/pcb-04_%E8%9B%87%E5%BD%A2%E7%BA%BF%E7%AD%89%E9%95%BF.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="4.蛇形线等长"></p>
+<p>为了保证信号有足够的保持时间，或者减小同组信号之间的时间偏移，不得不故意进行绕线，这种走线形式称为蛇形线（俗称”蛇皮走位”）。</p>
+<blockquote>
+<p>注意：蛇形走线仅在需要等长匹配时使用，不得随意、无意义地绕线。</p>
+</blockquote>
+<h3 id="5-圆滑走线（补泪滴）"><a href="#5-圆滑走线（补泪滴）" class="headerlink" title="5. 圆滑走线（补泪滴）"></a>5. 圆滑走线（补泪滴）</h3><p><img src="/img/pcb-05_%E5%9C%86%E6%BB%91%E8%B5%B0%E7%BA%BF%E6%B3%AA%E6%BB%B4.jpg" class="lazyload placeholder" data-srcset="/img/pcb-05_%E5%9C%86%E6%BB%91%E8%B5%B0%E7%BA%BF%E6%B3%AA%E6%BB%B4.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="5.圆滑走线"></p>
+<p>导线与焊盘之间为了避免出现类似直角走线的尖角，可以采用<strong>补泪滴</strong>的方法解决，使连接处圆滑过渡，改善阻抗连续性并加固焊盘。</p>
+<p>补泪滴适用于：过孔&#x2F;通孔、贴片焊盘、走线、T型连接等多种场景。</p>
+<h3 id="6-数字与模拟分开"><a href="#6-数字与模拟分开" class="headerlink" title="6. 数字与模拟分开"></a>6. 数字与模拟分开</h3><p><img src="/img/pcb-06_%E6%95%B0%E5%AD%97%E6%A8%A1%E6%8B%9F%E5%88%86%E5%BC%80.jpg" class="lazyload placeholder" data-srcset="/img/pcb-06_%E6%95%B0%E5%AD%97%E6%A8%A1%E6%8B%9F%E5%88%86%E5%BC%80.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="6.数字与模拟分开"></p>
+<p>将模拟电路区域与数字电路区域分开布局布线，模拟地与数字地分开，各自采用<strong>单点接地</strong>方式，最后统一接到电源地，避免数字噪声串扰到模拟电路。</p>
+<h3 id="7-3W原则"><a href="#7-3W原则" class="headerlink" title="7. 3W原则"></a>7. 3W原则</h3><p><img src="/img/pcb-07_3W%E5%8E%9F%E5%88%99.jpg" class="lazyload placeholder" data-srcset="/img/pcb-07_3W%E5%8E%9F%E5%88%99.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="7.3W原则"></p>
+<p>走线的中心间隔在 <strong>3倍以上走线宽度（W）</strong> 的话，信号之间的干扰会减少 <strong>65%~70%</strong>；满足 <strong>10倍以上</strong> 线宽间距时，信号之间干扰会减少约 <strong>98%</strong>。</p>
+<h3 id="8-20H原则"><a href="#8-20H原则" class="headerlink" title="8. 20H原则"></a>8. 20H原则</h3><p><img src="/img/pcb-08_20H%E5%8E%9F%E5%88%99.jpg" class="lazyload placeholder" data-srcset="/img/pcb-08_20H%E5%8E%9F%E5%88%99.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="8.20H原则"></p>
+<ul>
+<li><strong>H</strong>：电源层和地层之间的介质厚度。</li>
+<li>电源层向内内缩 <strong>20H</strong> 的长度，可以将 <strong>70%</strong> 的电场限制在接地层边沿内。</li>
+<li>电源层向内内缩 <strong>100H</strong>，就可以把 <strong>98%</strong> 的电场限制在边沿内。</li>
+</ul>
+<h2 id="二、两条安全载流原则"><a href="#二、两条安全载流原则" class="headerlink" title="二、两条安全载流原则"></a>二、两条安全载流原则</h2><h3 id="9-铜箔承载电流"><a href="#9-铜箔承载电流" class="headerlink" title="9. 铜箔承载电流"></a>9. 铜箔承载电流</h3><p><img src="/img/pcb-09_%E9%93%9C%E7%AE%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81%E8%A1%A8%E6%A0%BC.jpg" class="lazyload placeholder" data-srcset="/img/pcb-09_%E9%93%9C%E7%AE%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81%E8%A1%A8%E6%A0%BC.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="9.铜箔承载电流"></p>
+<p>PCB铜箔的安全载流量与两个关键参数强相关：<strong>铜箔厚度</strong> 和 <strong>走线宽度</strong>。常见铜箔厚度为 35μm、50μm、70μm。同厚度下走线越宽，允许通过电流越大；相同线宽下，铜箔越厚，允许载流越大。</p>
+<table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">35μm 宽度(mm)</th>
+<th align="center">35μm 电流(A)</th>
+<th align="center">50μm 宽度(mm)</th>
+<th align="center">50μm 电流(A)</th>
+<th align="center">70μm 宽度(mm)</th>
+<th align="center">70μm 电流(A)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">0.15</td>
+<td align="center">0.20</td>
+<td align="center">0.15</td>
+<td align="center">0.50</td>
+<td align="center">0.15</td>
+<td align="center">0.70</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0.20</td>
+<td align="center">0.55</td>
+<td align="center">0.20</td>
+<td align="center">0.70</td>
+<td align="center">0.20</td>
+<td align="center">0.90</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0.30</td>
+<td align="center">0.80</td>
+<td align="center">0.30</td>
+<td align="center">0.10 ⚠️</td>
+<td align="center">0.30</td>
+<td align="center">1.30</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0.50</td>
+<td align="center">1.35</td>
+<td align="center">0.50</td>
+<td align="center">1.70</td>
+<td align="center">0.50</td>
+<td align="center">2.00</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">0.80</td>
+<td align="center">2.00</td>
+<td align="center">0.80</td>
+<td align="center">2.40</td>
+<td align="center">0.80</td>
+<td align="center">2.80</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">1.00</td>
+<td align="center">2.30</td>
+<td align="center">1.00</td>
+<td align="center">2.60</td>
+<td align="center">1.00</td>
+<td align="center">3.20</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>备注</strong>：原表格中 50μm 铜箔、0.30mm 线宽对应的电流值为 0.10A，与上下行数据趋势明显矛盾（0.20mm 为 0.70A，0.50mm 为 1.70A），疑似原PPT笔误，合理值应为 <strong>1.10A</strong>。以上数据忠实记录原图，实际设计时请以权威IPC规范或PCB厂商工艺能力为准。</p>
+</blockquote>
+<h3 id="10-过孔承载电流"><a href="#10-过孔承载电流" class="headerlink" title="10. 过孔承载电流"></a>10. 过孔承载电流</h3><p><img src="/img/pcb-10_%E8%BF%87%E5%AD%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81%E8%A1%A8%E6%A0%BC.jpg" class="lazyload placeholder" data-srcset="/img/pcb-10_%E8%BF%87%E5%AD%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81%E8%A1%A8%E6%A0%BC.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="10.过孔承载电流"></p>
+<p>过孔的允许载流与<strong>过孔孔径大小</strong>和<strong>铜箔厚度</strong>相关，以下表格条件为<strong>允许温升 10℃</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">35μm 过孔孔径(mm)</th>
+<th align="center">35μm 电流(A)</th>
+<th align="center">50μm 过孔孔径(mm)</th>
+<th align="center">50μm 电流(A)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0.20</td>
+<td align="center">0.41</td>
+<td align="center">0.20</td>
+<td align="center">0.68</td>
+</tr>
+<tr>
+<td align="center">0.25</td>
+<td align="center">0.484</td>
+<td align="center">0.25</td>
+<td align="center">0.805</td>
+</tr>
+<tr>
+<td align="center">0.30</td>
+<td align="center">0.505</td>
+<td align="center">0.30</td>
+<td align="center">0.84</td>
+</tr>
+<tr>
+<td align="center">0.35</td>
+<td align="center">0.505</td>
+<td align="center">0.35</td>
+<td align="center">0.84</td>
+</tr>
+<tr>
+<td align="center">0.40</td>
+<td align="center">0.595</td>
+<td align="center">0.40</td>
+<td align="center">0.991</td>
+</tr>
+<tr>
+<td align="center">0.50</td>
+<td align="center">0.595</td>
+<td align="center">0.50</td>
+<td align="center">0.991</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/Hexo/" class="">
-              Hexo
+            <a href="/tags/PCB/" class="">
+              PCB
             </a>
           
-            <a href="/tags/%E5%8D%9A%E5%AE%A2/" class="">
-              博客
+            <a href="/tags/%E7%A1%AC%E4%BB%B6/" class="">
+              硬件
+            </a>
+          
+            <a href="/tags/%E5%B8%83%E7%BA%BF/" class="">
+              布线
+            </a>
+          
+            <a href="/tags/%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" class="">
+              电路设计
             </a>
           
         </div>
@@ -460,7 +605,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2026/03/08/hexo的基本操作/" target="_blank" title="hexo的基本操作">http://example.com/2026/03/08/hexo的基本操作/</a>
+    <a href="/2026/09/06/PCB布线原则/" target="_blank" title="PCB布线原则（8条布线原则 + 2条安全载流原则）">http://example.com/2026/09/06/PCB布线原则/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -478,39 +623,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2026/03/09/docker%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">dorker的使用基础</div>
-      </div>
-      
-      <!-- <div class="content">
-        Docker的基础
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2026/03/07/%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80markdown%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/" class="post-nav-link">
+    <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">博客基础markdown文件编写</div>
+        <div class="title-text">《经济机器是怎么运行的》观影笔记：用一台&#34;机器&#34;看懂经济周期</div>
       </div>
       <!-- <div class="content">
-        markdown的学习标题等级markdown中采用#号来确定标题，一个#号为一级标题，其他以此类推######这个便是
+        
+视频原名：How The Economic Machine Works作者 &#x2F; 出品：瑞·达利欧（Ray D
       </div> -->
     </a>
   </div>
@@ -732,7 +860,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%8F%8A%E5%BA%94%E7%94%A8"><span class="toc-text">hexo的基本操作及应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%87%E4%BB%B6%E6%A1%86%E6%9E%B6"><span class="toc-text">hexo的基本文件框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E5%86%99%E4%BD%9C"><span class="toc-text">日常写作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-text">新建页面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%E7%AA%97%E5%8F%A3%E5%8F%8A%E7%94%9F%E6%88%90%E5%92%8C%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2"><span class="toc-text">启动显示窗口及生成和上传博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6"><span class="toc-text">生成静态网页文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%98%BE%E7%A4%BA%E7%AA%97%E5%8F%A3"><span class="toc-text">启动本地服务器显示窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0git%E4%BB%93%E5%BA%93"><span class="toc-text">上传git仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E7%BC%93%E5%AD%98"><span class="toc-text">清理缓存</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AB%E6%9D%A1%E5%9F%BA%E7%A1%80%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99"><span class="toc-text">一、八条基础布线原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9E%E7%BA%BF%E7%B2%BE%E7%AE%80"><span class="toc-text">1. 连线精简</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%81%BF%E5%85%8D%E7%9B%B4%E8%A7%92%E5%B8%83%E7%BA%BF"><span class="toc-text">2. 避免直角布线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%AE%E5%88%86%E8%B5%B0%E7%BA%BF"><span class="toc-text">3. 差分走线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%9B%87%E5%BD%A2%E7%BA%BF%E7%AD%89%E9%95%BF%EF%BC%88%E8%9B%87%E7%9A%AE%E8%B5%B0%E4%BD%8D%EF%BC%89"><span class="toc-text">4. 蛇形线等长（蛇皮走位）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9C%86%E6%BB%91%E8%B5%B0%E7%BA%BF%EF%BC%88%E8%A1%A5%E6%B3%AA%E6%BB%B4%EF%BC%89"><span class="toc-text">5. 圆滑走线（补泪滴）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%95%B0%E5%AD%97%E4%B8%8E%E6%A8%A1%E6%8B%9F%E5%88%86%E5%BC%80"><span class="toc-text">6. 数字与模拟分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3W%E5%8E%9F%E5%88%99"><span class="toc-text">7. 3W原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-20H%E5%8E%9F%E5%88%99"><span class="toc-text">8. 20H原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%A4%E6%9D%A1%E5%AE%89%E5%85%A8%E8%BD%BD%E6%B5%81%E5%8E%9F%E5%88%99"><span class="toc-text">二、两条安全载流原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%93%9C%E7%AE%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81"><span class="toc-text">9. 铜箔承载电流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E8%BF%87%E5%AD%94%E6%89%BF%E8%BD%BD%E7%94%B5%E6%B5%81"><span class="toc-text">10. 过孔承载电流</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

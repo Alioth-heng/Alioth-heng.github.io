@@ -477,20 +477,15 @@
 
 /* HERO */
 .tn-hero{
-  position:relative;min-height:auto;display:flex;align-items:flex-end;
-  padding:48px 0 40px;color:var(--tn-ink-strong);overflow:hidden;isolation:isolate;
-  background:linear-gradient(180deg,var(--tn-paper-deep) 0%,var(--tn-paper-bg) 100%);
-  border-bottom:1px solid rgba(122,108,82,.15);
+  position:relative;min-height:78vh;display:flex;align-items:flex-end;
+  padding:0 0 56px;color:#f7f1e3;overflow:hidden;isolation:isolate;
 }
 .tn-hero::before{
   content:'';position:absolute;inset:0;
-  /* background removed */
+  background-image:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');
   background-size:cover;background-position:center 30%;
   z-index:-2;filter:saturate(.85) contrast(1.05);
 }
-.tn-hero::after{
-  content:'';position:absolute;inset:0;
-  /* background removed */
   z-index:-1;
 }
 .tn-hero-inner{
@@ -853,14 +848,6 @@
   .tn-action-num{width:32px;height:32px;font-size:.85rem}
   .tn-bias-card{padding:20px 20px 18px}
 }
-
-/* ===== 覆盖主题：文章详情页头部白色文字改黑色 ===== */
-.post-detail-header{background:#f3ecd8 !important;color:#000 !important}
-.post-detail-header-mask{opacity:0 !important}
-.post-detail-header .title{color:#000 !important}
-.post-detail-header .typed-cursor{color:#000 !important}
-.post-detail-header_categories a{color:#000 !important}
-.post-detail-header_wordcount,.post-detail-header_wordcount span{color:#000 !important}
 </style>
 
 <div class="tn-root">

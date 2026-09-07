@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html data-page-node-id="VvEoopGyHmIBH7KfT6zCmf">
+  <!-- meta/link... -->
+  
+
+
+
+<head data-page-node-id="X2IkoofhGH0YHCumVAIOLy">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" data-page-node-id="DR2zRYyQ8pjTnWBIQT8ZQz">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" data-page-node-id="ul0C4tSpxWcY4Es5GsxZ2C">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误 | Alioth玉衡</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico" data-page-node-id="xoYSERWHYN13waRjDoCUcp">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css" data-page-node-id="0A4LMlNlo68iApa9U2Wsty">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" data-page-node-id="9ZqtB5HfEX2LM9R7A45FjM">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet" data-page-node-id="dC5UywZCUNof0De2yQKHs1">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css" data-page-node-id="6gHBo1fiREuHqcJpcLt511">
+
+  
+<link rel="stylesheet" href="/css/style.css" data-page-node-id="BfJO7qmdNCQFu4V4AkgM1D">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet" data-page-node-id="cT0c1Sm0uxcIJX9LZTgxuX">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css" data-page-node-id="BX3WGylUGJ8sFegxdEspEZ">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet" data-page-node-id="pXRw387qOy1f4McMIStKgG">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 8.1.1" data-page-node-id="sqWKUHlCHxJHZc2iPG679W"></head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_6" id="loader" data-page-node-id="MgZAKkPL9E1aGYBYqHUe5Z">
+  <div class="loader" data-page-node-id="cSfoW2mHHrH59Gm9b4cUcl"></div>
+</div>
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body data-page-node-id="4QdNiJ6nZHMcjngBcEb7LA">
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea" data-page-node-id="FvYoQN2FngNSghRjs6lbMg">
+      <main class="main" id="pjax-container" data-page-node-id="O4VHTlMFy1d4esmB59VdfI">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;" data-page-node-id="Gz9sERVR18FrMz3LpwIxTn"
+>
+  <div class="header-content" data-page-node-id="Z7aEkqX9tzwZ9SFBj0jLcR">
+    <div class="bars" data-page-node-id="WEnj5Gg7tFCsINnPmFLoLz">
+      <div id="appDrawer" class="sidebar-image" data-page-node-id="GZZsIckYyyNaBOhopJj1cb">
+  <div class="drawer-box-icon" data-page-node-id="JtfCzZHQHErwwvRcVZVW2K">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer" data-page-node-id="1eubmPTs7GKvXVBBvDJY3B"></i>
+  </div>
+  
+  <transition name="fade" data-page-node-id="SGJFTnJcK8lwpBvJvZwLG2">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer" data-page-node-id="NWu2rR8XYMcJOvw1tPTH2s">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}" data-page-node-id="45d7VXe0G3cPyuTUMDcHEA">
+    <div class="drawer-box-head bg-color" data-page-node-id="RBYjaOGe89fE62GWZe23Gj">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo" data-page-node-id="ILSlcyhRg5ez50Jr5eB8vI">
+      <h3 class="drawer-box-head_title" data-page-node-id="aSo7HAW3FmVgYeHfeICuAZ">Alioth玉衡</h3>
+      <h5 class="drawer-box-head_desc" data-page-node-id="VHduy3Lx9CXxkqARmxcGDw"></h5>
+    </div>
+    
+    <div class="drawer-box-content" data-page-node-id="HBAy8ootGL8JDjJ5pbTSjB">
+      <ul class="drawer-box-content_menu" data-page-node-id="qaZLZzRgUF8mlKDzIbJWwR">
+        
+        
+          <li class="drawer-box-content_item" data-page-node-id="tP4d5r3ijibDNZ7t4Ji527">
+            <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io" data-page-node-id="mcZCB9hREI9HPE0svryJGT">
+              <i class="fas fa-github" aria-hidden="true" data-page-node-id="N9uGbXU1YpN0esE3evJIEF"></i>
+              <span data-page-node-id="te74Bn1fZOvoZFiSB5AKgz">Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar" data-page-node-id="KkwSaFpDoJDFujbQ8L5Da9">
+      
+        <div class="avatar" data-page-node-id="YQGEkNEZKEY6fldKrlZruh">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo" data-page-node-id="59y5PUGdkvW5TFY1N1rlh7">
+        </div>
+      
+      <a href="/" class="logo" data-page-node-id="l7pVl2lDiZdzWwlqVB1X3D">Alioth玉衡</a>
+    </div>
+    <nav class="navbar" data-page-node-id="eSKDFwYuVVdNBul6fsK9CW">
+      <ul class="menu" data-page-node-id="VfLp6cTVYmZgAeAFPEjVpj">
+        
+      </ul>
+      
+      
+        <div id="appSearch" data-page-node-id="r8XAOSfmCcurDk0aXpMBah">
+  <div class="search"  @click="showDialog()" data-page-node-id="3jYErjSSQeDW7xbwNPNDTv"><i class="fas fa-search" aria-hidden="true" data-page-node-id="HTQL91mfpvC05SHAztMC5X"></i></div>
+  <transition name="fade" data-page-node-id="FgTEEmCTh6JprvsjIRMqE0">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()" data-page-node-id="ivjXOJMH6QveAqBrbWlf8f">
+      <div class="message-box animated bounceInDown" data-page-node-id="64RPmpE6BbElX75tLXSRua">
+        <h2 data-page-node-id="w7JGua3r7GMpDb1Hay2GDt">
+          <span data-page-node-id="faQsGV00CgIn0LnYa4oWsa">
+            <i class="fas fa-search" aria-hidden="true" data-page-node-id="H32tjSK6xCDCCe8Qn8UaBx"></i>
+            <span class="title" data-page-node-id="PG5eTtkKb4DG8YffjkgCdr">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()" data-page-node-id="UCm792hkGJsmBHyBAlSYZ5"></i>
+        </h2>
+        <form class="site-search-form" data-page-node-id="4U3QOG2f78RFiUllnGlI6r">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput" data-page-node-id="0i4LIGFMZLcImDlO880Nqo"
+          />
+        </form>
+        <div class="result-wrapper" data-page-node-id="uIRkWAhts9ZhoJuo6JKSJo">
+          <div id="local-search-result" class="local-search-result-cls" data-page-node-id="PGvEZ3OadDnvkSlV12H7E0"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io" class="github-corner color-primary" aria-label="View source on GitHub" data-page-node-id="eOGHGRJW84e6G6jBM1F328"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true" data-page-node-id="ifdyKOzlFlCO8wOmnijNQ5"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" data-page-node-id="zyRQCHRVun4tGcljUV08Ni"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm" data-page-node-id="BRH031BiZZ22DV8xEaeP6e"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body" data-page-node-id="nVOmDovIAJt0M9gHE5sLcI"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;" data-page-node-id="rrPzDMHYU6ZFWCHfLh4hYL"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')" data-page-node-id="vbDhOGEAfxRXfBMKYIY9rM">
+  <div class="post-detail-header-mask" data-page-node-id="dSBhEC7k1SoXmwogR3CslC"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;" data-page-node-id="RcQHXrdMVAnAdU08ZpppFy"></canvas>
+  
+  <div class="post-detail-header_info-box" data-page-node-id="hVnUKnUZo8NsGyEEbd8P8T">
+    <div class="title-box" data-page-node-id="frmJMhqCmTaaq4DeNiyFHS">
+      <span class="title" data-page-node-id="a2D0JNIaO4FWVHYQjM0ECu">
+        《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date" data-page-node-id="01ZjCBQwmAlxCbXtzmAvsD">
+          <i class="fas fa-calendar" data-page-node-id="VEQcLi0BaC5gx7RnbCaUvE"></i> Published in：2026-09-07 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories" data-page-node-id="id94hQLFSRUtEAzqhtguMu">
+          <i class="iconfont iconbookmark1" data-page-node-id="iVU71dDcsXPe2hYCIACWyJ"></i> category：
+          
+            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-detail-header_category" data-page-node-id="mVriCxyrnwA4xG9V2Iag16">
+              读书笔记
+            </a>
+          
+            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A4%E7%9F%A5%E5%BF%83%E7%90%86%E5%AD%A6/" class="post-detail-header_category" data-page-node-id="p7oONs0H38dDUoWcK3IWD9">
+              认知心理学
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;" data-page-node-id="4HaEPDxRRAvn8Ow0APDSqW">
+  <div class="main-content" data-page-node-id="1kgDthScHxJGMMm2oDe2Mh">
+    <article class="post post-detail" data-page-node-id="k4cIcana569oqi6k9Meh1q">
+      <div class="post-content" data-page-node-id="Yy8DB6KGJZ9t32WZCuIo6n">
+        <blockquote data-page-node-id="4b01FC0CdCiUlJEftwS3v8">
+<p data-page-node-id="Xm4uDtZfyqZfbBN65b7ZaQ"><strong data-page-node-id="ZyY656LakwmVNqIOIInFSD">书名</strong>：《思考，快与慢》（Thinking, Fast and Slow）<br data-page-node-id="8xIBE2dt4G43EMtTWNmrBE"><strong data-page-node-id="BY3DuO2OasyDY8G5A9ecCe">作者</strong>：丹尼尔 · 卡尼曼（Daniel Kahneman，1934—2024）<br data-page-node-id="aWCJYiCJcTODYzaatsLdya"><strong data-page-node-id="PRuw2IQS3G9IVeBt1jns0F">领域</strong>：认知心理学 &#x2F; 行为经济学<br data-page-node-id="yCPl8Nrxu57loFwK73AAZR"><strong data-page-node-id="Vp87EyvgCJAP6TD9X9CVOU">荣誉</strong>：2002 年诺贝尔经济学奖</p>
+</blockquote>
+<p data-page-node-id="HJHTJc111Dr2RNrNl4Q16N">如果只能推荐一本”理解人为什么会做错决定”的书，我会推荐这本。它用一套”两个系统”的语言，把散落在直觉、情绪、判断里的偏差，第一次系统地讲清楚了。下面是我读完后整理的精读摘要卡——可以当作一张可以反复翻阅的笔记。</p>
+<span id="more" data-page-node-id="erp8pY4cJCjAyzIPJPHoQQ"></span>
+
+<link rel="preconnect" href="https://fonts.font.im" data-page-node-id="rCSBDKjC3fC2T8gmpHSNPY">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="Wf667ZLmBPkZ2IReKv6Myb">
+<link href="https://fonts.font.im/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" data-page-node-id="LSIghCEpOcj44QoYDJMNJS">
+
+<style>
+/* ===== 命名空间化样式（仅作用于 .tn-root 子树） ===== */
+.tn-root{
+  --tn-paper-bg:#f3ecd8;
+  --tn-paper-card:#faf3df;
+  --tn-paper-deep:#e8dec3;
+  --tn-paper-tint:#efe6cf;
+
+  --tn-ink-strong:#2a2218;
+  --tn-ink-body:#4a3f2c;
+  --tn-ink-soft:#7a6c52;
+  --tn-ink-faint:#a5977c;
+
+  --tn-ribbon:#b9483b;
+  --tn-ribbon-soft:#d97a5e;
+  --tn-ink-blue:#3d5a73;
+  --tn-gold:#b8893a;
+
+  --tn-shadow-soft:0 1px 2px rgba(74,60,30,.06),0 8px 24px rgba(74,60,30,.06);
+  --tn-shadow-card:0 1px 2px rgba(74,60,30,.05),0 4px 14px rgba(74,60,30,.06);
+
+  --tn-font-serif:'Noto Serif SC','Songti SC','STSong','SimSun','宋体',serif;
+  --tn-font-display:'Playfair Display','Noto Serif SC',Georgia,serif;
+
+  position:relative;
+  margin:32px -28px;
+  padding:0;
+  background:var(--tn-paper-bg);
+  color:var(--tn-ink-body);
+  font-family:var(--tn-font-serif);
+  line-height:1.75;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:var(--tn-shadow-soft);
+}
+.tn-root::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  opacity:.5;
+  background-image:radial-gradient(rgba(122,108,82,.06) 1px,transparent 1px);
+  background-size:3px 3px;
+}
+.tn-root *{box-sizing:border-box;margin:0;padding:0}
+.tn-root a{color:inherit}
+
+/* HERO */
+.tn-hero{
+  position:relative;min-height:78vh;display:flex;align-items:flex-end;
+  padding:0 0 56px;color:#f7f1e3;overflow:hidden;isolation:isolate;
+}
+.tn-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');
+  background-size:cover;background-position:center 30%;
+  z-index:-2;filter:saturate(.85) contrast(1.05);
+}
+.tn-hero::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(20,14,5,.30) 0%,rgba(20,14,5,.10) 35%,rgba(20,14,5,.92) 100%),
+    linear-gradient(120deg,rgba(40,22,8,.55) 0%,rgba(40,22,8,.15) 50%,transparent 100%);
+  z-index:-1;
+}
+.tn-hero-inner{
+  width:100%;max-width:880px;margin:0 auto;padding:0 28px;position:relative;z-index:1;
+}
+.tn-hero-tag{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--tn-font-display);font-size:.82rem;letter-spacing:.32em;
+  text-transform:uppercase;color:rgba(247,241,227,.82);margin-bottom:18px;
+}
+.tn-hero-tag::before{content:'';width:40px;height:1px;background:rgba(247,241,227,.6)}
+.tn-hero h1{
+  font-family:var(--tn-font-display);font-size:clamp(2.6rem,7vw,4.6rem);
+  font-weight:700;line-height:1.1;letter-spacing:-.01em;color:#fff8e7;
+  margin-bottom:20px;text-shadow:0 4px 24px rgba(0,0,0,.5);
+}
+.tn-hero h1 .tn-cn{
+  font-family:var(--tn-font-serif);font-weight:700;display:block;
+  font-size:clamp(2.2rem,6vw,3.8rem);margin-bottom:6px;letter-spacing:.04em;
+}
+.tn-hero-sub{
+  font-family:var(--tn-font-serif);font-size:clamp(1rem,2.2vw,1.18rem);
+  color:rgba(247,241,227,.92);max-width:660px;line-height:1.85;
+  margin-bottom:26px;text-shadow:0 2px 12px rgba(0,0,0,.45);
+}
+.tn-hero-meta{
+  display:flex;flex-wrap:wrap;gap:14px 32px;
+  font-family:var(--tn-font-serif);font-size:.95rem;color:rgba(247,241,227,.85);
+  border-top:1px solid rgba(247,241,227,.22);padding-top:18px;margin-top:6px;
+}
+.tn-hero-meta span{display:flex;flex-direction:column;gap:3px}
+.tn-hero-meta span strong{
+  font-family:var(--tn-font-display);font-weight:600;color:rgba(247,241,227,.55);
+  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+}
+
+/* MAIN */
+.tn-main{padding:72px 0 32px}
+.tn-wrap{max-width:880px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* SECTION */
+.tn-section{position:relative;padding:44px 0 22px;margin-bottom:8px}
+.tn-section + .tn-section{margin-top:8px}
+.tn-sec-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.tn-sec-ribbon{
+  width:4px;height:1.6em;background:var(--tn-ribbon);border-radius:2px;flex-shrink:0;
+  box-shadow:0 0 0 1px rgba(185,72,59,.18);
+}
+.tn-sec-num{
+  font-family:var(--tn-font-display);font-size:.92rem;font-weight:700;
+  letter-spacing:.18em;color:var(--tn-ink-faint);flex-shrink:0;width:38px;
+}
+.tn-sec-title{
+  font-family:var(--tn-font-display);font-size:clamp(1.7rem,4vw,2.25rem);
+  font-weight:700;color:var(--tn-ink-strong);line-height:1.25;
+  letter-spacing:-.005em;flex:1;
+}
+.tn-sec-title .tn-cn{
+  font-family:var(--tn-font-serif);font-weight:700;display:block;
+  font-size:clamp(1.45rem,3.6vw,1.95rem);margin-top:4px;letter-spacing:.02em;
+}
+.tn-sec-title .tn-en{
+  font-family:var(--tn-font-display);font-style:italic;
+  font-size:clamp(.78rem,1.6vw,.92rem);font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--tn-ribbon);
+}
+.tn-sec-lead{
+  font-family:var(--tn-font-serif);font-size:1.04rem;color:var(--tn-ink-soft);
+  margin-bottom:30px;padding-left:56px;line-height:1.8;
+}
+
+/* CARD */
+.tn-card{
+  background:var(--tn-paper-card);border-radius:4px;padding:30px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  position:relative;
+}
+.tn-card + .tn-card{margin-top:18px}
+
+/* INFO CARD */
+.tn-info-card{padding-left:56px}
+.tn-info-card .tn-card{padding:26px 30px}
+.tn-info-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px 28px;
+}
+.tn-info-row + .tn-info-row{
+  margin-top:14px;padding-top:14px;
+  border-top:1px dashed rgba(122,108,82,.18);
+}
+.tn-info-cell{border-left:2px solid var(--tn-paper-deep);padding-left:14px}
+.tn-info-cell .tn-label{
+  display:block;font-family:var(--tn-font-display);font-size:.7rem;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--tn-ink-faint);
+  margin-bottom:5px;font-weight:600;
+}
+.tn-info-cell .tn-val{
+  font-family:var(--tn-font-serif);font-size:1rem;color:var(--tn-ink-strong);
+  font-weight:500;line-height:1.5;
+}
+
+/* INTRO */
+.tn-intro{
+  padding-left:56px;font-family:var(--tn-font-serif);font-size:1.18rem;
+  color:var(--tn-ink-strong);line-height:1.95;margin-bottom:32px;font-weight:500;max-width:720px;
+}
+.tn-intro em{
+  font-style:normal;background:linear-gradient(transparent 62%,rgba(184,152,89,.32) 62%);
+  padding:0 3px;
+}
+.tn-intro .tn-q{color:var(--tn-ribbon);font-weight:700}
+
+/* SYSTEMS */
+.tn-systems{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-left:56px}
+.tn-sys-card{
+  background:var(--tn-paper-card);border-radius:4px;padding:26px 26px 24px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  position:relative;border-top:4px solid;
+}
+.tn-sys-card.tn-s1{border-top-color:var(--tn-ribbon)}
+.tn-sys-card.tn-s2{border-top-color:var(--tn-ink-blue)}
+.tn-sys-tag{
+  font-family:var(--tn-font-display);font-size:.7rem;letter-spacing:.32em;
+  font-weight:700;margin-bottom:12px;
+}
+.tn-sys-card.tn-s1 .tn-sys-tag{color:var(--tn-ribbon)}
+.tn-sys-card.tn-s2 .tn-sys-tag{color:var(--tn-ink-blue)}
+.tn-sys-name{
+  font-family:var(--tn-font-serif);font-size:1.42rem;font-weight:700;
+  color:var(--tn-ink-strong);margin-bottom:6px;letter-spacing:.02em;
+}
+.tn-sys-en{
+  font-family:var(--tn-font-display);font-style:italic;font-size:.92rem;
+  color:var(--tn-ink-soft);margin-bottom:14px;line-height:1.5;
+}
+.tn-sys-features{list-style:none;margin-bottom:18px}
+.tn-sys-features li{
+  position:relative;padding-left:18px;margin-bottom:8px;font-size:.96rem;
+  color:var(--tn-ink-body);line-height:1.6;
+}
+.tn-sys-features li::before{
+  content:'·';position:absolute;left:4px;top:-2px;color:var(--tn-ribbon);
+  font-weight:bold;font-size:1.2em;
+}
+.tn-sys-card.tn-s2 .tn-sys-features li::before{color:var(--tn-ink-blue)}
+.tn-sys-meta{
+  display:inline-flex;align-items:center;gap:8px;background:var(--tn-paper-tint);
+  color:var(--tn-ink-strong);padding:6px 14px;border-radius:100px;
+  font-family:var(--tn-font-display);font-size:.82rem;font-weight:600;letter-spacing:.04em;
+}
+.tn-sys-meta .tn-dot{width:8px;height:8px;border-radius:50%}
+.tn-sys-card.tn-s1 .tn-sys-meta .tn-dot{background:var(--tn-ribbon)}
+.tn-sys-card.tn-s2 .tn-sys-meta .tn-dot{background:var(--tn-ink-blue)}
+.tn-insight{
+  margin-top:28px;padding:22px 28px;
+  background:linear-gradient(135deg,#fbf3da 0%,#f1e3bd 100%);
+  border-left:3px solid var(--tn-ribbon);border-radius:0 4px 4px 0;margin-left:56px;
+}
+.tn-insight-title{
+  font-family:var(--tn-font-display);font-weight:700;font-size:.76rem;
+  letter-spacing:.28em;color:var(--tn-ribbon);text-transform:uppercase;margin-bottom:6px;
+}
+.tn-insight-body{
+  font-family:var(--tn-font-serif);font-size:1.04rem;color:var(--tn-ink-strong);line-height:1.85;
+}
+.tn-insight-body strong{
+  color:var(--tn-ribbon);font-weight:700;
+  background:linear-gradient(transparent 60%,rgba(185,72,59,.18) 60%);padding:0 2px;
+}
+
+/* BIASES */
+.tn-biases{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;padding-left:56px;
+}
+.tn-bias-card{
+  background:var(--tn-paper-card);border-radius:4px;padding:22px 24px 20px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  border-left:3px solid var(--tn-ribbon-soft);position:relative;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.tn-bias-card:hover{transform:translateY(-2px);box-shadow:var(--tn-shadow-soft)}
+.tn-bias-num{
+  font-family:var(--tn-font-display);font-size:.72rem;letter-spacing:.28em;
+  color:var(--tn-ribbon);font-weight:700;margin-bottom:8px;
+}
+.tn-bias-name{
+  font-family:var(--tn-font-serif);font-size:1.22rem;font-weight:700;
+  color:var(--tn-ink-strong);margin-bottom:4px;letter-spacing:.02em;
+}
+.tn-bias-en{
+  font-family:var(--tn-font-display);font-style:italic;font-size:.85rem;
+  color:var(--tn-ink-soft);margin-bottom:12px;
+}
+.tn-bias-desc{
+  font-family:var(--tn-font-serif);font-size:.96rem;color:var(--tn-ink-body);
+  line-height:1.75;margin-bottom:12px;
+}
+.tn-bias-ex{
+  background:var(--tn-paper-bg);border-radius:3px;padding:10px 14px;
+  font-size:.86rem;color:var(--tn-ink-soft);line-height:1.65;
+  border:1px dashed rgba(122,108,82,.18);
+}
+.tn-bias-ex strong{color:var(--tn-ribbon);font-weight:600}
+
+/* FLOW */
+.tn-flow{padding-left:56px;position:relative}
+.tn-flow::before{
+  content:'';position:absolute;left:75px;top:22px;bottom:22px;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(122,108,82,.35) 8%,rgba(122,108,82,.35) 92%,transparent);
+}
+.tn-flow-item{
+  display:flex;gap:22px;padding:12px 0;align-items:stretch;position:relative;
+}
+.tn-flow-num{
+  flex-shrink:0;width:40px;height:40px;background:var(--tn-paper-card);
+  border:2px solid var(--tn-ribbon);color:var(--tn-ribbon);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--tn-font-display);font-weight:700;font-size:1rem;
+  letter-spacing:.02em;position:relative;z-index:1;margin-top:8px;
+}
+.tn-flow-body{
+  flex:1;background:var(--tn-paper-card);border-radius:4px;padding:18px 22px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+}
+.tn-flow-title{
+  font-family:var(--tn-font-serif);font-size:1.2rem;font-weight:700;
+  color:var(--tn-ink-strong);margin-bottom:4px;letter-spacing:.02em;
+}
+.tn-flow-en{
+  font-family:var(--tn-font-display);font-style:italic;font-size:.85rem;
+  color:var(--tn-ink-soft);margin-bottom:8px;
+}
+.tn-flow-desc{font-size:.96rem;color:var(--tn-ink-body);line-height:1.75}
+.tn-flow-tag{
+  display:inline-block;margin-top:10px;font-family:var(--tn-font-display);
+  font-size:.72rem;letter-spacing:.22em;color:var(--tn-ribbon);
+  text-transform:uppercase;font-weight:600;
+}
+.tn-flow-tag::before{content:'◆ ';font-size:.6em}
+
+/* QUOTES */
+.tn-quotes{padding-left:56px;display:grid;gap:16px}
+.tn-quote{
+  background:var(--tn-paper-card);border-radius:4px;padding:26px 32px 22px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  position:relative;overflow:hidden;
+}
+.tn-quote::before{
+  content:'\201C';font-family:var(--tn-font-display);position:absolute;
+  top:-12px;left:14px;font-size:4.2rem;color:var(--tn-ribbon);opacity:.22;
+  line-height:1;font-weight:700;pointer-events:none;
+}
+.tn-quote-text{
+  font-family:var(--tn-font-serif);font-size:1.1rem;color:var(--tn-ink-strong);
+  line-height:1.9;padding-left:14px;font-style:italic;position:relative;font-weight:500;
+}
+.tn-quote-cite{
+  margin-top:14px;padding-left:14px;font-family:var(--tn-font-display);
+  font-size:.85rem;color:var(--tn-ink-soft);font-style:italic;
+}
+.tn-quote-cite::before{content:'—— ';color:var(--tn-ribbon);font-style:normal;font-weight:700}
+
+/* ACTIONS */
+.tn-actions{padding-left:56px;display:grid;gap:14px}
+.tn-action{
+  background:var(--tn-paper-card);border-radius:4px;padding:20px 24px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  display:flex;gap:18px;align-items:flex-start;transition:transform .25s ease;
+}
+.tn-action:hover{transform:translateX(2px)}
+.tn-action-num{
+  flex-shrink:0;width:38px;height:38px;background:var(--tn-ribbon);color:#fff8e7;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--tn-font-display);font-weight:700;font-size:.95rem;
+}
+.tn-action-body{flex:1}
+.tn-action-title{
+  font-family:var(--tn-font-serif);font-size:1.15rem;font-weight:700;
+  color:var(--tn-ink-strong);margin-bottom:6px;letter-spacing:.02em;
+}
+.tn-action-desc{font-size:.96rem;color:var(--tn-ink-body);line-height:1.75}
+
+/* READERS */
+.tn-readers{
+  padding-left:56px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;
+}
+.tn-reader{
+  background:var(--tn-paper-card);border-radius:4px;padding:22px 22px 20px;
+  box-shadow:var(--tn-shadow-card);border:1px solid rgba(122,108,82,.10);
+  border-top:3px solid var(--tn-gold);position:relative;
+}
+.tn-reader-icon{
+  font-family:var(--tn-font-display);font-size:1.4rem;color:var(--tn-gold);
+  margin-bottom:8px;font-weight:700;
+}
+.tn-reader-title{
+  font-family:var(--tn-font-serif);font-size:1.08rem;font-weight:700;
+  color:var(--tn-ink-strong);margin-bottom:6px;letter-spacing:.02em;
+}
+.tn-reader-desc{font-size:.92rem;color:var(--tn-ink-body);line-height:1.7}
+.tn-read-tip{
+  margin-top:30px;padding:22px 28px;
+  background:linear-gradient(135deg,#f1e3bd 0%,#e8d3a0 100%);
+  border-radius:4px;border:1px solid rgba(184,152,89,.32);margin-left:56px;position:relative;
+}
+.tn-read-tip::before{
+  content:'✦';position:absolute;top:-12px;left:24px;background:var(--tn-gold);
+  color:#fff8e7;width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+}
+.tn-read-tip-tag{
+  font-family:var(--tn-font-display);font-size:.72rem;letter-spacing:.28em;
+  color:var(--tn-gold);font-weight:700;text-transform:uppercase;
+  margin-bottom:6px;margin-top:4px;
+}
+.tn-read-tip-text{
+  font-family:var(--tn-font-serif);font-size:1rem;color:var(--tn-ink-strong);line-height:1.85;
+}
+
+/* FOOTER */
+.tn-foot{
+  margin-top:56px;padding:28px 24px 32px;text-align:center;
+  font-family:var(--tn-font-serif);font-size:.86rem;color:var(--tn-ink-faint);
+  border-top:1px dashed rgba(122,108,82,.3);position:relative;z-index:1;
+}
+.tn-foot p{margin-bottom:4px}
+.tn-foot .tn-brand{
+  font-family:var(--tn-font-display);font-style:italic;letter-spacing:.1em;
+  color:var(--tn-ribbon);font-size:.92rem;font-weight:600;
+}
+
+/* RESPONSIVE */
+@media (max-width:760px){
+  .tn-root{margin:24px -16px}
+  .tn-hero{min-height:64vh;padding-bottom:36px}
+  .tn-main{padding:48px 0 24px}
+  .tn-wrap, .tn-hero-inner{padding:0 20px}
+  .tn-sec-header{gap:10px;margin-bottom:18px}
+  .tn-sec-num{width:30px;font-size:.78rem}
+  .tn-sec-ribbon{width:3px}
+  .tn-sec-lead, .tn-info-card, .tn-systems, .tn-biases, .tn-flow,
+  .tn-quotes, .tn-actions, .tn-readers, .tn-intro{padding-left:0}
+  .tn-insight, .tn-read-tip{margin-left:0;padding:18px 22px}
+  .tn-flow::before{display:none}
+  .tn-flow-item{flex-direction:column;gap:10px}
+  .tn-flow-num{margin-top:0}
+  .tn-systems{grid-template-columns:1fr}
+  .tn-quote{padding:22px 24px 18px}
+  .tn-quote::before{font-size:3rem;top:-4px;left:10px}
+  .tn-section{padding:36px 0 16px}
+  .tn-card{padding:24px 22px}
+  .tn-info-card .tn-card{padding:22px}
+}
+@media (max-width:440px){
+  .tn-info-row{grid-template-columns:1fr}
+  .tn-hero-meta{gap:14px 22px}
+  .tn-action{padding:18px 20px}
+  .tn-action-num{width:32px;height:32px;font-size:.85rem}
+  .tn-bias-card{padding:20px 20px 18px}
+}
+</style>
+
+<div class="tn-root" data-page-node-id="6UL3V0H6nOOON1ilpv3rsG">
+
+<header class="tn-hero" data-page-node-id="oe2YoRO1aFCqAivHjbaD7K">
+  <div class="tn-hero-inner" data-page-node-id="S1DYs05svuTHZEXIXQCJwV">
+    <div class="tn-hero-tag" data-page-node-id="fVEcJDoomUMaAJAuIk3qJ8">A NOTE ON THINKING</div>
+    <h1 data-page-node-id="F8P61PX5c0aP1NeubtB1ih">
+      <span class="tn-cn" data-page-node-id="EdAB3Abl2obBbgo7gl7BJ2">《思考，快与慢》</span>
+      <span data-page-node-id="o46e6IO5PO6PGaC3T0VXzv">Thinking, Fast and Slow</span>
+    </h1>
+    <p class="tn-hero-sub" data-page-node-id="Oy16jK8cPtQ3P2iBao0sNU">一本关于"我们如何思考、又为何常常想错"的认知心理学经典。用两套思维系统，解释判断、决策与偏误背后的机制——并把它整理成可随时翻阅的知识卡片。</p>
+    <div class="tn-hero-meta" data-page-node-id="vMg9VngZgaBRXD9VBcHYbz">
+      <span data-page-node-id="7BxYSFnNdHHEeyGbKALLqK"><strong data-page-node-id="Nrs3AiWVorVGXiHHV9xW3A">作者</strong>丹尼尔 · 卡尼曼</span>
+      <span data-page-node-id="tcceZvY40XO5ifOfGhwELV"><strong data-page-node-id="FQgCNIn9Sibu6CHIxflOA3">领域</strong>认知心理学 · 行为经济学</span>
+      <span data-page-node-id="J04fOHqTH962Lg8Uv3EBMp"><strong data-page-node-id="63aV2ecvyuvwb6Ax2y56D4">出版</strong>2011 · 普林斯顿大学出版社</span>
+      <span data-page-node-id="phAaHKV9PriJ2nmnF0GNTA"><strong data-page-node-id="y7bA5MnuEPUP3XXC2LQET1">荣誉</strong>2002 诺贝尔经济学奖</span>
+    </div>
+  </div>
+</header>
+
+<div class="tn-main" data-page-node-id="D70GSwyOVolgtFDwEY0dVH">
+<div class="tn-wrap" data-page-node-id="p5LZx3fdjPAvIez65ABGab">
+
+<!-- ============ SECTION 01 ============ -->
+<section class="tn-section" data-page-node-id="syTBzh758p5Dv9Uqo434WE">
+  <div class="tn-sec-header" data-page-node-id="XRxWFr8pZcjYa9CAExXwPL">
+    <span class="tn-sec-ribbon" data-page-node-id="i1ZooEC27P38NHClgOyw1o"></span>
+    <span class="tn-sec-num" data-page-node-id="1s7zkHTpQzjlYr28a4r3Vs">01</span>
+    <h2 class="tn-sec-title" data-page-node-id="eeA9AhX4fwEVpDFlFZ5fEA">
+      <span class="tn-en" data-page-node-id="NSkMoWm848zlg6Koy99YS7">OVERVIEW</span>
+      <span class="tn-cn" data-page-node-id="uqDVBN75cwBWvMZWWZh1qP">这本书讲了什么</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="X4NZrzFrbs67vlEBVL10kN">一句话总览 + 核心信息卡</p>
+
+  <p class="tn-intro" data-page-node-id="h6QZJdVSX5h5dnl4infk2i">我们的大脑里住着<span class="tn-q" data-page-node-id="LLeLiE1SyA2p1bmmSp0vdE">两个"我"</span>：一个快、靠直觉，一个慢、靠推理。<br data-page-node-id="846x0bmWyD7VNlkXZpKU9r">生活中大部分判断由<span class="tn-q" data-page-node-id="nrM7YDyuttwVGnCzacFsOS">"快"</span>的那个做主——这既是高效，也是<span class="tn-q" data-page-node-id="H7toFmdpUmH0aBwgcJPsrw">系统性犯错</span>的根源。</p>
+
+  <div class="tn-info-card" data-page-node-id="mt4KnSJ2Y5Seg83XINSlOT">
+    <div class="tn-card" data-page-node-id="foKdY4VpEURo5bxHpwLE0N">
+      <div class="tn-info-row" data-page-node-id="0lwvG4J9vm4pn1q74qRPyq">
+        <div class="tn-info-cell" data-page-node-id="UIPbBCiHBALYORGFJ3GeC9">
+          <span class="tn-label" data-page-node-id="y79sRiBpePik4tzvyuZxYQ">作者</span>
+          <span class="tn-val" data-page-node-id="EevWtHGAOBsiTEZFyX5Eet">丹尼尔 · 卡尼曼<br data-page-node-id="GAKs4GkXtGTRTUzQktYgZf"><small style="color:var(--tn-ink-soft);font-weight:400" data-page-node-id="R4zBuK7eS6qTXh2BduAYWl">Daniel Kahneman · 1934—2024</small></span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="ktZPTK2fJFh4ijdyNyNebi">
+          <span class="tn-label" data-page-node-id="JeB13MK22y2xT17BcXAEjM">领域</span>
+          <span class="tn-val" data-page-node-id="AWB89gLLihDDBlu7HSJDlo">认知心理学 / 行为经济学</span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="sfAaJUAixMF1dhIMqyxxAS">
+          <span class="tn-label" data-page-node-id="s4K7C521DngpTitjzkNw7M">出版年</span>
+          <span class="tn-val" data-page-node-id="HLx6ZGz81KUuBDDkL9Ohyb">2011（英文原版）<br data-page-node-id="hC1Ff2CBn7LTLtw4JtP81D">2012（中信出版社中译）</span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="SlJ6DFooueRDrfVdUdF8TJ">
+          <span class="tn-label" data-page-node-id="cmPhLU27xpHi1tCrWNwAjB">核心命题</span>
+          <span class="tn-val" data-page-node-id="JHR1AoESJKb4z0HGDQI0gt">直觉判断的系统性偏差</span>
+        </div>
+      </div>
+      <div class="tn-info-row" data-page-node-id="SWnGgiAE5GCka9UVWGp5Aj">
+        <div class="tn-info-cell" data-page-node-id="Iytccmm3L1DMBYYS8CXdJp">
+          <span class="tn-label" data-page-node-id="d2A7AVXxjH7uWHhbBOJVoP">关键词</span>
+          <span class="tn-val" data-page-node-id="49Id7uODXeAVwirqj2br0h">双系统 · 启发法 · 偏误 · 前景理论</span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="SNmLrNvtfoBbc6FZEcRCCN">
+          <span class="tn-label" data-page-node-id="GmARfHLtJGyDYg81xXfHIf">理论伙伴</span>
+          <span class="tn-val" data-page-node-id="hIFjceolQgYIBHULEe4IxV">阿莫斯 · 特沃斯基（Amos Tversky）</span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="9AVrzOPkpeRv14ruEcaHEV">
+          <span class="tn-label" data-page-node-id="K7NKwo6MAdG3eAqpG8px9x">代表贡献</span>
+          <span class="tn-val" data-page-node-id="CGe6fUZHZAERqX0sEX9YyQ">前景理论 (Prospect Theory, 1979)</span>
+        </div>
+        <div class="tn-info-cell" data-page-node-id="KUCR0Y6acEEVlAEBHspZQm">
+          <span class="tn-label" data-page-node-id="tyLtMmy8V821gFqyoDAGJ2">荣 誉</span>
+          <span class="tn-val" data-page-node-id="CoC2Hghn3q40OsfqEQqq13">2002 年诺贝尔经济学奖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 02 ============ -->
+<section class="tn-section" data-page-node-id="H9wujEHQ5bXF1zKbKrGjfW">
+  <div class="tn-sec-header" data-page-node-id="6FLcREAN1Lmwh4ysVVtpDr">
+    <span class="tn-sec-ribbon" data-page-node-id="SVeoo6oIEo2MTONayJSN4A"></span>
+    <span class="tn-sec-num" data-page-node-id="9R5xLqEeImXiYbydhD8U9u">02</span>
+    <h2 class="tn-sec-title" data-page-node-id="pkKfpv7xmvjrhuoqZxeCQc">
+      <span class="tn-en" data-page-node-id="obGJ9QALpgNWgSpq1dxm4F">CORE FRAMEWORK</span>
+      <span class="tn-cn" data-page-node-id="Cr8ZohIxPVXEwBQ2TES95p">核心框架：系统 1 vs 系统 2</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="qmiP2YSmYIkOyEGira8RzE">全书的地基——理解了这两套系统，就理解了大半本书</p>
+
+  <div class="tn-systems" data-page-node-id="BDuNQVunylp0Kw1ZTSfb80">
+    <div class="tn-sys-card tn-s1" data-page-node-id="DyG8Eia9AvLO0oocvLAJ0E">
+      <div class="tn-sys-tag" data-page-node-id="iy9FCHmXOJRULor9Faa96F">SYSTEM 1 · 快思考</div>
+      <div class="tn-sys-name" data-page-node-id="Re7Wi2txbdWCtMij0ec7wa">直觉系统</div>
+      <div class="tn-sys-en" data-page-node-id="MOssXFvQqqwm06MW3LHttG">"自动、无需努力、随时在线"</div>
+      <ul class="tn-sys-features" data-page-node-id="0DaQKQHW2UV5FFdHBi1j2v">
+        <li data-page-node-id="s9P7QsD7l7G8KHekzJRll2">瞬间识别情绪、距离、熟悉的脸</li>
+        <li data-page-node-id="nYlYRR9v2WS601quy6ntml">脱口而出 2 + 2 = 4，自动补全联想</li>
+        <li data-page-node-id="AIu37VrGJETpwuUiO0LN99">省力高效，但容易被表象带偏</li>
+      </ul>
+      <div class="tn-sys-meta" data-page-node-id="3UdL3VT4NUI2KmkG1EZpGw"><span class="tn-dot" data-page-node-id="tte54NhGslZQgwrQBxCR55"></span>毫秒级 · 并行 · 无意识</div>
+    </div>
+    <div class="tn-sys-card tn-s2" data-page-node-id="Jn65zAhoBiMpugaaHQXIMZ">
+      <div class="tn-sys-tag" data-page-node-id="6apAtq6ZDM8V8HPlFvLRkr">SYSTEM 2 · 慢思考</div>
+      <div class="tn-sys-name" data-page-node-id="jVUiFNS0qJ9vfBvz3eYIDv">理性系统</div>
+      <div class="tn-sys-en" data-page-node-id="6jIsFPIs4aYSS6re1DvOIs">"刻意、耗费精力、需要专注"</div>
+      <ul class="tn-sys-features" data-page-node-id="HxtyEyH8bi5E8mmhteFVG2">
+        <li data-page-node-id="HGSSZ39uZlzXAtQJjRyDy1">计算 17 × 24、填写复杂表格</li>
+        <li data-page-node-id="WN7vtvLNNNXgbNpk5RxTVX">核查直觉、权衡证据、控制冲动</li>
+        <li data-page-node-id="JFX9B2BrDenUte2nsKXYo7">容量有限、容易疲惫，常"偷懒"</li>
+      </ul>
+      <div class="tn-sys-meta" data-page-node-id="3dXRWXlUC0YQuJGS4U6uDY"><span class="tn-dot" data-page-node-id="tLGfF7mbPYcw2UGQiNI56P"></span>秒级 · 串行 · 有意识</div>
+    </div>
+  </div>
+
+  <div class="tn-insight" data-page-node-id="BSz8kaCmauQbjHirTvTJUK">
+    <div class="tn-insight-title" data-page-node-id="mg4aeZv26kiLe4G3IryFrJ">关键洞察</div>
+    <p class="tn-insight-body" data-page-node-id="TkVi4TU5rtV7tKyGCaNY31">系统 2 自以为是主角，实际上大多数时候只是为系统 1 的直觉"背书"。真正的认知功夫，是在该慢的时候<strong data-page-node-id="K4MzVQEqNw7BmNDVEd0jL6">愿意</strong>慢下来，调动系统 2 去复核那个看似显而易见的答案。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 03 ============ -->
+<section class="tn-section" data-page-node-id="onVJacNWbdUWFWofYhySxZ">
+  <div class="tn-sec-header" data-page-node-id="36SfPMsmjI1L2JYCrn0IPH">
+    <span class="tn-sec-ribbon" data-page-node-id="kCC6uRY8hiBILoG5pA0S2A"></span>
+    <span class="tn-sec-num" data-page-node-id="EYpSUmiO8Qa5iApRybosiD">03</span>
+    <h2 class="tn-sec-title" data-page-node-id="sAOd4lFszUui1NAczPZZmY">
+      <span class="tn-en" data-page-node-id="jCKjRyoCk85BCaMBkeHQMc">COGNITIVE BIASES</span>
+      <span class="tn-cn" data-page-node-id="uLRTaKmWDgW3am2rEMiMii">关键认知偏误卡片</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="B6inNGLV6Y5nqAZDFdj4AW">系统 1 走捷径时最常踩的 6 个坑——认出它们，就赢了一半</p>
+
+  <div class="tn-biases" data-page-node-id="a1gWINIm7PWvDwBv4Sudwy">
+    <div class="tn-bias-card" data-page-node-id="Ok08bRiBB7daKdF2IeFqzd">
+      <div class="tn-bias-num" data-page-node-id="OEVydjieH8VpePFd9FzRl0">BIAS · 01</div>
+      <div class="tn-bias-name" data-page-node-id="O4QsrxdkCeci80chHtUKhu">锚定效应</div>
+      <div class="tn-bias-en" data-page-node-id="0Srm1RHqFM6BYCntrgFGVt">Anchoring Effect</div>
+      <p class="tn-bias-desc" data-page-node-id="Uj2USrsb2GeZkCtTcEnUaK">第一个出现的数字会成为"锚"，悄悄拉着后续判断往它靠拢，哪怕这个数字毫无关联。</p>
+      <div class="tn-bias-ex" data-page-node-id="HJQAf6wZ3kCStoKS4rOHEC"><strong data-page-node-id="fmsQrefk95L0H9SNAeKAnt">例：</strong>先看到标价 ¥1999 再打五折，比直接标 ¥999 更显划算。</div>
+    </div>
+    <div class="tn-bias-card" data-page-node-id="F5cTTHOR9wYtF2lVaXuKwY">
+      <div class="tn-bias-num" data-page-node-id="hKrQx8KRMap4nJSJQpUz32">BIAS · 02</div>
+      <div class="tn-bias-name" data-page-node-id="3kv3gNVlVVGtniPhFB3g7M">可得性启发</div>
+      <div class="tn-bias-en" data-page-node-id="zHcr40Cam8SCZ3fmk2iotg">Availability Heuristic</div>
+      <p class="tn-bias-desc" data-page-node-id="guLTmPKsNwX8LBdBG8D4rF">越容易想起的事，越觉得它常发生。生动、近期、被反复报道的事件，会被高估概率。</p>
+      <div class="tn-bias-ex" data-page-node-id="OJzTEAZ7KI2thG2Pu1j7hV"><strong data-page-node-id="4rWwQei5wrfJtQucXodlIh">例：</strong>看多了空难新闻，便高估坐飞机的风险。</div>
+    </div>
+    <div class="tn-bias-card" data-page-node-id="aDFhnaUPnVADATTNC3DaBh">
+      <div class="tn-bias-num" data-page-node-id="lbbd5BnMphwM8sY3OCx6km">BIAS · 03</div>
+      <div class="tn-bias-name" data-page-node-id="QTcWgsKJYqUlUzbXuFIKXy">代表性启发</div>
+      <div class="tn-bias-en" data-page-node-id="SgBqdgs0qCCRM8DQVvnxIG">Representativeness</div>
+      <p class="tn-bias-desc" data-page-node-id="KuEuHiQHLbnTHJOOXndIcZ">凭"像不像"判断概率，忽略基础比率与样本大小。直觉认为典型的，其实只是被表象选中。</p>
+      <div class="tn-bias-ex" data-page-node-id="3IoswxCArdRTGtOqbwNfEg"><strong data-page-node-id="x3s8jU7fyBeMH1R8w37Rbq">例：</strong>看到"安静、爱思考"的人物描述，直觉猜他是图书管理员而非销售员。</div>
+    </div>
+    <div class="tn-bias-card" data-page-node-id="yu4hLc6ETTj07yDwfxicKz">
+      <div class="tn-bias-num" data-page-node-id="IvhjmgW61Oj3m0canYUipi">BIAS · 04</div>
+      <div class="tn-bias-name" data-page-node-id="zAxAirvFk4cxuIWVDTRI6h">损失厌恶</div>
+      <div class="tn-bias-en" data-page-node-id="5Zj3KzSNTELpjCDxR1vR3W">Loss Aversion</div>
+      <p class="tn-bias-desc" data-page-node-id="lLuwS8oGV4pZce8FkKonJf">失去 100 元的痛，约是得到 100 元快乐的两倍。我们为"不亏"付出的努力远超"赚到"。</p>
+      <div class="tn-bias-ex" data-page-node-id="jhk3B3eS9MBphccUNL6UUd"><strong data-page-node-id="3rKGxs5tdfPODBdS5yWkCD">例：</strong>明知该止损，却死守亏损的股票不肯卖。</div>
+    </div>
+    <div class="tn-bias-card" data-page-node-id="Vi3TfN2tjPHBzQBSlfp8Ri">
+      <div class="tn-bias-num" data-page-node-id="oxJeecUWRsND82LxDZPk2N">BIAS · 05</div>
+      <div class="tn-bias-name" data-page-node-id="nEBWSF3LF8Ytv4mILTJqTl">框架效应</div>
+      <div class="tn-bias-en" data-page-node-id="OZ13eeFeMtNwmdttFRpgew">Framing Effect</div>
+      <p class="tn-bias-desc" data-page-node-id="CrQF0D21a1Q2Vhf47gupfj">同一事实，换种说法就改变选择。"九成存活"与"一成死亡"在数学上相同，感受却天差地别。</p>
+      <div class="tn-bias-ex" data-page-node-id="G38PhQxr4VFiIDCXgvxrBv"><strong data-page-node-id="xMds7iKGdxUasLmU95m8br">例：</strong>"95% 无脂" 比 "含 5% 脂肪" 更好卖。</div>
+    </div>
+    <div class="tn-bias-card" data-page-node-id="grbpKAXUYF9ui83yTpslf6">
+      <div class="tn-bias-num" data-page-node-id="v6DrYKXnANUr75qCaq7NEL">BIAS · 06</div>
+      <div class="tn-bias-name" data-page-node-id="TFzQWWZZzhHLi1dbPBc1t2">规划谬误</div>
+      <div class="tn-bias-en" data-page-node-id="om7gq7bgZBUnIBkqu70ns9">Planning Fallacy</div>
+      <p class="tn-bias-desc" data-page-node-id="cHCtlPN23BOlLCgFhuRx94">我们系统性地低估任务完成时间——只看"这次"会怎样，忽略"过去每次"都拖期的历史。</p>
+      <div class="tn-bias-ex" data-page-node-id="erOGhfsThxRGn9eSl0CakO"><strong data-page-node-id="xCiT7gVp9Xg0jDEEmK6gxX">例：</strong>装修房子预估 3 个月，实际拖到 8 个月，几乎是常态。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 04 ============ -->
+<section class="tn-section" data-page-node-id="tDz7ZFdfBIGgvQDZlwexfz">
+  <div class="tn-sec-header" data-page-node-id="q0uRE3xmZzFxxdYkmoq8bA">
+    <span class="tn-sec-ribbon" data-page-node-id="VCWMhV1oBQ89qegfUPYrKT"></span>
+    <span class="tn-sec-num" data-page-node-id="JTOgfNyYCnejEBfBUbhhJI">04</span>
+    <h2 class="tn-sec-title" data-page-node-id="lccQ0rV58RhguZk06VzpD5">
+      <span class="tn-en" data-page-node-id="RANLkujZOPeXp5IeCEdWw4">BOOK MAP</span>
+      <span class="tn-cn" data-page-node-id="CaQAbhjpn6drESXPyHG45K">全书脉络图</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="02C0xPrFxazKPExGyCCbpW">五个部分，层层递进——从"两个系统"到"两个自我"</p>
+
+  <div class="tn-flow" data-page-node-id="eBuRLjJo1UVRscFxaqLV4I">
+    <div class="tn-flow-item" data-page-node-id="rvCHLC9Ycba0VaQfMdBqL5">
+      <div class="tn-flow-num" data-page-node-id="AdPmG57HHFHXHcEoJER3wJ">Ⅰ</div>
+      <div class="tn-flow-body" data-page-node-id="962qx5ctsnUdCdKruX02BE">
+        <div class="tn-flow-title" data-page-node-id="oSs5yRLxcXfAE1uIkuNmj0">两个系统</div>
+        <div class="tn-flow-en" data-page-node-id="fZK63Kl6iKi0xNdEp9QdiT">Two Systems</div>
+        <p class="tn-flow-desc" data-page-node-id="G6q7lCBvk1SOHeUeChj8iA">引入系统 1 与系统 2，解释注意力、努力与"懒惰的控制者"如何分工。</p>
+        <span class="tn-flow-tag" data-page-node-id="nyjL2cZ1vPeu1rRN8APzEM">地基 · 双系统模型</span>
+      </div>
+    </div>
+    <div class="tn-flow-item" data-page-node-id="NmSamk9zBZq21khXkB8aMe">
+      <div class="tn-flow-num" data-page-node-id="z1lnkmqGkhZ6jOEcjEHQPA">Ⅱ</div>
+      <div class="tn-flow-body" data-page-node-id="qis9DbVfKwNvX1CxCmC1Oi">
+        <div class="tn-flow-title" data-page-node-id="AF4sUNBHP6O0QG8gwzCn5d">启发法与偏误</div>
+        <div class="tn-flow-en" data-page-node-id="AemGT993CKuSeTHMIFNLmm">Heuristics & Biases</div>
+        <p class="tn-flow-desc" data-page-node-id="rI3bRKxBltjjAbhT1irL54">锚定、可得性、代表性等心理捷径，为何高效却系统性地把我们带偏。</p>
+        <span class="tn-flow-tag" data-page-node-id="kQUtG3sM4IrWGL4Fmzizjo">捷径 · 偏误来源</span>
+      </div>
+    </div>
+    <div class="tn-flow-item" data-page-node-id="7u8qZQJpGoStCEcpTraC7a">
+      <div class="tn-flow-num" data-page-node-id="IpMrWSrePjMpzyZN2B1pRn">Ⅲ</div>
+      <div class="tn-flow-body" data-page-node-id="KfZ6kL8XzujU7jhdfOBVUQ">
+        <div class="tn-flow-title" data-page-node-id="6PsC6RoS1RBeWOPX6q8eFL">过度自信</div>
+        <div class="tn-flow-en" data-page-node-id="X7PeCoR4CKTo3zl964JAqq">Overconfidence</div>
+        <p class="tn-flow-desc" data-page-node-id="w45C6VewxvBwZmjpulW2RL">"所见即全部"、事后诸葛、对专家直觉的迷信，如何制造虚假的确定感。</p>
+        <span class="tn-flow-tag" data-page-node-id="eYEXN3LYopavsrtxjj5ULb">认知 · 确定性幻觉</span>
+      </div>
+    </div>
+    <div class="tn-flow-item" data-page-node-id="HQGux2DhD7WyhKkpRHGB65">
+      <div class="tn-flow-num" data-page-node-id="PAxv9PBklaxWEpFZuayrT8">Ⅳ</div>
+      <div class="tn-flow-body" data-page-node-id="BLUAPtWv6pUpJKUnsgiKtH">
+        <div class="tn-flow-title" data-page-node-id="oob3gJNCPNHNy8YSkInjIx">选择与风险</div>
+        <div class="tn-flow-en" data-page-node-id="h6Qi60Thj35xGx7ZvHlpMM">Choices & Risks</div>
+        <p class="tn-flow-desc" data-page-node-id="sV9WgynAjjbSkPhBmqjznW">前景理论登场：损失厌恶、参照点、框架效应如何重塑我们对得失的衡量。</p>
+        <span class="tn-flow-tag" data-page-node-id="n34RsNECRuHZQnm4UxJAMw">决策 · 前景理论</span>
+      </div>
+    </div>
+    <div class="tn-flow-item" data-page-node-id="dud53VgylshTb3FA88AN17">
+      <div class="tn-flow-num" data-page-node-id="1i7QP64dvhkydlnkG0BCxA">Ⅴ</div>
+      <div class="tn-flow-body" data-page-node-id="XnMquO1DoiWlXsL47Db9Se">
+        <div class="tn-flow-title" data-page-node-id="GWNjG031lnJCFkXn5Arg58">两个自我</div>
+        <div class="tn-flow-en" data-page-node-id="rxOukJlHAMmqWOj5MoNGB8">Two Selves</div>
+        <p class="tn-flow-desc" data-page-node-id="EVgBiJGDMESEofFiWfpK91">"体验自我"与"记忆自我"的分裂——峰终定律揭示我们记住的并非真实的体验。</p>
+        <span class="tn-flow-tag" data-page-node-id="K9J93jn73ZKCdi6Z4ItUM4">幸福 · 峰终定律</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 05 ============ -->
+<section class="tn-section" data-page-node-id="pVdXqkxPOqZEazRStOxJMV">
+  <div class="tn-sec-header" data-page-node-id="Lp7o9PJfDQ8GgbAdRHlmby">
+    <span class="tn-sec-ribbon" data-page-node-id="GRwEVFpa2oSFlk3iZ8wG1J"></span>
+    <span class="tn-sec-num" data-page-node-id="9VFjkYYsqGF7GHmscUhZGE">05</span>
+    <h2 class="tn-sec-title" data-page-node-id="mTlhrCt64IdILunTgobEEk">
+      <span class="tn-en" data-page-node-id="L0FAQe1hrHeAfVLGGa4WXy">QUOTES</span>
+      <span class="tn-cn" data-page-node-id="DpuOHmgPILI8d9HrVUSjxS">金句摘录</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="TFHGafNHLyISb2CwQRFflS">值得抄进笔记本、贴在书桌前的句子</p>
+
+  <div class="tn-quotes" data-page-node-id="uouBcPvcgeVfZhCM3CGibg">
+    <div class="tn-quote" data-page-node-id="X700aWENss4pToVFCEsfuv">
+      <p class="tn-quote-text" data-page-node-id="J8IVhzaZbztjs8F1jA3y0d">没有什么比你以为自己已经理解的事，更容易让你犯错。</p>
+      <p class="tn-quote-cite" data-page-node-id="ZOVLBKJYkL7Vaf0L7b3QIN">论"所见即全部"（WYSIATI）与过度自信</p>
+    </div>
+    <div class="tn-quote" data-page-node-id="8kAypKnHjJhPWv96BtaAjG">
+      <p class="tn-quote-text" data-page-node-id="U2EXogfHYlEWvqesRzyPi9">我们对自己理解世界的能力，抱有近乎无限的盲目自信。</p>
+      <p class="tn-quote-cite" data-page-node-id="wEcHLhzyV20AI10T8eIeAA">论直觉制造的确定性幻觉</p>
+    </div>
+    <div class="tn-quote" data-page-node-id="o873drajNFPMmzUBHkbeHd">
+      <p class="tn-quote-text" data-page-node-id="oxdcHDadcfKiWcqCTNN0IT">我们衡量的是变化与差异，而非绝对的状态本身。</p>
+      <p class="tn-quote-cite" data-page-node-id="ab4TeqLiiVboL3mGQtCAi4">论参照点与前景理论</p>
+    </div>
+    <div class="tn-quote" data-page-node-id="gGXUQeTpv8FgsEiFR8Cuj5">
+      <p class="tn-quote-text" data-page-node-id="71eMJsSh4UEE2DSNZnG3FO">一个可靠的判断，往往来自一个安静、有序、可预测的环境。</p>
+      <p class="tn-quote-cite" data-page-node-id="R1uMR3SLh7P8HX0F6EYmLV">论专家直觉成立的条件</p>
+    </div>
+    <div class="tn-quote" data-page-node-id="OUkyoxQrdkLYpfiPTOaIEp">
+      <p class="tn-quote-text" data-page-node-id="uOqd7lhzEMHqs4SqFAodgN">体验自我与记忆自我的分裂，是理解幸福的真正入口。</p>
+      <p class="tn-quote-cite" data-page-node-id="t7p71Zdva6Ccjnx18HS5Uy">论峰终定律与两个自我</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 06 ============ -->
+<section class="tn-section" data-page-node-id="VhZhe9cPiMg3HlNenBDGCR">
+  <div class="tn-sec-header" data-page-node-id="V9n6QFoms5torIFH0FYEGa">
+    <span class="tn-sec-ribbon" data-page-node-id="DJUid0jtTdUVmWSF4F0GQL"></span>
+    <span class="tn-sec-num" data-page-node-id="4HNxeFH2SyBY5DBm2CBp0a">06</span>
+    <h2 class="tn-sec-title" data-page-node-id="dBkccDb7JxABs9SChGES5F">
+      <span class="tn-en" data-page-node-id="sPBPSZCPFNmyhyExy3OYEW">ACTION GUIDE</span>
+      <span class="tn-cn" data-page-node-id="Rheikr70tjDIMwHCE2BYNZ">对工作与决策的行动启发</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="jSOBFqSpJo743RoSBu6k8i">把认知科学变成可执行的工作习惯</p>
+
+  <div class="tn-actions" data-page-node-id="qXIWYfKuzGaODsgjJR8RYy">
+    <div class="tn-action" data-page-node-id="ZeMKjfG2HgRVvMygKGwiRW">
+      <div class="tn-action-num" data-page-node-id="koqrRxH5RGTGcl5EymHs94">1</div>
+      <div class="tn-action-body" data-page-node-id="6VaUKkY7LXwBFYwCIZ2e9H">
+        <div class="tn-action-title" data-page-node-id="uHd9tXLcwQ2QuWkaAjFWM4">重大决策，强制"过夜"</div>
+        <p class="tn-action-desc" data-page-node-id="xKNE91O8uSSx9p3b77GpNT">给系统 2 留出时间。重要选择不在情绪与第一直觉的高峰期拍板，隔一天再复核。</p>
+      </div>
+    </div>
+    <div class="tn-action" data-page-node-id="UYMr5YVusF17N8JLUriE0x">
+      <div class="tn-action-num" data-page-node-id="QJdhq434uIPjg61MRC43t9">2</div>
+      <div class="tn-action-body" data-page-node-id="xJSib4t7vAvHKfpjwBSUaT">
+        <div class="tn-action-title" data-page-node-id="PcOph4eUevQ9WBypfqMpTU">先独立写，再开会</div>
+        <p class="tn-action-desc" data-page-node-id="hG8vgAeCE7KukPHzTlZycx">评审或评估前，让每个人先各自匿名记录判断，避免锚定与从众，再汇总讨论。</p>
+      </div>
+    </div>
+    <div class="tn-action" data-page-node-id="MVAtUXgL8mQXSAbE6znCwR">
+      <div class="tn-action-num" data-page-node-id="6z9RHkcpNnUGst4Uy5LcBQ">3</div>
+      <div class="tn-action-body" data-page-node-id="G1DW3ptsCqCcIpkN2gECFV">
+        <div class="tn-action-title" data-page-node-id="qwQh5SyDicaAObWvxX2Dq7">做"事前验尸"</div>
+        <p class="tn-action-desc" data-page-node-id="B3ODe3CGFOQx0mp5re5rfN">Premortem：启动项目前先假设它已失败，倒推可能的原因，对冲过度乐观与"所见即全部"。</p>
+      </div>
+    </div>
+    <div class="tn-action" data-page-node-id="WAGiNo3mcrq0u4qClHVmSM">
+      <div class="tn-action-num" data-page-node-id="SsCL0cG9MaDtvtgoFbrhHM">4</div>
+      <div class="tn-action-body" data-page-node-id="5jDRfR5pxKOetcG2AgULYW">
+        <div class="tn-action-title" data-page-node-id="Ishe1cFt2DwKtUG9g1BYd2">警惕被"框定"的选项</div>
+        <p class="tn-action-desc" data-page-node-id="P3WTHOnHnsM2NghHot1XXQ">遇到 A/B 选择，主动换种说法重述一遍——看看你的偏好会不会因措辞而翻转。</p>
+      </div>
+    </div>
+    <div class="tn-action" data-page-node-id="Xbl4Blrm5ekRLrxEosJs7B">
+      <div class="tn-action-num" data-page-node-id="iMld47RzbzzdfcgHEAQh7t">5</div>
+      <div class="tn-action-body" data-page-node-id="4oxH6WCyszk4Rty1CfFu8P">
+        <div class="tn-action-title" data-page-node-id="al5HYqTzkC8xQKuBYdSyLC">用基础比率校准直觉</div>
+        <p class="tn-action-desc" data-page-node-id="F7PN1FhAaHL0UaTzjsLQrI">判断概率前先问"同类情况通常的发生率是多少"，别被生动的个例牵着走。</p>
+      </div>
+    </div>
+    <div class="tn-action" data-page-node-id="c47ezUxcbOxWxffUCvPDd7">
+      <div class="tn-action-num" data-page-node-id="mRbLyBsA6JDP2bysglnSx0">6</div>
+      <div class="tn-action-body" data-page-node-id="lPUeH4IHyyUbADnmrTujAY">
+        <div class="tn-action-title" data-page-node-id="lDE0DiTu5Ccp8gnYyS2j3c">把损失厌恶摆上台面</div>
+        <p class="tn-action-desc" data-page-node-id="u6ZKivN2pBY7bO5uh5ehOg">评估方案时分别列出"会失去什么"与"能得到什么"，避免因怕亏而错失更优解。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 07 ============ -->
+<section class="tn-section" data-page-node-id="0PxXemKKOiGQQnbloijWdE">
+  <div class="tn-sec-header" data-page-node-id="ZDIjV518vfzB72UqCbJkcy">
+    <span class="tn-sec-ribbon" data-page-node-id="w10RjKijrTLyv3dmxaDhFu"></span>
+    <span class="tn-sec-num" data-page-node-id="8D30m4wsQsunkYcPDAgiLS">07</span>
+    <h2 class="tn-sec-title" data-page-node-id="voMhVnLmgHpl0D2u4agXSJ">
+      <span class="tn-en" data-page-node-id="0C8vSdBpP8GHK8adVXPl0Y">FOR WHOM</span>
+      <span class="tn-cn" data-page-node-id="HHMJ7jdOKD9DSmvm4AgQN7">这本书适合谁读</span>
+    </h2>
+  </div>
+  <p class="tn-sec-lead" data-page-node-id="qTwquOAQlyiGWDOKbCX332">如果你符合其中一条，它都值得放进书单</p>
+
+  <div class="tn-readers" data-page-node-id="U8ntv1oXfdD4aCPfFjk9iY">
+    <div class="tn-reader" data-page-node-id="RrR3tCiaXYcfIPxghBViB4">
+      <div class="tn-reader-icon" data-page-node-id="ep144yoJ8IGaNgdCPB60CI">◇</div>
+      <div class="tn-reader-title" data-page-node-id="zFNsndYFRD9p9XzzNYMJG1">需要做判断与决策的人</div>
+      <p class="tn-reader-desc" data-page-node-id="1H7bbPnBLOHdwVelMEe1ye">管理者、投资者、产品与运营——任何要在不确定中下注的角色。</p>
+    </div>
+    <div class="tn-reader" data-page-node-id="iEyTArcjrTligCobH7Pjlf">
+      <div class="tn-reader-icon" data-page-node-id="kq6gxjGYmLgZxXVKzAXg4p">◇</div>
+      <div class="tn-reader-title" data-page-node-id="DwM0fVn8ZybCcrAJ903zLK">想读懂"人为何非理性"的人</div>
+      <p class="tn-reader-desc" data-page-node-id="KHTBc8Uoc3y29G5kBCFDA0">行为经济学、营销、用户研究的入门与系统化读本。</p>
+    </div>
+    <div class="tn-reader" data-page-node-id="zcYNTudPVnZPASZfH5DvC0">
+      <div class="tn-reader-icon" data-page-node-id="95jRZEr2D8Kn9pCJ8nLpOY">◇</div>
+      <div class="tn-reader-title" data-page-node-id="2EFub60zYPA9k1NSzOgemk">追求自我认知升级的人</div>
+      <p class="tn-reader-desc" data-page-node-id="f66JIVxgPslWpTt01u22uR">愿意承认"我也会系统性犯错"，并想为此装上一套刹车的人。</p>
+    </div>
+    <div class="tn-reader" data-page-node-id="umthbxIU8uL1DFR4tUbXGs">
+      <div class="tn-reader-icon" data-page-node-id="wBprPoaHY4GGOtSFId0uoI">◇</div>
+      <div class="tn-reader-title" data-page-node-id="e8nAPga3WHDXVwyCKBuZ2y">关心沟通与说服的人</div>
+      <p class="tn-reader-desc" data-page-node-id="TgE6HK6zUWRA5Ra66ANz9O">教师、律师、销售、HR——读懂框架与锚定，会让表达更精准。</p>
+    </div>
+  </div>
+
+  <div class="tn-read-tip" data-page-node-id="5kY5Gck2g6A9bDxvPoW5tb">
+    <div class="tn-read-tip-tag" data-page-node-id="XBsL0OOdYR6DtgnkjEi6hV">读前提示</div>
+    <p class="tn-read-tip-text" data-page-node-id="nqaFzwKHP5Y3UkxwVwYE1V">内容扎实、篇幅较长，建议分章慢读、配合本卡片做笔记。也可以先读第二部分建立偏误直觉，再回头看第一部分的理论框架，效果更佳。</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<footer class="tn-foot" data-page-node-id="yTi9bycBq82h2O5S3Ib3fq">
+  <p class="tn-brand" data-page-node-id="2zvIJKdI9vjzVJNyBTd1YU">《思考，快与慢》 · 精读笔记</p>
+  <p data-page-node-id="X8wGxwIDGxy3aZAvL0UZSQ">读书摘要卡 · 仅供学习交流 · 内容整理自公开资料</p>
+</footer>
+
+</div>
+      </div>
+      <div class="post-tags-categories" data-page-node-id="cARMrf27CHqVhKsNOpOnvz">
+        
+        <div class="tags" data-page-node-id="psPxluoQCy8XPuswVKugyE">
+          
+            <a href="/tags/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2/" class="" data-page-node-id="2kvMOarKrgTA3Fzd986PAa">
+              思考快与慢
+            </a>
+          
+            <a href="/tags/%E5%8D%A1%E5%B0%BC%E6%9B%BC/" class="" data-page-node-id="asuMAVbEP5HQIkniJPCgub">
+              卡尼曼
+            </a>
+          
+            <a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/" class="" data-page-node-id="Dg4gh3eWfXJFTSC9HELVT3">
+              双系统
+            </a>
+          
+            <a href="/tags/%E8%AE%A4%E7%9F%A5%E5%81%8F%E8%AF%AF/" class="" data-page-node-id="iaOVouOvJ1NxNq4FRQahHB">
+              认知偏误
+            </a>
+          
+            <a href="/tags/%E8%A1%8C%E4%B8%BA%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="" data-page-node-id="bew7Nr6YJcHn6IuQyz9ksi">
+              行为经济学
+            </a>
+          
+            <a href="/tags/%E5%86%B3%E7%AD%96/" class="" data-page-node-id="tEvHIGtdiSkzV8oEGqkI7o">
+              决策
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright" data-page-node-id="dMWaQIfmLPTMKYRKDgjul7">
+  <ul class="post-copyright" data-page-node-id="WMNFw9MbK37SCUSuzMmlmN">
+    <li class="post-copyright-author" data-page-node-id="KGLnYzEFW0JXgrOaErWhOq">
+    <strong data-page-node-id="GhVxszerKvanH5vBzTGIyD">author:  </strong>Alioth</a>
+    </li>
+    <li class="post-copyright-link" data-page-node-id="ZBWk4UXsB613L35dpD9WcU">
+    <strong data-page-node-id="uDMcyg05hqUVNBdiVxWGdi">link:  </strong>
+    <a href="/2026/09/07/思考快与慢-精读笔记/" target="_blank" title="《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误" data-page-node-id="N1lHCUCViCcsWrB7zhipAp">http://example.com/2026/09/07/思考快与慢-精读笔记/</a>
+    </li>
+    <li class="post-copyright-license" data-page-node-id="sIGusQ2BRWvOINWh64ElE9">
+      <strong data-page-node-id="D4DKYdSedS81jjTKwWytYM">Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)" data-page-node-id="PDJKPR8YnZV6EGF7CpYSFr">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div data-page-node-id="Rs3EbbCrVuCgr10MrHi4B2">
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav" data-page-node-id="tEPLYTbEqI17rR4syLHIVT">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item" data-page-node-id="ZS4x9qqsCCdu7HucHFm4zh">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;" data-page-node-id="9fDH1hK2gOOBPYQlDPBbXE">
+      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="" data-page-node-id="3Bf2cJGdETNEq9ZYbxr169">
+    </div>
+    <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" class="post-nav-link" data-page-node-id="YgkLBQBYN0iRtDenAGfOMb">
+      <div class="title" data-page-node-id="l7EIPWNf4IL9RFjscbIYpJ">
+        Next: <i class="fas fa-angle-right" data-page-node-id="8LvqqOXHW7QSteOeHEn3AT"></i>
+        <div class="title-text" data-page-node-id="WxWHDbABLEsPCP3lSC1c0R">PCB布线原则（8条布线原则 + 2条安全载流原则）</div>
+      </div>
+      <!-- <div class="content">
+        本文整理自PCB布线原则教学视频，包含 8条基础布线原则 + 2条安全载流原则，共10条。
+
+
+一、八条基础布线原则1.
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate" data-page-node-id="lVKrQEaItHlEl7E3hOlyof">
+  <div id="donate_board" class="donate_bar center" ref="donate" data-page-node-id="1WCHvU6XPvUJdzgIfeSmE0">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()" data-page-node-id="4SeHuozgrHCCqtDd4ijFQj"></a>
+  </div>
+  <transition name="fade" data-page-node-id="UqxTBI7u6pD4m4FubEwo8j">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()" data-page-node-id="J43AHK0ZBEm9j7BnKAjB2C"
+    >
+    </div>
+  </transition>
+  <transition name="bounce" data-page-node-id="uOvP1nGxoNwtxnO9i6jVwr">
+    <div class="donate-box" v-cloak v-show="visible" data-page-node-id="hPa6unDlFaBq8jThMOutAJ">
+      <div class="donate-box_close" data-page-node-id="Ld7joUtvVCofoTe2aSBT1J">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer data-page-node-id="uIvNvgPF4yTFkfsDGe6xSt"></i>
+      </div>
+      <div class="donate-box_title" data-page-node-id="s1M3FxI6g4ifccyEhaMTzZ">
+        <h4 data-page-node-id="Sh3uoMXhSEYRXHzqVkLpJE">
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab" data-page-node-id="gm03Jvmu6Mp7wrIvrywWE2">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')" data-page-node-id="uYYTBH02vc0kHZ0sIZlqMk">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')" data-page-node-id="CTQJTDMBzTWVAnlRxEJGKS">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img" data-page-node-id="CqNME6tgTzEhub6pvJAi65">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'" data-page-node-id="pWWkC0tL7XYUvFHYzUDnmp">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" data-page-node-id="k75pgVAvVMJIHTKdnfkFpN" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'" data-page-node-id="r8h9o4boesyzgJOu9uM12l">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" data-page-node-id="Tl9Y4b9a7AMjo5vwG9SOVa" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p data-page-node-id="61ujIc2SqYdNAfAl91Bl6y">微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment" data-page-node-id="RTgoM9Rwt2oOg7IzQ3ivUH">
+    
+      <div id="gitment-container" data-page-node-id="L6MsP4Kw94kHIbhi7A7DWG"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side' data-page-node-id="bKZjCoiBXC91oX29wKWFkE">
+  
+    
+      <section class="widget side_blogger" data-page-node-id="4RjZ9ecciXUnu2vgnSoeJK">
+  <div class='content' data-page-node-id="3QXFywNaHeGjdrSCcuxkAQ">
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/' data-page-node-id="vqpmvoGhc4CyobdpED8XE7">
+          <img src='https://pic2.zhimg.com/80/v2-42b72d5ebee4b8d8aa70d9687effe87b_1440w.webp' data-page-node-id="Easm3EwlhvvIkM54eAjlIJ"/>
+        </a>
+      
+    
+    
+      <div class='text' data-page-node-id="qPQ7CntkwtKQ4fviWY1vgO">
+        
+          <h2 data-page-node-id="p41G5kLNyhHDQJKUwQIZha">Alioth玉衡</h2>
+        
+        
+          <p data-page-node-id="9CZRcvGG10QItBhBpgXVfE">谦谦君子温润如玉，朗朗慧心通明若衡。</p>
+
+        
+        
+          <p data-page-node-id="ushDXoEM02qz7fvVMsuGBV"><span id="jinrishici-sentence" data-page-node-id="DmOEmaEzC2nrT3ckVVE9Bl">Alioth玉衡</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper" data-page-node-id="CjMAKExfhXGhiEhJsGdtKr">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer" data-page-node-id="nNViLIXyORSFBsQob03QZu">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:1478497708@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer" data-page-node-id="98nuIP6QHaAYhYcXsCqsTa">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/Alioth-heng/Alioth-heng.github.io"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer" data-page-node-id="dt5CWwEADxLesYOW9IHXwP">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1478497708"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer" data-page-node-id="WphbZmvZax95jEIJW8aKIw">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky" data-page-node-id="RXNuPbQbbslWSVDHm2xpzu">    
+    
+      
+<section class="widget side_toc" data-page-node-id="cjJfmjplSNBjxXktg31uC5">
+  
+  <header data-page-node-id="x5Wni4AVCVa7UwhZNS7pXF">
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true" data-page-node-id="LD75k5nzGB8gblAYYdJsvw"></i><span class='name' style="color: " data-page-node-id="7AgBqWB3OS1Aq7vGF7Y5TT">本文目录</span>
+    
+  </header>
+
+
+  <div class='content' data-page-node-id="BAovw2PN8LUzLmvBpvNH2Q">
+    <div class="toc-main" data-page-node-id="nUZYOyRuRWtbJRwpMlcHPl">
+      <div class="toc-content" data-page-node-id="ZEzlCKK6K6FeHTTSvNtGra">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">
+      《思考，快与慢》
+      Thinking, Fast and Slow
+    </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      OVERVIEW
+      这本书讲了什么
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      CORE FRAMEWORK
+      核心框架：系统 1 vs 系统 2
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      COGNITIVE BIASES
+      关键认知偏误卡片
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      BOOK MAP
+      全书脉络图
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      QUOTES
+      金句摘录
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      ACTION GUIDE
+      对工作与决策的行动启发
+    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+      FOR WHOM
+      这本书适合谁读
+    </span></a></li></ol></li></ol> -->
+        <div class="toc" data-page-node-id="eGBin8UDV5lDnb99XuX7aE"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn" data-page-node-id="CzWK1sOx7xWbOgVlPVUZdV">
+  <i class="fas fa-list-ul" aria-hidden="true" data-page-node-id="XswFNTk7iRnAa6WwA3dDah"></i>
+</div>
+
+      
+  <section class="widget side_recent_post" data-page-node-id="bTWnSLGqyIrz1Vzs8d7AFm">
+    
+  <header data-page-node-id="LmCIgUPWeSNFLlqQPYszdf">
+    
+      <a style="color: " href='/tags/' data-page-node-id="UOXIi8BKRJEdNcfaMzsTPu"><i class="fas fa-book fa-fw" aria-hidden="true" data-page-node-id="ctro2yASiLxwj48nAHZfnO"></i><span class='name' data-page-node-id="fHcPSDcfmCOD0HpqFYBvku">最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content' data-page-node-id="XiCnHC3quSisDzVmyHFzp4">
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list" data-page-node-id="c5C7iNsL81EOC03G84hsjw">
+        
+          <div class="aside-list-item" data-page-node-id="caappwQStXeKDLPWgE681g">
+            
+            
+            
+
+            <div class="post-img-box" data-page-node-id="bExdrDNfLfzSE1SJSZv6py">
+              <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;" data-page-node-id="vPGMFAiHNG508w72DQOFAN">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="" data-page-node-id="vS5wv7LQDhFFnrSvpKx9Hh">
+              </a>
+            </div>
+            <div class="post-date-title" data-page-node-id="TVePiGT3YnMKGraP9ufYJ1">
+              <div data-page-node-id="gMyPxhKxjaUeoYY2bDYDh0">
+                
+                  <span class="post-date" data-page-node-id="bXU1Ssj0wtw9xyJXMkw4Do">09-07</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-page-node-id="IDrNx3YDxlHNa3xL67ZsEB">《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item" data-page-node-id="AYSf8akgNx5ev9pDJlxQn4">
+            
+            
+            
+
+            <div class="post-img-box" data-page-node-id="SdnC9xhYQEYWjQOsc3IUgE">
+              <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" class="post-img " style="background-size: cover; 
+                background-position: center center;" data-page-node-id="HEDB6JbfJaWhFq4GZnryEj">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="" data-page-node-id="Vgw3ahqsWSDecWM1vKRprj">
+              </a>
+            </div>
+            <div class="post-date-title" data-page-node-id="hwkTP67Hf2cFFsLVziJflS">
+              <div data-page-node-id="y7XJlCThIuwiDzFcdHKQNq">
+                
+                  <span class="post-date" data-page-node-id="FLWipHcYGMRsJjJFNjD4zu">09-06</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" data-page-node-id="6pIufuF6MJDG54k0304xpf">PCB布线原则（8条布线原则 + 2条安全载流原则）</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item" data-page-node-id="RsdyQWeFJKwZ5Peqxg0GKy">
+            
+            
+            
+
+            <div class="post-img-box" data-page-node-id="1OCCDAOQV1k2GHeDFwUqDT">
+              <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;" data-page-node-id="xpCvQOJGd1vLnEsFAZqomF">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="" data-page-node-id="rFZ7GxQZrmjOryObg27PVB">
+              </a>
+            </div>
+            <div class="post-date-title" data-page-node-id="iQMHVd4b03WqftvZVDsKvY">
+              <div data-page-node-id="loAqDDipZVHqnOYUvuPafe">
+                
+                  <span class="post-date" data-page-node-id="4FrG0nYxlSBIFA9mQBUjaC">09-05</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" data-page-node-id="uJZWUaRHGpouU9uAopzw8j">《经济机器是怎么运行的》观影笔记：用一台&#34;机器&#34;看懂经济周期</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item" data-page-node-id="LvGUYhHE8ArllgDIdwQMH5">
+            
+            
+            
+
+            <div class="post-img-box" data-page-node-id="aGC03PUnHVYWT3de5MuMGJ">
+              <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;" data-page-node-id="tHZKmUnIqeNk1twFJUFGKA">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="" data-page-node-id="a2EltOcBzY3nIvJiKTizJl">
+              </a>
+            </div>
+            <div class="post-date-title" data-page-node-id="2iazqW5sWhjRa6G3cp6ZJt">
+              <div data-page-node-id="qjl5YePZATpLUymmt08gO7">
+                
+                  <span class="post-date" data-page-node-id="mwbrAE14Xf56jVDU6X6ENY">09-01</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" data-page-node-id="r7HyANEiMONCb2ESzVkPxb">《监视资本主义：智能陷阱》观影笔记：当你不为产品付费时，你就是产品</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item" data-page-node-id="uhmcOYlZCR7AEm4oGoXMTm">
+            
+            
+            
+
+            <div class="post-img-box" data-page-node-id="9Wq80ESyO5wjwI3mH8E0E1">
+              <a href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/" class="post-img " style="background-size: cover; 
+                background-position: center center;" data-page-node-id="ypi8n89X5BZNGOGDsD9rCn">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="" data-page-node-id="U1lrU3sxiwelSbLxDn71cw">
+              </a>
+            </div>
+            <div class="post-date-title" data-page-node-id="kBsw79n98lZ3UhGQLn1BM9">
+              <div data-page-node-id="H35lxpjZ54uW2I1pAGe5NF">
+                
+                  <span class="post-date" data-page-node-id="FTvIqsB6DROah83ZMKiA6k">08-30</span>
+                
+              </div>
+              <a class="post-title" href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/" data-page-node-id="UYUCO113WRM8IpogWpfyYB">从一盘蚝仔烙，聊到边际成本</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}" data-page-node-id="oseEe2hDYWilPFwlD6Rztn">
+	<transition-group tag="ul" :name="names" data-page-node-id="CJUZF4AQn3nIQwyJplglRy">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box" data-page-node-id="bxuUGpVUvGt0m3T7TUpTzD">
+			<img :src="image" class="bg-swiper-img no-lazy" data-page-node-id="owem5TuNvPMcttihxpmnjY">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;" data-page-node-id="g8EGJEzHUn1OByfwgeM1sl"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color" data-page-node-id="lhslqCab6W24SMU64EGXZA">
+    <div class="footer-main" data-page-node-id="PYbmDmJjFaoJwhsNSGe4J7">
+      
+        
+          <div class="link" data-page-node-id="vatNxwHGi2KNs30VrGFNvy">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright" data-page-node-id="FrZNoX1V5bCdIgwRcnu8FT">
+            <p data-page-node-id="jiqFJgUJ6Vt3H5HTHG9eSS">Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01" data-page-node-id="2rJpAP9CNL1HwmPWgFn159">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/" data-page-node-id="ibxa0cTzcRvFG4zcIXkPuc">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme" data-page-node-id="tc1EIdt83kL5dmTP4xwWK2">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom" data-page-node-id="IdaNCPFPjvRzMkoC2jbFzs">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()" data-page-node-id="wvGkN2u8nhpeYtyTe7fsnN">
+  <div class="dark-content" data-page-node-id="D3tfMy1JOJeJ3SxoqdnOST">
+    <i class="fas" id="darkIcon" aria-hidden="true" data-page-node-id="mJP2QZLgAqmL79Y7mFDcH4"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer data-page-node-id="O92JcIsPWSReNjezflJ5lX">
+  <i class="fas fa-arrow-up" aria-hidden="true" data-page-node-id="2AAxTnI6tuem7HnlkBJL5S"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css" data-page-node-id="v11DakC8BMcrB6br4MP4mg">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true' data-page-node-id="a2e1BkNeI92TmXLKTyVVZA"
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css" data-page-node-id="KyOquhBeWLANouQDZ89VhR">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css" data-page-node-id="23ZhJxotXcpT5IBvz9nShw">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy" data-page-node-id="f7pykLdiGzjJglyQT7W8T1">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" data-page-node-id="2BzWVjBoiQxWlO5mpGAAxb" ></canvas>
+    <script async src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script async src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate" data-page-node-id="FjzaMQVLm0jDP6vlBYRAMD">
+  
+    <div class="loading-circle" data-page-node-id="gxUtE2wtoHsWCEoFfGZLr1"><div id="loader-circle" data-page-node-id="CuAoyZbuEv4nZWFvhOzqQY"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

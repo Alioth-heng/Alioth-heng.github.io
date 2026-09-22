@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光 | Alioth玉衡</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>
+mjx-container[jax="SVG"] mjx-break{white-space:normal;line-height:0;clip-path:rect(0 0 0 0);font-family:MJX-ZERO !important}
+mjx-break[size="0"]{letter-spacing:-0.999em}
+mjx-break[size="1"]{letter-spacing:-0.889em}
+mjx-break[size="2"]{letter-spacing:-0.833em}
+mjx-break[size="3"]{letter-spacing:-0.778em}
+mjx-break[size="4"]{letter-spacing:-0.722em}
+mjx-break[size="5"]{letter-spacing:-0.667em}
+mjx-container[jax="SVG"] mjx-break[newline]::before{white-space:pre;content:"\A"}
+mjx-break[newline] + svg[width="0.054ex"]{margin-right:-1px}
+mjx-break[prebreak]{letter-spacing:-.999em}
+@font-face{font-family:MJX-ZERO;src:url(data:application/x-font-woff;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAsaGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngABAAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQABAAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQABAAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwADAAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwADAAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0AagB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoAeAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAwAC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxtLXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA) format("woff") format("woff")}
+</style></head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_6" id="loader">
+  <div class="loader"></div>
+</div>
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">Alioth玉衡</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Alioth玉衡</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2026-09-22 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E6%8A%95%E8%B5%84/" class="post-detail-header_category">
+              投资
+            </a>
+          
+            <a href="/categories/%E6%8A%95%E8%B5%84/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" class="post-detail-header_category">
+              仓位管理
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p><img src="/img/kelly-cover.png" class="lazyload placeholder" data-srcset="/img/kelly-cover.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="封面：概率与仓位的天平"></p>
+<blockquote>
+<p>先想一个问题：如果你每一笔操作的期望值都是正的，为什么满仓干，长期反而赚不到钱？</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="从一个赌局说起"><a href="#从一个赌局说起" class="headerlink" title="从一个赌局说起"></a>从一个赌局说起</h2><p>先定义一个游戏：55% 的概率赢，赢了赚下注额的 20%；45% 的概率输，输了亏下注额的 20%。</p>
+<p>每一笔的期望值是：</p>
+<p><mjx-container class="MathJax" jax="SVG" overflow="overflow" display="true"><svg style="vertical-align: -0.188ex;" xmlns="http://www.w3.org/2000/svg" width="37.938ex" height="1.726ex" role="img" focusable="false" viewBox="0 -680 16768.4 763"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="E = 0.55 \times 0.20 - 0.45 \times 0.20 = +0.02"><g data-mml-node="mi" data-latex="E"><path data-c="1D438" d="M199 656C199 646 210 641 231 641C271 641 291 637 291 628C291 625 289 618 286 605L156 82C151 60 141 47 126 42C119 40 101 39 70 39C48 39 38 37 38 16C38 5 49 0 70 0L583 0C607 0 609 2 617 19L657 109C684 171 703 217 714 248C712 257 709 263 698 263C691 263 685 258 681 249C656 190 632 145 608 113C568 59 509 39 415 39L270 39C260 39 253 39 249 40C243 40 240 42 240 45C240 47 242 54 245 67L311 334L406 334C453 334 478 328 483 315C485 310 486 303 486 293C486 280 484 264 479 245C477 240 476 236 476 233C476 223 482 218 493 218C502 218 508 226 512 241L568 473C568 483 563 488 552 488C544 488 538 481 535 467C525 428 512 403 495 391C478 379 450 373 409 373L321 373L379 606C387 640 387 641 429 641L568 641C619 641 654 636 673 626C701 611 715 581 715 536C715 519 714 501 711 484C711 482 711 479 710 475L710 466C710 455 715 450 725 450C735 450 741 459 743 478L763 649C766 677 759 680 732 680L233 680C210 680 199 679 199 656Z"></path></g><g data-mml-node="mo" data-latex="=" transform="translate(1043.8,0)"><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mn" data-latex="0.55" transform="translate(2099.6,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(778,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="\times" transform="translate(4099.8,0)"><path data-c="D7" d="M630 32C630 39 628 44 623 49L422 250L623 451C628 456 630 461 630 468C630 481 620 491 607 491C600 491 595 489 590 484L389 283L188 484C183 489 178 491 171 491C158 491 148 481 148 468C148 461 150 456 155 451L356 250L155 49C150 44 148 39 148 32C148 19 158 9 171 9C178 9 183 11 188 16L389 217L590 16C595 11 600 9 607 9C620 9 630 19 630 32Z"></path></g><g data-mml-node="mn" data-latex="0.20" transform="translate(5100,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z" transform="translate(778,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="-" transform="translate(7100.2,0)"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mn" data-latex="0.45" transform="translate(8100.4,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="34" d="M353 677C344 677 336 672 330 663L28 199L28 163L289 163L289 81C289 63 285 51 278 46C271 41 252 39 219 39L194 39L194 0C223 2 269 3 331 3C393 3 439 2 468 0L468 39L443 39C410 39 391 41 384 46C377 51 373 63 373 81L373 163L471 163L471 202L373 202L373 660C373 670 366 677 353 677M295 553L295 202L67 202Z" transform="translate(778,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="\times" transform="translate(10100.7,0)"><path data-c="D7" d="M630 32C630 39 628 44 623 49L422 250L623 451C628 456 630 461 630 468C630 481 620 491 607 491C600 491 595 489 590 484L389 283L188 484C183 489 178 491 171 491C158 491 148 481 148 468C148 461 150 456 155 451L356 250L155 49C150 44 148 39 148 32C148 19 158 9 171 9C178 9 183 11 188 16L389 217L590 16C595 11 600 9 607 9C620 9 630 19 630 32Z"></path></g><g data-mml-node="mn" data-latex="0.20" transform="translate(11100.9,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z" transform="translate(778,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="=" transform="translate(13156.7,0)"><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mo" data-latex="+" transform="translate(14212.4,0)"><path data-c="2B" d="M698 274L413 274L413 559C413 575 405 583 389 583C373 583 365 575 365 559L365 274L80 274C64 274 56 266 56 250C56 234 64 226 80 226L365 226L365-59C365-75 373-83 389-83C405-83 413-75 413-59L413 226L698 226C714 226 722 234 722 250C722 263 711 274 698 274Z"></path></g><g data-mml-node="mn" data-latex="0.02" transform="translate(14990.4,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(778,0)"></path><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z" transform="translate(1278,0)"></path></g></g></g></svg></mjx-container></p>
+<p>正的，而且是”稳稳的正”。现在给你 10 万本金，允许你玩 200 次，每次想押多少押多少。怎么押才能赚最多？</p>
+<p>直觉答案无非两种：相信期望值的人说满仓梭哈；怕死的人说轻仓慢慢来。</p>
+<p>数学家约翰·凯利在 1956 年给出的答案是：<strong>押 50%</strong>。不是 100%，也不是 10%，是 50%。</p>
+<h2 id="凯利公式在算什么"><a href="#凯利公式在算什么" class="headerlink" title="凯利公式在算什么"></a>凯利公式在算什么</h2><p><mjx-container class="MathJax" jax="SVG" overflow="overflow" display="true"><svg style="vertical-align: -1.577ex;" xmlns="http://www.w3.org/2000/svg" width="12.35ex" height="4.106ex" role="img" focusable="false" viewBox="0 -1118 5458.7 1815"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = \frac{p}{a} - \frac{q}{b}"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,413) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g><g data-mml-node="mo" data-latex="=" transform="translate(1319.4,0)"><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mfrac" data-latex="\frac{p}{a}" transform="translate(2375.2,0)"><g data-mml-node="mi" data-latex="p" transform="translate(233,676)"><path data-c="1D45D" d="M355 442C311 442 269 419 228 373C217 419 186 442 137 442C96 442 66 409 45 344C35 311 30 292 30 286C30 277 35 272 46 272C51 272 54 273 57 275C62 284 65 291 66 298C84 374 107 412 134 412C152 412 161 398 161 371C161 356 159 339 154 321L44-118C35-151 34-155-5-155C-23-155-32-163-32-178C-32-189-26-194-15-194C0-194 52-191 67-191C86-191 146-194 165-194C180-194 187-186 187-170C187-160 178-155 159-155C141-155 114-156 114-144C114-131 155 26 159 43C179 6 209-13 249-13C314-13 371 20 421 87C467 148 490 213 490 280C490 367 438 442 355 442M352 412C391 412 411 382 411 323C411 296 405 260 394 215C371 128 342 71 307 42C286 25 267 16 248 16C219 16 199 29 188 56C179 77 174 92 174 100L225 309C230 331 248 354 276 377C304 400 329 412 352 412Z"></path></g><g data-mml-node="mi" data-latex="a" transform="translate(220,-686)"><path data-c="1D44E" d="M498 144C498 153 493 158 482 158C474 158 468 151 465 137C445 58 421 18 394 18C377 18 368 32 368 60C368 73 372 97 381 132L438 357C443 376 445 387 445 392C445 412 434 422 412 422C391 422 377 410 370 387C349 424 319 442 281 442C216 442 159 409 109 343C63 281 40 217 40 150C40 63 91-11 175-11C218-11 260 12 300 58C311 20 345-11 392-11C461-11 482 70 498 144M341 374C350 353 355 339 355 330C355 326 354 321 353 314L304 122C301 111 294 99 285 87C248 41 212 18 177 18C138 18 118 48 118 107C118 131 124 167 136 215C157 300 187 357 224 388C244 405 263 413 282 413C309 413 329 400 341 374Z"></path></g><rect width="729" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" data-latex="-" transform="translate(3566.4,0)"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mfrac" data-latex="\frac{q}{b}" transform="translate(4566.7,0)"><g data-mml-node="mi" data-latex="q" transform="translate(220,676)"><path data-c="1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path></g><g data-mml-node="mi" data-latex="b" transform="translate(231.5,-686)"><path data-c="1D44F" d="M281 445C245 445 209 428 174 394L243 679C241 688 238 694 226 694C193 694 120 685 107 684C92 682 84 675 84 660C84 650 93 645 112 645C131 645 157 646 157 632C157 628 152 608 143 571L63 249C52 207 47 173 47 148C47 62 93-11 175-11C240-11 297 22 347 89C392 151 415 216 415 283C415 370 364 445 281 445M279 415C318 415 337 385 337 326C337 299 331 263 319 218C297 133 268 75 233 44C213 27 194 19 175 19C134 19 114 51 114 115C114 137 119 170 129 214L151 304C154 319 159 330 165 338C204 389 242 415 279 415Z"></path></g><rect width="652" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container></p>
+<p>各参数都是相对下注额的比例：</p>
+<ul>
+<li><code>p</code>：胜率；<code>q = 1-p</code>：败率</li>
+<li><code>b</code>：赢的时候赚的比例</li>
+<li><code>a</code>：输的时候亏的比例</li>
+</ul>
+<p>代入 <mjx-container class="MathJax" jax="SVG" overflow="overflow"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1041.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = 0.55/0.20 - 0.45/0.20 = 0.50"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,363) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="11.565ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5111.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = 0.55/0.20 - 0.45/0.20 = 0.50"><g data-mml-node="mo" data-latex="="><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mn" data-latex="0.55" transform="translate(1055.8,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(778,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="/" transform="translate(2833.8,0)"><path data-c="2F" d="M444 718C445 720 445 723 445 726C445 742 437 750 421 750C410 750 403 745 399 734L57-218C56-220 56-223 56-226C56-242 64-250 80-250C91-250 98-245 102-234Z"></path></g><g data-mml-node="mn" data-latex="0.20" transform="translate(3333.8,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z" transform="translate(778,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(1278,0)"></path></g></g></g></svg><mjx-break size="3"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="11.439ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5056.2 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = 0.55/0.20 - 0.45/0.20 = 0.50"><g data-mml-node="mo" data-latex="-"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mn" data-latex="0.45" transform="translate(1000.2,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="34" d="M353 677C344 677 336 672 330 663L28 199L28 163L289 163L289 81C289 63 285 51 278 46C271 41 252 39 219 39L194 39L194 0C223 2 269 3 331 3C393 3 439 2 468 0L468 39L443 39C410 39 391 41 384 46C377 51 373 63 373 81L373 163L471 163L471 202L373 202L373 660C373 670 366 677 353 677M295 553L295 202L67 202Z" transform="translate(778,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(1278,0)"></path></g><g data-mml-node="mo" data-latex="/" transform="translate(2778.2,0)"><path data-c="2F" d="M444 718C445 720 445 723 445 726C445 742 437 750 421 750C410 750 403 745 399 734L57-218C56-220 56-223 56-226C56-242 64-250 80-250C91-250 98-245 102-234Z"></path></g><g data-mml-node="mn" data-latex="0.20" transform="translate(3278.2,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z" transform="translate(778,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(1278,0)"></path></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="6.411ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2833.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = 0.55/0.20 - 0.45/0.20 = 0.50"><g data-mml-node="mo" data-latex="="><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mn" data-latex="0.50" transform="translate(1055.8,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path><path data-c="2E" d="M192 53C192 82 168 106 139 106C110 106 86 82 86 53C86 24 110 0 139 0C168 0 192 24 192 53Z" transform="translate(500,0)"></path><path data-c="35" d="M118 315C123 315 129 319 134 326C164 371 205 393 257 393C292 393 319 373 337 332C348 305 354 264 354 209C354 146 346 102 331 76C306 35 272 14 229 14C162 14 109 62 91 114C94 113 96 114 100 114C130 114 155 137 155 167C155 198 130 219 100 219C65 219 50 200 50 163C50 63 131-22 231-22C292-22 344 0 386 44C428 88 449 141 449 202C449 260 432 310 398 353C361 400 315 423 259 423C212 423 171 408 138 378L138 556C165 548 191 544 218 544C264 544 304 555 338 578C369 597 390 616 402 634C408 642 411 648 411 651C411 661 406 666 396 666C341 645 294 634 256 634C211 634 168 643 127 662C122 664 118 665 114 665C105 665 100 656 100 637L100 345C100 324 100 315 118 315Z" transform="translate(778,0)"></path><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z" transform="translate(1278,0)"></path></g></g></g></svg></mjx-container>，正好是一半仓位。</p>
+<p>两个常见特例：</p>
+<ul>
+<li>赌局是”赢了翻倍、输了全亏”（b=1，a=1，比如掷硬币对赌）时，公式化简成最经典的形式：<mjx-container class="MathJax" jax="SVG" overflow="overflow"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1041.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = p - q"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,363) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="3.527ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1558.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = p - q"><g data-mml-node="mo" data-latex="="><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mi" data-latex="p" transform="translate(1055.8,0)"><path data-c="1D45D" d="M355 442C311 442 269 419 228 373C217 419 186 442 137 442C96 442 66 409 45 344C35 311 30 292 30 286C30 277 35 272 46 272C51 272 54 273 57 275C62 284 65 291 66 298C84 374 107 412 134 412C152 412 161 398 161 371C161 356 159 339 154 321L44-118C35-151 34-155-5-155C-23-155-32-163-32-178C-32-189-26-194-15-194C0-194 52-191 67-191C86-191 146-194 165-194C180-194 187-186 187-170C187-160 178-155 159-155C141-155 114-156 114-144C114-131 155 26 159 43C179 6 209-13 249-13C314-13 371 20 421 87C467 148 490 213 490 280C490 367 438 442 355 442M352 412C391 412 411 382 411 323C411 296 405 260 394 215C371 128 342 71 307 42C286 25 267 16 248 16C219 16 199 29 188 56C179 77 174 92 174 100L225 309C230 331 248 354 276 377C304 400 329 412 352 412Z"></path></g></g></g></svg><mjx-break size="3"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="3.286ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1452.2 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = p - q"><g data-mml-node="mo" data-latex="-"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mi" data-latex="q" transform="translate(1000.2,0)"><path data-c="1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path></g></g></g></svg></mjx-container>。胜率 60% 就押 40%，胜率 55% 只敢押 10%——比大多数人想象的小气得多。</li>
+<li>把每笔盈亏近似成连续收益（均值 μ、方差 σ²）时，公式变成 <mjx-container class="MathJax" jax="SVG" overflow="overflow"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1041.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} \approx \mu/\sigma^2"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,363) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="7.152ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 3161.3 1083.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} \approx \mu/\sigma^2"><g data-mml-node="mo" data-latex="\approx"><path data-c="2248" d="M717 432L717 434C717 445 712 450 701 450C694 450 689 446 686 439C679 404 665 377 645 360C612 331 577 317 539 317C510 317 480 328 449 349C392 390 358 413 347 420C304 445 266 457 232 457C125 457 77 382 56 284L56 281C56 271 61 266 72 266C81 266 86 270 88 278C95 313 108 339 128 356C161 385 196 399 235 399C264 399 293 388 324 366C381 326 415 303 426 296C469 271 507 259 541 259C648 259 696 334 717 432M717 216L717 219C717 229 712 234 701 234C694 234 689 230 686 223C679 188 665 162 645 144C612 115 577 101 539 101C510 101 480 112 449 134C392 174 358 197 347 204C304 229 266 241 232 241C125 241 77 166 56 68L56 66C56 55 61 50 72 50C81 50 86 54 88 62C95 97 108 123 128 140C161 169 196 183 235 183C264 183 293 172 324 151C381 110 415 87 426 80C469 55 507 43 541 43C648 43 696 118 717 216Z"></path></g><g data-mml-node="mi" data-latex="\mu" transform="translate(1050.8,0)"><path data-c="1D707" d="M572 142C572 151 567 156 556 156C548 156 542 149 539 136C519 56 495 16 468 16C451 16 442 30 442 58C442 75 448 109 461 159L489 266C498 302 506 327 512 358L518 386C520 393 521 398 521 400C521 421 510 431 488 431C466 431 452 419 446 394L374 108C374 97 358 77 326 47C304 26 279 16 250 16C204 16 181 43 181 98C181 117 185 144 194 181L236 347C244 378 249 400 251 411C251 432 240 442 218 442C196 442 182 429 175 403L33-169C31-177 30-182 30-185C30-206 41-216 62-216C77-216 89-208 100-193C103-186 120-117 153 14C177-4 208-13 246-13C305-13 344 18 375 54C386 17 419-13 466-13C535-13 556 68 572 142Z"></path></g><g data-mml-node="mo" data-latex="/" transform="translate(1653.8,0)"><path data-c="2F" d="M444 718C445 720 445 723 445 726C445 742 437 750 421 750C410 750 403 745 399 734L57-218C56-220 56-223 56-226C56-242 64-250 80-250C91-250 98-245 102-234Z"></path></g><g data-mml-node="msup" data-latex="\sigma^2" transform="translate(2153.8,0)"><g data-mml-node="mi" data-latex="\sigma"><path data-c="1D70E" d="M525 431L300 431C252 431 207 416 166 385C102 336 38 250 38 148C38 58 100-11 190-11C257-11 317 18 368 76C417 132 441 194 441 263C441 304 432 338 414 366L515 366C550 366 567 378 567 403C567 426 550 431 525 431M107 121C107 180 121 234 150 282C184 338 228 366 283 366C341 366 370 336 370 275C370 250 365 221 355 187C335 116 302 66 256 39C233 25 211 18 191 18C136 18 107 63 107 121Z"></path></g><g data-mml-node="mn" transform="translate(604,363) scale(0.707)" data-latex="2"><path data-c="32" d="M237 666C186 666 143 648 106 612C69 576 50 534 50 483C50 449 75 424 106 424C136 424 161 450 161 480C161 513 137 536 105 536C102 536 100 536 98 535C117 584 161 627 224 627C306 627 352 556 352 470C352 403 318 331 250 255L62 43C49 28 50 29 50 0L421 0L450 180L417 180C409 129 402 100 396 91C391 86 361 84 306 84L139 84L236 179C304 243 390 312 419 365C439 400 449 435 449 470C449 588 357 666 237 666Z"></path></g></g></g></g></svg></mjx-container>，也就是<strong>边际优势除以方差</strong>：优势越大押越大，波动越大押越小。</li>
+</ul>
+<p>最后注意一件事：如果算出来 <mjx-container class="MathJax" jax="SVG" overflow="overflow"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1041.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} \le 0"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,363) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1555.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} \le 0"><g data-mml-node="mo" data-latex="\le"><path data-c="2264" d="M668 38C686 29 703 44 703 60C703 69 698 76 689 80L155 333L689 586C698 590 703 597 703 606C703 623 695 631 679 631C675 631 671 630 668 629L94 357C84 352 79 344 79 333C79 322 84 315 94 310M678-72L100-72C84-72 76-80 76-95C76-111 84-119 100-119L678-119C694-119 702-111 702-95C702-83 691-72 678-72Z"></path></g><g data-mml-node="mn" data-latex="0" transform="translate(1055.8,0)"><path data-c="30" d="M249-22C390-22 460 92 460 320C460 473 428 575 365 625C330 652 291 666 250 666C109 666 39 551 39 320C39 136 88-22 249-22M361 524C368 489 371 425 371 332C371 240 367 172 360 128C347 48 310 8 249 8C226 8 203 17 182 34C155 57 139 104 132 176C129 201 128 253 128 332C128 419 131 480 136 513C145 568 163 603 191 618C213 630 232 636 249 636C314 636 350 583 361 524Z"></path></g></g></g></svg></mjx-container>，公式的答案是<strong>空仓</strong>。没有优势的赌局，任何仓位都是在给对手送钱。</p>
+<h2 id="核心：它最大化的是复利，不是期望值"><a href="#核心：它最大化的是复利，不是期望值" class="headerlink" title="核心：它最大化的是复利，不是期望值"></a>核心：它最大化的是复利，不是期望值</h2><p>这是凯利公式最反直觉、也最重要的地方。</p>
+<p>我们平时的直觉都在最大化”期望值”：期望 2% 的下注，押得越多赚越多，满仓就是 2% 乘以全部资金。但资金是复利滚动的，一次大跌需要更大的涨幅才能回本：</p>
+<p><img src="/img/kelly-recovery.png" class="lazyload placeholder" data-srcset="/img/kelly-recovery.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="亏得越深，回本越难"></p>
+<p>这条曲线在亏 50% 处已经陡得吓人。换句话说，在复利的世界里，<strong>波动本身就是成本</strong>。</p>
+<p>所以凯利问的不是”这一把期望赚多少”，而是”这一把之后，我的长期复合增长率变成多少”。把每笔的复合增长率写成公式：</p>
+<p><mjx-container class="MathJax" jax="SVG" overflow="overflow" display="true"><svg style="vertical-align: -0.561ex;" xmlns="http://www.w3.org/2000/svg" width="32.539ex" height="2.253ex" role="img" focusable="false" viewBox="0 -748 14382.2 996"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="g(f) = p\ln(1+bf) + q\ln(1-af)"><g data-mml-node="mi" data-latex="g"><path data-c="1D454" d="M15-141C15-184 60-205 150-205C197-205 241-193 280-170C324-144 351-109 362-66L471 373C473 383 474 389 474 392C474 412 463 422 442 422C420 422 406 410 399 387C377 424 347 442 310 442C246 442 189 410 140 346C95 286 72 223 72 158C72 71 123-3 207-3C246-3 282 14 315 47L285-71C256-140 211-175 148-175C122-175 100-173 82-169C103-158 113-141 113-118C113-93 99-80 72-80C40-80 15-109 15-141M356 392C376 371 386 351 386 331C386 330 385 325 383 318L336 129C330 106 313 82 286 60C259 38 233 27 210 27C170 27 150 56 150 114C150 169 184 291 204 327C235 384 270 412 311 412C329 412 344 405 356 392Z"></path></g><g data-mml-node="mo" data-latex="(" transform="translate(477,0)"><path data-c="28" d="M318-248C327-248 332-243 332-234C332-231 330-227 327-223C275-183 233-117 202-26C175 53 161 131 161 208L161 292C161 369 175 447 202 526C233 617 275 683 327 723C330 726 332 730 332 734C332 743 327 748 318 748C317 748 314 747 311 745C251 699 201 631 160 540C121 453 101 371 101 292L101 208C101 129 121 47 160-40C201-131 251-199 311-245C314-247 317-248 318-248Z"></path></g><g data-mml-node="mi" data-latex="f" transform="translate(866,0)"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="mo" data-latex=")" transform="translate(1418,0)"><path data-c="29" d="M78-245C138-199 188-131 229-40C268 47 288 129 288 208L288 292C288 371 268 453 229 540C188 631 138 699 78 745C75 747 72 748 71 748C62 748 57 743 57 734C57 730 59 726 62 723C114 683 156 617 187 526C214 447 228 369 228 292L228 208C228 131 214 53 187-26C156-117 114-183 62-223C59-227 57-231 57-234C57-243 62-248 71-248C72-248 75-247 78-245Z"></path></g><g data-mml-node="mo" data-latex="=" transform="translate(2084.8,0)"><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mi" data-latex="p" transform="translate(3140.6,0)"><path data-c="1D45D" d="M355 442C311 442 269 419 228 373C217 419 186 442 137 442C96 442 66 409 45 344C35 311 30 292 30 286C30 277 35 272 46 272C51 272 54 273 57 275C62 284 65 291 66 298C84 374 107 412 134 412C152 412 161 398 161 371C161 356 159 339 154 321L44-118C35-151 34-155-5-155C-23-155-32-163-32-178C-32-189-26-194-15-194C0-194 52-191 67-191C86-191 146-194 165-194C180-194 187-186 187-170C187-160 178-155 159-155C141-155 114-156 114-144C114-131 155 26 159 43C179 6 209-13 249-13C314-13 371 20 421 87C467 148 490 213 490 280C490 367 438 442 355 442M352 412C391 412 411 382 411 323C411 296 405 260 394 215C371 128 342 71 307 42C286 25 267 16 248 16C219 16 199 29 188 56C179 77 174 92 174 100L225 309C230 331 248 354 276 377C304 400 329 412 352 412Z"></path></g><g data-mml-node="mi" data-latex="\ln" transform="translate(3810.2,0)"><path data-c="6C" d="M144 3L255 0L255 39C219 39 197 40 190 44C183 48 180 60 180 79L180 694L33 683L33 645C68 645 90 642 97 636C104 630 108 616 108 593L108 79C108 60 105 48 98 44C91 40 69 39 33 39L33 0Z"></path><path data-c="6E" d="M314 413C359 413 382 378 382 307L382 79C382 60 379 48 372 44C365 40 343 38 306 38L306 0L421 3L535 0L535 38C503 38 482 39 472 42C462 45 458 52 458 64L458 251C458 298 457 331 454 350C444 411 399 442 320 442C257 442 210 412 179 352L179 442L32 431L32 393C68 393 90 390 98 384C106 378 109 365 109 342L109 79C109 60 105 48 98 44C91 40 69 38 32 38L32 0L147 3L261 0L261 38C224 38 203 40 196 44C189 48 185 60 185 79L185 259C185 340 236 413 314 413Z" transform="translate(278,0)"></path></g><g data-mml-node="mo" transform="translate(4644.2,0)"><path data-c="2061" d=""></path></g><g data-mml-node="mo" data-latex="(" transform="translate(4644.2,0)"><path data-c="28" d="M318-248C327-248 332-243 332-234C332-231 330-227 327-223C275-183 233-117 202-26C175 53 161 131 161 208L161 292C161 369 175 447 202 526C233 617 275 683 327 723C330 726 332 730 332 734C332 743 327 748 318 748C317 748 314 747 311 745C251 699 201 631 160 540C121 453 101 371 101 292L101 208C101 129 121 47 160-40C201-131 251-199 311-245C314-247 317-248 318-248Z"></path></g><g data-mml-node="mn" data-latex="1" transform="translate(5033.2,0)"><path data-c="31" d="M269 666C228 624 168 603 89 603L89 564C141 564 184 572 217 588L217 82C217 64 213 52 204 47C195 42 170 39 130 39L95 39L95 0C120 2 174 3 257 3C340 3 394 2 419 0L419 39L384 39C343 39 318 42 310 47C302 52 297 64 297 82L297 636C297 660 295 666 269 666Z"></path></g><g data-mml-node="mo" data-latex="+" transform="translate(5755.4,0)"><path data-c="2B" d="M698 274L413 274L413 559C413 575 405 583 389 583C373 583 365 575 365 559L365 274L80 274C64 274 56 266 56 250C56 234 64 226 80 226L365 226L365-59C365-75 373-83 389-83C405-83 413-75 413-59L413 226L698 226C714 226 722 234 722 250C722 263 711 274 698 274Z"></path></g><g data-mml-node="mi" data-latex="b" transform="translate(6755.7,0)"><path data-c="1D44F" d="M281 445C245 445 209 428 174 394L243 679C241 688 238 694 226 694C193 694 120 685 107 684C92 682 84 675 84 660C84 650 93 645 112 645C131 645 157 646 157 632C157 628 152 608 143 571L63 249C52 207 47 173 47 148C47 62 93-11 175-11C240-11 297 22 347 89C392 151 415 216 415 283C415 370 364 445 281 445M279 415C318 415 337 385 337 326C337 299 331 263 319 218C297 133 268 75 233 44C213 27 194 19 175 19C134 19 114 51 114 115C114 137 119 170 129 214L151 304C154 319 159 330 165 338C204 389 242 415 279 415Z"></path></g><g data-mml-node="mi" data-latex="f" transform="translate(7184.7,0)"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="mo" data-latex=")" transform="translate(7736.7,0)"><path data-c="29" d="M78-245C138-199 188-131 229-40C268 47 288 129 288 208L288 292C288 371 268 453 229 540C188 631 138 699 78 745C75 747 72 748 71 748C62 748 57 743 57 734C57 730 59 726 62 723C114 683 156 617 187 526C214 447 228 369 228 292L228 208C228 131 214 53 187-26C156-117 114-183 62-223C59-227 57-231 57-234C57-243 62-248 71-248C72-248 75-247 78-245Z"></path></g><g data-mml-node="mo" data-latex="+" transform="translate(8347.9,0)"><path data-c="2B" d="M698 274L413 274L413 559C413 575 405 583 389 583C373 583 365 575 365 559L365 274L80 274C64 274 56 266 56 250C56 234 64 226 80 226L365 226L365-59C365-75 373-83 389-83C405-83 413-75 413-59L413 226L698 226C714 226 722 234 722 250C722 263 711 274 698 274Z"></path></g><g data-mml-node="mi" data-latex="q" transform="translate(9348.1,0)"><path data-c="1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path></g><g data-mml-node="mi" data-latex="\ln" transform="translate(9966.8,0)"><path data-c="6C" d="M144 3L255 0L255 39C219 39 197 40 190 44C183 48 180 60 180 79L180 694L33 683L33 645C68 645 90 642 97 636C104 630 108 616 108 593L108 79C108 60 105 48 98 44C91 40 69 39 33 39L33 0Z"></path><path data-c="6E" d="M314 413C359 413 382 378 382 307L382 79C382 60 379 48 372 44C365 40 343 38 306 38L306 0L421 3L535 0L535 38C503 38 482 39 472 42C462 45 458 52 458 64L458 251C458 298 457 331 454 350C444 411 399 442 320 442C257 442 210 412 179 352L179 442L32 431L32 393C68 393 90 390 98 384C106 378 109 365 109 342L109 79C109 60 105 48 98 44C91 40 69 38 32 38L32 0L147 3L261 0L261 38C224 38 203 40 196 44C189 48 185 60 185 79L185 259C185 340 236 413 314 413Z" transform="translate(278,0)"></path></g><g data-mml-node="mo" transform="translate(10800.8,0)"><path data-c="2061" d=""></path></g><g data-mml-node="mo" data-latex="(" transform="translate(10800.8,0)"><path data-c="28" d="M318-248C327-248 332-243 332-234C332-231 330-227 327-223C275-183 233-117 202-26C175 53 161 131 161 208L161 292C161 369 175 447 202 526C233 617 275 683 327 723C330 726 332 730 332 734C332 743 327 748 318 748C317 748 314 747 311 745C251 699 201 631 160 540C121 453 101 371 101 292L101 208C101 129 121 47 160-40C201-131 251-199 311-245C314-247 317-248 318-248Z"></path></g><g data-mml-node="mn" data-latex="1" transform="translate(11189.8,0)"><path data-c="31" d="M269 666C228 624 168 603 89 603L89 564C141 564 184 572 217 588L217 82C217 64 213 52 204 47C195 42 170 39 130 39L95 39L95 0C120 2 174 3 257 3C340 3 394 2 419 0L419 39L384 39C343 39 318 42 310 47C302 52 297 64 297 82L297 636C297 660 295 666 269 666Z"></path></g><g data-mml-node="mo" data-latex="-" transform="translate(11912,0)"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mi" data-latex="a" transform="translate(12912.2,0)"><path data-c="1D44E" d="M498 144C498 153 493 158 482 158C474 158 468 151 465 137C445 58 421 18 394 18C377 18 368 32 368 60C368 73 372 97 381 132L438 357C443 376 445 387 445 392C445 412 434 422 412 422C391 422 377 410 370 387C349 424 319 442 281 442C216 442 159 409 109 343C63 281 40 217 40 150C40 63 91-11 175-11C218-11 260 12 300 58C311 20 345-11 392-11C461-11 482 70 498 144M341 374C350 353 355 339 355 330C355 326 354 321 353 314L304 122C301 111 294 99 285 87C248 41 212 18 177 18C138 18 118 48 118 107C118 131 124 167 136 215C157 300 187 357 224 388C244 405 263 413 282 413C309 413 329 400 341 374Z"></path></g><g data-mml-node="mi" data-latex="f" transform="translate(13441.2,0)"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="mo" data-latex=")" transform="translate(13993.2,0)"><path data-c="29" d="M78-245C138-199 188-131 229-40C268 47 288 129 288 208L288 292C288 371 268 453 229 540C188 631 138 699 78 745C75 747 72 748 71 748C62 748 57 743 57 734C57 730 59 726 62 723C114 683 156 617 187 526C214 447 228 369 228 292L228 208C228 131 214 53 187-26C156-117 114-183 62-223C59-227 57-231 57-234C57-243 62-248 71-248C72-248 75-247 78-245Z"></path></g></g></g></svg></mjx-container></p>
+<p>f 是仓位，求这个函数的最大值点，就是凯利仓位。它天然把”亏损对后续复利的伤害”算进去了，所以答案永远比”最大化期望值”保守。</p>
+<h2 id="那条最重要的曲线"><a href="#那条最重要的曲线" class="headerlink" title="那条最重要的曲线"></a>那条最重要的曲线</h2><p><img src="/img/kelly-curve.png" class="lazyload placeholder" data-srcset="/img/kelly-curve.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="凯利曲线：仓位与每笔复合增长率"></p>
+<p>盯着这张图看一分钟，凯利公式的全部灵魂都在里面：</p>
+<p><strong>1. 顶点才是最优，不是越往右越好。</strong> 仓位从 0 开始加，增长率一路升到 50% 见顶；再往上加，增长率反而掉头向下。”赌得更狠”和”赚得更快”不是一回事。</p>
+<p><strong>2. 曲线会穿过零点，那里就是破产线。</strong> 这组参数下，梭哈（100% 仓位）恰好落在增长率约为 0 的位置：每一笔期望值都是 +2%，但 200 笔复利滚下来是零增长。<strong>正期望 + 满仓 = 长期白干。</strong> 超过 100%（加杠杆）直接掉进负增长区，必然归零。</p>
+<p><strong>3. 过度下注比下注不足危险得多。</strong> 仓位押到 30% 只损失一小段增长率，押到 90% 却可能把全部优势吐回去。凯利曲线左右不对称，宁可少押。</p>
+<h2 id="10-万本金实测：四种打法"><a href="#10-万本金实测：四种打法" class="headerlink" title="10 万本金实测：四种打法"></a>10 万本金实测：四种打法</h2><p>设定：胜率 55%，赢 +20%，亏 −20%，200 次独立交易。跑了 4 万条蒙特卡洛路径，结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>每笔仓位</th>
+<th>典型结局（中位数）</th>
+<th>期望值</th>
+<th>运气差时（5% 分位）</th>
+<th>亏损概率</th>
+<th>中位最大回撤</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方案一：全梭哈</td>
+<td>100%</td>
+<td>9.7 万</td>
+<td>525 万</td>
+<td>0.07 万</td>
+<td>53%</td>
+<td>96%</td>
+</tr>
+<tr>
+<td>方案二：1 万定投</td>
+<td>固定 1 万</td>
+<td>14.0 万</td>
+<td>14.0 万</td>
+<td>9.2 万</td>
+<td>7%</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>方案三：全凯利</td>
+<td>50%</td>
+<td>27.2 万</td>
+<td>73.4 万</td>
+<td>2.5 万</td>
+<td>26%</td>
+<td>70%</td>
+</tr>
+<tr>
+<td>方案四：半凯利</td>
+<td>25%</td>
+<td>21.2 万</td>
+<td>27.2 万</td>
+<td>6.4 万</td>
+<td>14%</td>
+<td>42%</td>
+</tr>
+</tbody></table>
+<p><img src="/img/kelly-outcomes.png" class="lazyload placeholder" data-srcset="/img/kelly-outcomes.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="四方案终值分布，纵轴为对数刻度"></p>
+<p>注意纵轴是对数刻度，每一格差十倍。</p>
+<p><strong>全梭哈：期望值 525 万，中位数 9.7 万。</strong> 这两个数字差了 54 倍。期望值被极少数”连赢几十把”的天选路径拉起来（运气最好的 5% 能到 1262 万），但那种路径你几乎摸不到。你真正会经历的，是中位数——200 次交易之后本金原地踏步。更要命的是回撤：满仓打法的中位最大回撤是 96%，你几乎必然在某段时间看着账户接近归零，而绝大多数人会在那一刻割在地板上。</p>
+<p><img src="/img/kelly-paths.png" class="lazyload placeholder" data-srcset="/img/kelly-paths.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="60 条随机路径：同样是正期望策略，仓位决定命运"></p>
+<p>上图是两种打法的 60 条随机路径，同一个策略、同一种运气分布，唯一的区别是仓位。左图里那些掉到底部的红线，就是”期望值为正却亏光”的活案例。</p>
+<p><strong>全凯利 50%：中位数 27.2 万</strong>，四个方案里典型结局最好。但代价是 70% 的中位回撤——账户从高点腰斩再腰斩，10 万变 3 万。理论上你应该”拿得住”；实际上大多数人拿不住，拿不住，理论最优就兑现不了。</p>
+<p><strong>半凯利 25%：中位数 21.2 万</strong>，只比全凯利少 6 万，但回撤从 70% 降到 42%，运气差时剩下 6.4 万而不是 2.5 万。用大约 22% 的收益上限，换来 2.6 倍的安全垫。</p>
+<p><strong>1 万定投：中位数 14 万</strong>，最稳，但赚得也最少。固定金额不随资金增长缩放，资金越大相对仓位越轻，长期会”越涨越怂”。它的正确打开方式是：你本来就想长期持有、不做择时，那这套没问题；如果想靠仓位管理放大优势，它太保守了。</p>
+<p><img src="/img/kelly-risk.png" class="lazyload placeholder" data-srcset="/img/kelly-risk.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="四方案风险对比"></p>
+<h2 id="为什么实战都用半凯利"><a href="#为什么实战都用半凯利" class="headerlink" title="为什么实战都用半凯利"></a>为什么实战都用半凯利</h2><ol>
+<li><strong>参数必须悲观估计。</strong> 凯利公式对胜率极其敏感。把胜率从 55% 高估到 60%，算出来的仓位就会越过曲线顶点，直接掉进过度下注区——这是最危险的失误，因为你自以为在”优化”。半凯利等于给参数估计误差留了缓冲。</li>
+<li><strong>真实市场不是独立重复赌局。</strong> 凯利假设每笔交易独立、盈亏幅度已知。股市有相关性、有跳空、有停牌、有连续回撤期，实际风险大于模型。</li>
+<li><strong>拿得住才有意义。</strong> 凯利是”无限期”最优，你需要扛过 70% 回撤而不改变行为，才能拿到那 27.2 万。做不到，就把仓位降到做得到的水平。</li>
+</ol>
+<p>顺便一提，把凯利用到 21 点的数学家爱德华·索普，后来把同一套东西搬进股市，他用的也从来不是全凯利，而是分数凯利。</p>
+<h2 id="三条实操提醒"><a href="#三条实操提醒" class="headerlink" title="三条实操提醒"></a>三条实操提醒</h2><ol>
+<li><strong>先证明自己有优势，再谈仓位。</strong> 没有 edge，凯利的输出是空仓，而不是”小赌怡情”。</li>
+<li><strong>参数往悲观里填。</strong> 胜率、盈亏比都按保守值算，宁可把仓位算小。</li>
+<li><strong>用分数凯利，并且动态调整。</strong> 实际用 1/2 或 1/4 的凯利仓位，每笔都按最新账户净值重新计算：涨了多买一点，跌了少买一点。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>凯利公式回答的不是”该不该买”，而是”该拿总资金的百分之几买”：<mjx-container class="MathJax" jax="SVG" overflow="overflow"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1041.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = \frac{p}{a} - \frac{q}{b}"><g data-mml-node="msup" data-latex="f^{\ast}"><g data-mml-node="mi" data-latex="f"><path data-c="1D453" d="M552 633C552 677 509 705 462 705C400 705 357 665 334 586C329 568 318 517 302 433L237 433C215 433 204 432 204 411C204 400 214 395 235 395L295 395L222 8C211-49 201-91 192-119C180-156 163-175 141-175C126-175 114-171 103-164C135-159 151-140 151-108C151-82 138-69 111-69C77-69 53-99 53-133C53-177 94-205 141-205C166-205 189-195 208-174C240-141 265-94 283-31C294 8 304 46 311 84L369 395L451 395C474 395 484 396 484 419C484 428 474 433 454 433L377 433C383 474 411 625 420 644C430 665 444 675 462 675C477 675 490 671 501 664C470 657 454 639 454 608C454 582 467 569 494 569C528 569 552 599 552 633Z"></path></g><g data-mml-node="TeXAtom" transform="translate(638.1,363) scale(0.707)" data-latex="{\ast}" data-mjx-texclass="ORD"><g data-mml-node="mo" data-latex="\ast"><path data-c="2217" d="M404 372C397 372 390 370 385 366L267 279L282 425C285 445 269 462 250 462C231 462 215 445 218 425L233 279L115 366C110 370 103 372 96 372C78 372 63 357 63 339C63 325 70 315 83 309L217 250L83 191C70 185 63 175 63 161C63 143 78 128 96 128C103 128 110 130 115 134L233 221L218 75C215 55 231 39 250 39C269 39 285 55 282 75L267 221L385 134C390 130 397 128 404 128C415 128 424 133 431 142C446 162 435 183 417 191L283 250L417 309C430 315 437 325 437 339C437 357 422 372 404 372Z"></path></g></g></g></g></g></svg><mjx-break size="4"> </mjx-break><svg style="vertical-align: -0.798ex;" xmlns="http://www.w3.org/2000/svg" width="4.23ex" height="2.585ex" role="img" focusable="false" viewBox="0 -789.7 1869.8 1142.5"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = \frac{p}{a} - \frac{q}{b}"><g data-mml-node="mo" data-latex="="><path data-c="3D" d="M698 367L80 367C64 367 56 359 56 344C56 329 64 321 80 321L698 321C714 321 722 329 722 344C722 356 711 367 698 367M698 179L80 179C64 179 56 171 56 156C56 141 64 133 80 133L698 133C714 133 722 141 722 156C722 169 711 179 698 179Z"></path></g><g data-mml-node="mfrac" data-latex="\frac{p}{a}" transform="translate(1055.8,0)"><g data-mml-node="mi" transform="translate(229.2,477.2) scale(0.707)" data-latex="p"><path data-c="1D45D" d="M355 442C311 442 269 419 228 373C217 419 186 442 137 442C96 442 66 409 45 344C35 311 30 292 30 286C30 277 35 272 46 272C51 272 54 273 57 275C62 284 65 291 66 298C84 374 107 412 134 412C152 412 161 398 161 371C161 356 159 339 154 321L44-118C35-151 34-155-5-155C-23-155-32-163-32-178C-32-189-26-194-15-194C0-194 52-191 67-191C86-191 146-194 165-194C180-194 187-186 187-170C187-160 178-155 159-155C141-155 114-156 114-144C114-131 155 26 159 43C179 6 209-13 249-13C314-13 371 20 421 87C467 148 490 213 490 280C490 367 438 442 355 442M352 412C391 412 411 382 411 323C411 296 405 260 394 215C371 128 342 71 307 42C286 25 267 16 248 16C219 16 199 29 188 56C179 77 174 92 174 100L225 309C230 331 248 354 276 377C304 400 329 412 352 412Z"></path></g><g data-mml-node="mi" transform="translate(220,-345) scale(0.707)" data-latex="a"><path data-c="1D44E" d="M498 144C498 153 493 158 482 158C474 158 468 151 465 137C445 58 421 18 394 18C377 18 368 32 368 60C368 73 372 97 381 132L438 357C443 376 445 387 445 392C445 412 434 422 412 422C391 422 377 410 370 387C349 424 319 442 281 442C216 442 159 409 109 343C63 281 40 217 40 150C40 63 91-11 175-11C218-11 260 12 300 58C311 20 345-11 392-11C461-11 482 70 498 144M341 374C350 353 355 339 355 330C355 326 354 321 353 314L304 122C301 111 294 99 285 87C248 41 212 18 177 18C138 18 118 48 118 107C118 131 124 167 136 215C157 300 187 357 224 388C244 405 263 413 282 413C309 413 329 400 341 374Z"></path></g><rect width="574.1" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-break size="3"> </mjx-break><svg style="vertical-align: -0.798ex;" xmlns="http://www.w3.org/2000/svg" width="3.982ex" height="2.585ex" role="img" focusable="false" viewBox="0 -789.7 1759.8 1142.5"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math" data-latex="f^{\ast} = \frac{p}{a} - \frac{q}{b}"><g data-mml-node="mo" data-latex="-"><path data-c="2212" d="M698 270L80 270C64 270 56 263 56 250C56 237 64 230 80 230L698 230C714 230 722 237 722 250C722 262 710 270 698 270Z"></path></g><g data-mml-node="mfrac" data-latex="\frac{q}{b}" transform="translate(1000.2,0)"><g data-mml-node="mi" transform="translate(220,477.2) scale(0.707)" data-latex="q"><path data-c="1D45E" d="M372 377C352 420 321 442 280 442C215 442 158 409 109 342C63 280 40 216 40 149C40 62 90-13 173-13C209-13 245 4 282 38L241-126C238-141 229-150 215-153C210-154 197-155 174-155C168-156 164-156 162-156C153-157 148-165 148-179L148-183C151-190 157-194 165-194C184-194 244-191 263-191C282-191 345-194 364-194C378-194 385-186 385-170C385-160 375-155 356-155C338-155 313-156 313-144C313-140 314-133 317-123L452 427C452 436 447 441 438 441C420 441 382 391 372 377M340 373C349 352 354 338 354 329C354 328 353 322 351 313L327 216C308 144 299 107 298 105C279 70 224 16 176 16C137 16 117 46 117 105C117 151 148 263 162 300C181 347 225 412 280 412C307 412 327 399 340 373Z"></path></g><g data-mml-node="mi" transform="translate(228.1,-345) scale(0.707)" data-latex="b"><path data-c="1D44F" d="M281 445C245 445 209 428 174 394L243 679C241 688 238 694 226 694C193 694 120 685 107 684C92 682 84 675 84 660C84 650 93 645 112 645C131 645 157 646 157 632C157 628 152 608 143 571L63 249C52 207 47 173 47 148C47 62 93-11 175-11C240-11 297 22 347 89C392 151 415 216 415 283C415 370 364 445 281 445M279 415C318 415 337 385 337 326C337 299 331 263 319 218C297 133 268 75 233 44C213 27 194 19 175 19C134 19 114 51 114 115C114 137 119 170 129 214L151 304C154 319 159 330 165 338C204 389 242 415 279 415Z"></path></g><rect width="519.6" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>。</li>
+<li>它最大化的目标是<strong>长期复合增长率</strong>（对数收益），不是单笔期望值。复利世界里，波动就是成本。</li>
+<li>期望值再好的策略，仓位过了顶点就开始毁灭优势；本例中满仓的长期增长率恰好为零。</li>
+<li>10 万本金实测：全凯利（50%）典型结局最好（27.2 万）但回撤 70%；半凯利（25%）用 22% 的收益上限换 2.6 倍安全垫，是绝大多数人的答案；梭哈期望 525 万、中位数 9.7 万，是”期望值骗人”的活教材。</li>
+<li>实战三件套：悲观估参、分数凯利、按净值动态调整。</li>
+</ul>
+<blockquote>
+<p>风险提示：本文只是方法论的推演，不构成任何投资建议。真实市场的胜率和赔率没人能精确知道，请务必保守。</p>
+</blockquote>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F/" class="">
+              凯利公式
+            </a>
+          
+            <a href="/tags/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" class="">
+              仓位管理
+            </a>
+          
+            <a href="/tags/%E9%A3%8E%E9%99%A9%E6%8E%A7%E5%88%B6/" class="">
+              风险控制
+            </a>
+          
+            <a href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E7%BB%9F%E8%AE%A1/" class="">
+              概率与统计
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Alioth</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2026/09/22/凯利公式-仓位管理/" target="_blank" title="凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光">http://example.com/2026/09/22/凯利公式-仓位管理/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误</div>
+      </div>
+      <!-- <div class="content">
+        
+书名：《思考，快与慢》（Thinking, Fast and Slow）作者：丹尼尔 · 卡尼曼（Daniel Kah
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://pic2.zhimg.com/80/v2-42b72d5ebee4b8d8aa70d9687effe87b_1440w.webp'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>Alioth玉衡</h2>
+        
+        
+          <p>谦谦君子温润如玉，朗朗慧心通明若衡。</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">Alioth玉衡</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:1478497708@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/Alioth-heng/Alioth-heng.github.io"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1478497708"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E4%B8%AA%E8%B5%8C%E5%B1%80%E8%AF%B4%E8%B5%B7"><span class="toc-text">从一个赌局说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F%E5%9C%A8%E7%AE%97%E4%BB%80%E4%B9%88"><span class="toc-text">凯利公式在算什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%EF%BC%9A%E5%AE%83%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E6%98%AF%E5%A4%8D%E5%88%A9%EF%BC%8C%E4%B8%8D%E6%98%AF%E6%9C%9F%E6%9C%9B%E5%80%BC"><span class="toc-text">核心：它最大化的是复利，不是期望值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E6%9D%A1%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%9B%B2%E7%BA%BF"><span class="toc-text">那条最重要的曲线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E4%B8%87%E6%9C%AC%E9%87%91%E5%AE%9E%E6%B5%8B%EF%BC%9A%E5%9B%9B%E7%A7%8D%E6%89%93%E6%B3%95"><span class="toc-text">10 万本金实测：四种打法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%9E%E6%88%98%E9%83%BD%E7%94%A8%E5%8D%8A%E5%87%AF%E5%88%A9"><span class="toc-text">为什么实战都用半凯利</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%9D%A1%E5%AE%9E%E6%93%8D%E6%8F%90%E9%86%92"><span class="toc-text">三条实操提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-22</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-07</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/">《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-06</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/">PCB布线原则（8条布线原则 + 2条安全载流原则）</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-05</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《经济机器是怎么运行的》观影笔记：用一台&#34;机器&#34;看懂经济周期</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-01</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《监视资本主义：智能陷阱》观影笔记：当你不为产品付费时，你就是产品</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script async src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script async src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

@@ -1123,10 +1123,304 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         <div class="post-info">
           <div class="post-time">
             <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2026-03-07</span>
+            <span class="post-time">2026-09-27</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2026/03/07/%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80markdown%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/">博客基础markdown文件编写</a>
+            <a class="post-title-link" href="/2026/09/27/02-moe-experts/">02 MoE：让不同专家分工合作</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepSeek/" rel="tag">DeepSeek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MoE/" rel="tag">MoE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6/" rel="tag">混合专家</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/">DeepSeek 架构</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/27/02-moe-experts/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <h2 id="生活类比：一家医院"><a href="#生活类比：一家医院" class="headerlink" title="生活类比：一家医院"></a>生活类比：一家医院</h2><p>想象一家只有”一个全能医生”的诊所：不管你是骨折还是近视，都由他一个人从头学到大。要让他什么都会，他就得极其庞大、极其昂贵。</p>
+<p>再想象一家医院：</p>
+<div class="mermaid">
+flowchart TD
+    P[病人来了] --> T[分诊台]
+    T --> E1[心脏科专家]
+    T --> E2[骨科专家]
+    T --> E3[眼科专家]
+    T --> E4[神经科专家]
+    T --> E5[儿科专家]
+    E1 & E2 & E3 & E4 & E5 --> O[诊断结果]
+</div>
+
+<p>病人先到<strong>分诊台</strong>，分诊台说”你是骨科问题，去 3 号专家”。于是：<strong>医院总共有 5 位医生的工资（总参数），但每个病人只消耗 1 位医生的时间（激活参数）。</strong></p>
+<p>这就是 MoE（Mixture of Experts，混合专家模型）的全部直觉。</p>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/27/02-moe-experts/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/27/02-moe-experts/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-27</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/27/01-why-new-architecture/">01 为什么大模型越来越难训练？</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPU/" rel="tag">GPU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag">大模型</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/">DeepSeek 架构</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/27/01-why-new-architecture/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <h2 id="先从一个问题开始"><a href="#先从一个问题开始" class="headerlink" title="先从一个问题开始"></a>先从一个问题开始</h2><p>你可能听过这样的新闻：”某公司发布了 1000 亿参数的大模型”、”某模型有 671B 参数”。那你有没有想过——</p>
+<p><strong>为什么模型要做得这么大？又为什么不能无限地堆大？</strong></p>
+<p>这一篇不讲任何新技术，只把”问题”本身讲清楚。理解了问题，后面几篇的方案才显得顺理成章。</p>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/27/01-why-new-architecture/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/27/01-why-new-architecture/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-27</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/27/00-roadmap/">00 学习路线：先理解三个问题</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepSeek/" rel="tag">DeepSeek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" rel="tag">学习路线</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/">DeepSeek 架构</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/27/00-roadmap/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p>这套博客的口号：<strong>不是看懂论文，而是最终能够看懂论文。</strong></p>
+</blockquote>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/27/00-roadmap/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/27/00-roadmap/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-22</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" rel="tag">经济金融</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E6%8A%95%E8%B5%84/">投资</a> <a class="article-category-link" href="/categories/%E6%8A%95%E8%B5%84/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">仓位管理</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <p><img src="/img/kelly-cover.png" class="lazyload placeholder" data-srcset="/img/kelly-cover.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="封面：概率与仓位的天平"></p>
+<blockquote>
+<p>先想一个问题：如果你每一笔操作的期望值都是正的，为什么满仓干，长期反而赚不到钱？</p>
+</blockquote>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-07</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/">《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%B3%E7%AD%96/" rel="tag">决策</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" rel="tag">读书观影</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a> <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A4%E7%9F%A5%E5%BF%83%E7%90%86%E5%AD%A6/">认知心理学</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p><strong>书名</strong>：《思考，快与慢》（Thinking, Fast and Slow）<br><strong>作者</strong>：丹尼尔 · 卡尼曼（Daniel Kahneman，1934—2024）<br><strong>领域</strong>：认知心理学 &#x2F; 行为经济学<br><strong>荣誉</strong>：2002 年诺贝尔经济学奖</p>
+</blockquote>
+<p>如果只能推荐一本”理解人为什么会做错决定”的书，我会推荐这本。它用一套”两个系统”的语言，把散落在直觉、情绪、判断里的偏差，第一次系统地讲清楚了。下面是我读完后整理的精读摘要卡——可以当作一张可以反复翻阅的笔记。</p>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-06</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/">PCB布线原则（8条布线原则 + 2条安全载流原则）</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -1141,88 +1435,32 @@ mjx-break[prebreak]{letter-spacing:-.999em}
 
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%9F%BA%E7%A1%80%E7%B4%A0%E5%85%BB/">工程师基础素养</a>
+  <a class="article-category-link" href="/categories/%E7%A1%AC%E4%BB%B6%E5%B7%A5%E7%A8%8B/">硬件工程</a>
 </div>
 
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2026/03/07/%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80markdown%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/" style="background-size: cover; 
+            <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" style="background-size: cover; 
               background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
             </a>
           </div>
           <div class="post-content">
-            markdown的学习标题等级markdown中采用#号来确定标题，一个#号为一级标题，其他以此类推######这个便是六级标题，但是要注意，#号后面紧跟空格再写标题名称。
-内部代码块内部代码块采用三个&#96;&#96;&#96;代码&#
+            <p>本文整理自PCB布线原则教学视频，包含 <strong>8条基础布线原则</strong> + <strong>2条安全载流原则</strong>，共10条。</p>
           </div>
         </div>
         <div class="post-more">
-          <a href="/2026/03/07/%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80markdown%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/2026/03/07/%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80markdown%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-        </a>
-      </div>
-    </article>
-  
-    
-    <article class="post reveal" style="   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2026-03-02</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2026/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-    <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-<div class="article-category">
-  <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/">生活记录</a>
-</div>
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/2026/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            新的开始从今天开始我将在这个博客里面记录我研究生毕业后的成长故事。也从此开始我将完全摆脱了学生的身份，跟过去告别，并且开始一段全新的故事。
-
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2026/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+          <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/">
             <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2026/03/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" style="background-size: cover; 
+        <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" style="background-size: cover; 
           background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+          <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
         </a>
       </div>
     </article>
@@ -1233,42 +1471,226 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         <div class="post-info">
           <div class="post-time">
             <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2026-03-01</span>
+            <span class="post-time">2026-09-05</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2026/03/01/hello-world/">Hello World</a>
+            <a class="post-title-link" href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《经济机器是怎么运行的》观影笔记：用一台&#34;机器&#34;看懂经济周期</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               <!-- 文章详情页的标签 -->
 
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" rel="tag">经济金融</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" rel="tag">读书观影</a></li></ul>
+
             </div>
             <div class="post-categories">
               <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">观影笔记</a> <a class="article-category-link" href="/categories/%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/%E7%BA%AA%E5%BD%95%E7%89%87/">纪录片</a>
+</div>
 
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2026/03/01/hello-world/" style="background-size: cover; 
+            <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
               background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
             </a>
           </div>
           <div class="post-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+            <blockquote>
+<p>视频原名：<em>How The Economic Machine Works</em><br>作者 &#x2F; 出品：瑞·达利欧（Ray Dalio），桥水基金（Bridgewater Associates）创始人<br>类型：约 30 分钟的宏观经济学入门动画短片</p>
+</blockquote>
+<p>经济看似复杂得无法理解，但瑞·达利欧用一个”机器”的比喻把它拆开了。他说：经济其实就是无数笔简单的交易重复发生，而它之所以会周期性地上上下下，是因为<strong>人的天性</strong>和<strong>信贷的运作方式</strong>。</p>
+<p>这篇笔记按照”交易 → 三大推动力 → 信贷 → 去杠杆 → 三条铁律”的顺序整理，方便日后回顾。</p>
           </div>
         </div>
         <div class="post-more">
-          <a href="/2026/03/01/hello-world/">
+          <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2026/03/01/hello-world/" style="background-size: cover; 
+        <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
           background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+          <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-01</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《监视资本主义：智能陷阱》观影笔记：当你不为产品付费时，你就是产品</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" rel="tag">经济金融</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" rel="tag">读书观影</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">观影笔记</a> <a class="article-category-link" href="/categories/%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/%E7%BA%AA%E5%BD%95%E7%89%87/">纪录片</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p>纪录片原名：<em>The Social Dilemma</em>（2020）<br>导演：杰夫·奥洛威斯基（Jeff Orlowski）<br>出品：Netflix</p>
+</blockquote>
+<p>如果你并没有为一个产品付费，那么，你就是这个产品。这句话是整部片子最出圈的台词，也是理解它全部内容的钥匙。这篇笔记按”核心观点 → 技术原理 → 社会影响 → 个人应对 → 我的思考”的顺序整理，方便日后回顾。</p>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-08-30</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/">从一盘蚝仔烙，聊到边际成本</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" rel="tag">经济金融</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a> <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/%E6%80%9D%E8%80%83/">思考</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <p><img src="/img/marginal-cost-cover.jpg" class="lazyload placeholder" data-srcset="/img/marginal-cost-cover.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="封面：家常烹饪"></p>
+<blockquote>
+<p>一顿饭比外面贵好几倍，我为什么还在做？</p>
+</blockquote>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/08/30/%E4%BB%8E%E4%B8%80%E7%9B%98%E8%9A%9D%E4%BB%94%E7%83%99%E8%81%8A%E5%88%B0%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-08-25</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2026/08/25/openclaw-reading-notes/">《零基础玩转 OpenClaw》读书笔记：如何把 AI 从&#34;会聊天&#34;养成&#34;会干活&#34;的数字员工</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" rel="tag">读书观影</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a> <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/08/25/openclaw-reading-notes/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p>书名：《零基础玩转 OpenClaw》<br>作者：向安玲 &#x2F; 张诗瑶 &#x2F; 张亚男<br>出版社：中信出版集团（2026 年 4 月）<br>一句话定位：一本从安装到精通、从配置到安全治理的 AI 代理（Agent）实战手册。</p>
+</blockquote>
+<p>2026 年初，全球开发者社区被一个叫 <strong>OpenClaw</strong>（中文圈昵称”龙虾”）的开源项目刷屏：三个月内 GitHub 星标从 0 冲到 20 万+，硅谷投资人说”这是 AI 的下一个阶段”，OpenAI 甚至官宣收编了其创始人。火出圈的不是又一个大模型，而是因为它第一次让 AI 从”会说话的顾问”变成了”真正会干活的员工”。</p>
+<p>这本书不讲 AI 原理、不炫技、不卖赚钱神话，只讲<strong>实实在在的场景、方法和边界</strong>。下面是我读完后梳理的重点。</p>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/08/25/openclaw-reading-notes/">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/08/25/openclaw-reading-notes/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
         </a>
       </div>
     </article>
@@ -1277,7 +1699,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     <!-- 翻页 -->
     
   <!-- <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
   </nav> -->
   <div class="page-nav">
     
@@ -1287,9 +1709,14 @@ mjx-break[prebreak]{letter-spacing:-.999em}
       </a>
     
     <div class="page-info">
-        <div class="page-info-text">2 / 2</div>
+        <div class="page-info-text">2 / 3</div>
     </div>
     
+      <a href="/page/3/"
+         class="page-nav-next">
+          <span class="mr-5">Next</span><i class="fas fa-angle-right"></i>
+      </a>
+      
   </div>
 
   </div>
@@ -1392,6 +1819,16 @@ mjx-break[prebreak]{letter-spacing:-.999em}
               ><div class='name'>工程师基础素养</div><div class='badge'>(4)</div></a></li>
           
             <li><a class="flat-box"
+              title="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"
+              id="categoriesE68A80E69CAFE5ADA6E4B9A0"
+              ><div class='name'>技术学习</div><div class='badge'>(13)</div></a></li>
+          
+            <li><a class="flat-box child"
+              title="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/"
+              id="categoriesE68A80E69CAFE5ADA6E4B9A0DeepSeek-E69EB6E69E84"
+              ><div class='name'>DeepSeek 架构</div><div class='badge'>(13)</div></a></li>
+          
+            <li><a class="flat-box"
               title="/categories/%E6%8A%95%E8%B5%84/" href="/categories/%E6%8A%95%E8%B5%84/"
               id="categoriesE68A95E8B584"
               ><div class='name'>投资</div><div class='badge'>(1)</div></a></li>
@@ -1464,7 +1901,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
 
 
     <div class='content'>
-    <a href="/tags/AI/" style="font-size: 19px; color: #777">AI</a> <a href="/tags/%E5%86%B3%E7%AD%96/" style="font-size: 14px; color: #999">决策</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 24px; color: #555">技术</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" style="font-size: 24px; color: #555">经济金融</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" style="font-size: 24px; color: #555">读书观影</a>
+    <a href="/tags/AI/" style="font-size: 17.33px; color: #828282">AI</a> <a href="/tags/All-to-All/" style="font-size: 14px; color: #999">All-to-All</a> <a href="/tags/Attention/" style="font-size: 17.33px; color: #828282">Attention</a> <a href="/tags/DeepSeek/" style="font-size: 24px; color: #555">DeepSeek</a> <a href="/tags/DeepSeek-R1/" style="font-size: 17.33px; color: #828282">DeepSeek-R1</a> <a href="/tags/GPU/" style="font-size: 14px; color: #999">GPU</a> <a href="/tags/GRPO/" style="font-size: 17.33px; color: #828282">GRPO</a> <a href="/tags/KV-Cache/" style="font-size: 14px; color: #999">KV Cache</a> <a href="/tags/MLA/" style="font-size: 14px; color: #999">MLA</a> <a href="/tags/MoE/" style="font-size: 20.67px; color: #6c6c6c">MoE</a> <a href="/tags/PPO/" style="font-size: 14px; color: #999">PPO</a> <a href="/tags/QKV/" style="font-size: 14px; color: #999">QKV</a> <a href="/tags/RL/" style="font-size: 17.33px; color: #828282">RL</a> <a href="/tags/Router/" style="font-size: 14px; color: #999">Router</a> <a href="/tags/SFT/" style="font-size: 14px; color: #999">SFT</a> <a href="/tags/Transformer/" style="font-size: 17.33px; color: #828282">Transformer</a> <a href="/tags/%E5%86%B3%E7%AD%96/" style="font-size: 14px; color: #999">决策</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 14px; color: #999">大模型</a> <a href="/tags/%E5%A5%96%E5%8A%B1%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">奖励函数</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" style="font-size: 14px; color: #999">学习路线</a> <a href="/tags/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/" style="font-size: 14px; color: #999">并行计算</a> <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 20.67px; color: #6c6c6c">强化学习</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 14px; color: #999">总结</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 24px; color: #555">技术</a> <a href="/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">推理优化</a> <a href="/tags/%E6%98%BE%E5%AD%98/" style="font-size: 14px; color: #999">显存</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 14px; color: #999">架构</a> <a href="/tags/%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6/" style="font-size: 14px; color: #999">混合专家</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" style="font-size: 24px; color: #555">经济金融</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E8%A7%82%E5%BD%B1/" style="font-size: 24px; color: #555">读书观影</a> <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" style="font-size: 14px; color: #999">负载均衡</a>
     </div>
 </section>
 
@@ -1492,7 +1929,49 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             
 
             <div class="post-img-box">
-              <a href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/" class="post-img " style="background-size: cover; 
+              <a href="/2026/09/27/12-full-picture/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/12-full-picture/">12 MoE + MLA + RL：DeepSeek 全景图与总结</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/11-r1-zero-vs-r1/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/11-r1-zero-vs-r1/">11 R1-Zero vs R1：到底发生了什么？</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/10-deepseek-r1/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -1500,10 +1979,10 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-22</span>
+                  <span class="post-date">09-27</span>
                 
               </div>
-              <a class="post-title" href="/2026/09/22/%E5%87%AF%E5%88%A9%E5%85%AC%E5%BC%8F-%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">凯利公式：为什么&#34;正期望&#34;的操作也可能让你亏光</a>
+              <a class="post-title" href="/2026/09/27/10-deepseek-r1/">10 DeepSeek-R1：RL 如何让模型学会推理？</a>
             </div>
           </div>
         
@@ -1513,18 +1992,18 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             
 
             <div class="post-img-box">
-              <a href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+              <a href="/2026/09/27/09-grpo/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-07</span>
+                  <span class="post-date">09-27</span>
                 
               </div>
-              <a class="post-title" href="/2026/09/07/%E6%80%9D%E8%80%83%E5%BF%AB%E4%B8%8E%E6%85%A2-%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/">《思考，快与慢》精读笔记：理解两套思维系统，避开系统性决策偏误</a>
+              <a class="post-title" href="/2026/09/27/09-grpo/">09 从 PPO 到 GRPO：LLM 的 RL 训练是怎么做的？</a>
             </div>
           </div>
         
@@ -1534,49 +2013,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             
 
             <div class="post-img-box">
-              <a href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">09-06</span>
-                
-              </div>
-              <a class="post-title" href="/2026/09/06/PCB%E5%B8%83%E7%BA%BF%E5%8E%9F%E5%88%99/">PCB布线原则（8条布线原则 + 2条安全载流原则）</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">09-05</span>
-                
-              </div>
-              <a class="post-title" href="/2026/09/05/%E7%BB%8F%E6%B5%8E%E6%9C%BA%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E7%9A%84%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《经济机器是怎么运行的》观影笔记：用一台&#34;机器&#34;看懂经济周期</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+              <a href="/2026/09/27/08-rl-basics/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -1584,10 +2021,10 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-01</span>
+                  <span class="post-date">09-27</span>
                 
               </div>
-              <a class="post-title" href="/2026/09/01/%E7%9B%91%E8%A7%86%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E6%99%BA%E8%83%BD%E9%99%B7%E9%98%B1%E8%A7%82%E5%BD%B1%E7%AC%94%E8%AE%B0/">《监视资本主义：智能陷阱》观影笔记：当你不为产品付费时，你就是产品</a>
+              <a class="post-title" href="/2026/09/27/08-rl-basics/">08 RL：机器是怎么通过奖励学习的？</a>
             </div>
           </div>
         
@@ -1598,7 +2035,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
       
   <section class="widget side_archives">
     
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">September 2026</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/08/"><span class="card-archive-list-date">August 2026</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">March 2026</span><span class="card-archive-list-count">5</span></a></li></ul></div>
+    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">September 2026</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/08/"><span class="card-archive-list-date">August 2026</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">March 2026</span><span class="card-archive-list-count">5</span></a></li></ul></div>
   </section>
 
       <section class="widget side_webinfo">
@@ -1615,7 +2052,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>13 篇</div>
+          <div>26 篇</div>
         </div>
       
 
@@ -1658,8 +2095,8 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Fri Sep 25 2026 13:49:27 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2026-09-25 日</div>
+            <div id="last-update" style="display: none;">Sun Sep 27 2026 21:48:40 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2026-09-27 日</div>
           
         </div>
         
@@ -1709,7 +2146,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2026-09-25 日';
+            document.getElementById('last-update-show').innerHTML = '2026-09-27 日';
           }
         </script>
         

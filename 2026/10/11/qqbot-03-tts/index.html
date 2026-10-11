@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>第三章：让AI开口说话——本地TTS语音合成部署 | Alioth玉衡</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>
+mjx-container[jax="SVG"] mjx-break{white-space:normal;line-height:0;clip-path:rect(0 0 0 0);font-family:MJX-ZERO !important}
+mjx-break[size="0"]{letter-spacing:-0.999em}
+mjx-break[size="1"]{letter-spacing:-0.889em}
+mjx-break[size="2"]{letter-spacing:-0.833em}
+mjx-break[size="3"]{letter-spacing:-0.778em}
+mjx-break[size="4"]{letter-spacing:-0.722em}
+mjx-break[size="5"]{letter-spacing:-0.667em}
+mjx-container[jax="SVG"] mjx-break[newline]::before{white-space:pre;content:"\A"}
+mjx-break[newline] + svg[width="0.054ex"]{margin-right:-1px}
+mjx-break[prebreak]{letter-spacing:-.999em}
+@font-face{font-family:MJX-ZERO;src:url(data:application/x-font-woff;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAsaGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngABAAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQABAAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQABAAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwADAAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwADAAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0AagB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoAeAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAwAC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxtLXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA) format("woff") format("woff")}
+</style></head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_6" id="loader">
+  <div class="loader"></div>
+</div>
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">Alioth玉衡</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Alioth玉衡</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        第三章：让AI开口说话——本地TTS语音合成部署
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2026-10-11 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" class="post-detail-header_category">
+              技术学习
+            </a>
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/AI-%E5%BA%94%E7%94%A8/" class="post-detail-header_category">
+              AI 应用
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <blockquote>
+<p>前两章做完了，机器人能听、能想、能打字。但每次看它回一大段文字，总觉得少了点什么——<strong>它不会说话。</strong><br>这一章给它装上嘴。</p>
+</blockquote>
+<h2 id="一、TTS-是什么：文字怎么变成声音"><a href="#一、TTS-是什么：文字怎么变成声音" class="headerlink" title="一、TTS 是什么：文字怎么变成声音"></a>一、TTS 是什么：文字怎么变成声音</h2><p><strong>TTS &#x3D; Text To Speech</strong>，文字转语音。听起来很魔法，但拆开看只有三步。</p>
+<div class="mermaid">graph LR
+    A[&quot;文字&lt;br&#x2F;&gt;今天天气不错&quot;] --&gt; B[&quot;① 文本分析&lt;br&#x2F;&gt;标出读音、停顿、语气&quot;]
+    B --&gt; C[&quot;② 声学模型&lt;br&#x2F;&gt;算出这段声音长什么样&quot;]
+    C --&gt; D[&quot;③ 生成波形&lt;br&#x2F;&gt;变成能播放的音频&quot;]
+    D --&gt; E[&quot;音频文件&lt;br&#x2F;&gt;.wav&quot;]</div>
+
+<h3 id="第-①-步：文本分析（把字变成”怎么读”）"><a href="#第-①-步：文本分析（把字变成”怎么读”）" class="headerlink" title="第 ① 步：文本分析（把字变成”怎么读”）"></a>第 ① 步：文本分析（把字变成”怎么读”）</h3><p>计算机不认识汉字，它得先搞清楚这句话该怎么念。包括：</p>
+<ul>
+<li>每个字读什么音（多音字怎么办：”行”在”银行”和”行走”里不一样）</li>
+<li>在哪里停顿、哪里是问句要上扬</li>
+<li>数字、英文缩写怎么读（”2026” 是”二零二六”还是”两千零二十六”）</li>
+</ul>
+<p>这一步的输出通常是<strong>音素</strong>（可以理解为”发音的最小单位”）或者拼音序列。</p>
+<h3 id="第-②-步：声学模型（算出声音长什么样）"><a href="#第-②-步：声学模型（算出声音长什么样）" class="headerlink" title="第 ② 步：声学模型（算出声音长什么样）"></a>第 ② 步：声学模型（算出声音长什么样）</h3><p>拿到读音序列后，模型要决定：<strong>这段声音的频率、时长、能量该怎么变化</strong>——也就是所谓的”声学特征”。</p>
+<p>这一步决定了”听起来像谁在说话””是什么语气”。</p>
+<h3 id="第-③-步：生成波形（真正出声）"><a href="#第-③-步：生成波形（真正出声）" class="headerlink" title="第 ③ 步：生成波形（真正出声）"></a>第 ③ 步：生成波形（真正出声）</h3><p>把上一步算出来的特征还原成人耳能听的音频波形，输出一个 <code>.wav</code> 文件。</p>
+<blockquote>
+<p><strong>原理</strong>：你会发现一个有意思的点——<strong>第 ① 步和语言有关，第 ②③ 步和音色有关</strong>。<br>所以”换个音色”换的其实是第 ②③ 步用的模型，而不是文字处理部分。后面讲音色选型时会用到这个结论。</p>
+</blockquote>
+<hr>
+<h2 id="二、为什么语音也要坚持本地"><a href="#二、为什么语音也要坚持本地" class="headerlink" title="二、为什么语音也要坚持本地"></a>二、为什么语音也要坚持本地</h2><p>和第一章选本地大模型的理由一样，但到了语音这块，<strong>理由更硬</strong>：</p>
+<ol>
+<li><strong>隐私</strong>：要合成的可是聊天内容。既然前面已经费劲把模型搬到本地了，如果最后一步把内容发给云端语音服务，那整套隐私保护就白做了——<strong>最弱的一环决定整体的强度</strong></li>
+<li><strong>延迟可控</strong>：云端 TTS 要走一次网络往返，还要排队；本地的延迟是固定的，可以自己优化</li>
+<li><strong>可控性</strong>：想缓存、想改采样率、想拼接、想换音色，全都在自己手里</li>
+</ol>
+<p>代价是：<strong>要占用磁盘和算力</strong>。一个好点的语音模型动辄 1~3GB，而且合成时要吃显卡或 CPU。</p>
+<hr>
+<h2 id="三、我的音色选型之路（这一段最有参考价值）"><a href="#三、我的音色选型之路（这一段最有参考价值）" class="headerlink" title="三、我的音色选型之路（这一段最有参考价值）"></a>三、我的音色选型之路（这一段最有参考价值）</h2><p>这是我花时间最多的部分，也是我觉得最值得写下来的——<strong>因为它不是”照着教程做”，而是真实的取舍过程。</strong></p>
+<p>我先后试了四类方案，按我的体验排序：</p>
+<h3 id="方案-A：Piper（轻量，纯-CPU）"><a href="#方案-A：Piper（轻量，纯-CPU）" class="headerlink" title="方案 A：Piper（轻量，纯 CPU）"></a>方案 A：Piper（轻量，纯 CPU）</h3><ul>
+<li><strong>优点</strong>：几十 MB，纯 CPU 就能跑，秒级出声，资源占用极小</li>
+<li><strong>缺点</strong>：<strong>机械感明显</strong>，像导航语音</li>
+<li><strong>我的评价</strong>：作为兜底很称职，但作为”阿晴的声音”不够</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：Piper 的中文音色需要额外的拼音转换资源，它会在<strong>当前工作目录</strong>下找这个资源。我一开始目录套错了，报了个看不懂的错。教训是：<strong>这类工具报错时，先检查它的工作目录对不对</strong>，而不是怀疑模型坏了。</p>
+</blockquote>
+<h3 id="方案-B：Kokoro-82M（轻量，自然度更好）"><a href="#方案-B：Kokoro-82M（轻量，自然度更好）" class="headerlink" title="方案 B：Kokoro-82M（轻量，自然度更好）"></a>方案 B：Kokoro-82M（轻量，自然度更好）</h3><ul>
+<li>82M 参数，几百 MB，CPU&#x2F;GPU 都能跑</li>
+<li>自然度明显好于 Piper</li>
+<li><strong>我踩的坑</strong>：它的中文词表用的是<strong>国际音标（IPA）</strong>，而很多示例代码走的是”注音”路径。表面上不报错，但生成的音频是残缺的——只有大约 8% 的音素被正确处理，出来的声音断断续续。<strong>这种”不报错但结果是错的”的坑，比直接报错难查十倍。</strong></li>
+</ul>
+<h3 id="方案-C：GPT-SoVITS（声音克隆路线）"><a href="#方案-C：GPT-SoVITS（声音克隆路线）" class="headerlink" title="方案 C：GPT-SoVITS（声音克隆路线）"></a>方案 C：GPT-SoVITS（声音克隆路线）</h3><p>这是社区里最火的”用某人声音说话”的方案，理论上可以克隆任意音色。</p>
+<p><strong>我最终没有走这条路，原因值得单独说：</strong></p>
+<h3 id="关于”角色音色”和”声音克隆”，必须讲清楚的一件事"><a href="#关于”角色音色”和”声音克隆”，必须讲清楚的一件事" class="headerlink" title="关于”角色音色”和”声音克隆”，必须讲清楚的一件事"></a>关于”角色音色”和”声音克隆”，必须讲清楚的一件事</h3><p>很多人做 AI 机器人的初心是”让某个动漫角色陪我聊天”。这个想法很好理解，但到了音色这一步，有几件事必须分清：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>普通音色调整</th>
+<th>声音克隆</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>做法</td>
+<td>换模型预置的音色、调语速音高、用自然语言描述语气</td>
+<td>用真实人物的语音素材<strong>训练&#x2F;微调</strong>出一个音色</td>
+</tr>
+<tr>
+<td>需要素材</td>
+<td>不需要</td>
+<td>需要目标人物的录音素材</td>
+</tr>
+<tr>
+<td>法律&#x2F;授权</td>
+<td>模型许可证允许即可</td>
+<td><strong>取决于素材来源</strong></td>
+</tr>
+<tr>
+<td>风险</td>
+<td>低</td>
+<td><strong>高</strong></td>
+</tr>
+</tbody></table>
+<p><strong>关键的一点</strong>：如果目标是某个商业作品里的角色（比如某个游戏的角色），那么——</p>
+<ul>
+<li>这个角色的<strong>声音素材版权属于制作方</strong>，不是公开的免费资源</li>
+<li>就算你在网上找到了别人训练好的权重，那些权重往往也写着”禁止二次分发””禁止商用””数据版权归原作者”</li>
+<li>社区现成的权重库里，<strong>中文的角色音色往往根本没有</strong>（我去核实过，某个热门仓库里该作品只有英文和日文，中文目录是空的）</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：我不会在文章里推荐任何未经授权的角色声音克隆方案，也不会提供获取渠道。这不是技术能力问题，是<strong>边界问题</strong>：个人自用不等于合法，而且这类模型一旦传出去，责任会跟着走。</p>
+</blockquote>
+<p><strong>我最后的选择</strong>：用<strong>官方开源、许可证明确（Apache-2.0）的通用音色模型</strong>，再配一句自然语言的”语气指令”来调情绪——比如”用明亮的年轻女声，语气清冷、略带傲娇地说”。</p>
+<p>这样做的好处是：<strong>完全合规、随时可调、没有版权风险</strong>，而且调语气只要改一句话，不用重新训练任何东西。效果上确实不是”某个具体角色本人”，但它是<strong>我自己定义的那个角色</strong>，反而更贴合。</p>
+<h3 id="方案-D：Qwen3-TTS-0-6B（最终选择）"><a href="#方案-D：Qwen3-TTS-0-6B（最终选择）" class="headerlink" title="方案 D：Qwen3-TTS 0.6B（最终选择）"></a>方案 D：Qwen3-TTS 0.6B（最终选择）</h3><ul>
+<li>Apache-2.0 许可，2.38GB</li>
+<li>预置多种音色，支持<strong>自然语言指令控制语气</strong>（这就是我上面说的那句”清冷、略带傲娇”）</li>
+<li>我实测音色自然度和语气表现都明显好于前三个方案</li>
+</ul>
+<p><strong>最终架构是这样的</strong>——我把四个方案的优点组合了起来，做成一个<strong>三级降级链</strong>：</p>
+<div class="mermaid">graph TD
+    A[&quot;要合成的文字&quot;] --&gt; B{&quot;主音色服务&lt;br&#x2F;&gt;Qwen3-TTS（常驻）&quot;}
+    B --&gt;|&quot;成功&quot;| E[&quot;输出音频&quot;]
+    B --&gt;|&quot;失败&#x2F;服务没起&quot;| C{&quot;备用：克隆引擎&lt;br&#x2F;&gt;GPT-SoVITS&quot;}
+    C --&gt;|&quot;成功&quot;| E
+    C --&gt;|&quot;失败&#x2F;没权重&quot;| D{&quot;兜底：Piper&lt;br&#x2F;&gt;纯 CPU，秒级&quot;}
+    D --&gt;|&quot;成功&quot;| E
+    D --&gt;|&quot;也失败&quot;| F[&quot;不发语音，只发文字&lt;br&#x2F;&gt;（机器人不会失声）&quot;]</div>
+
+<blockquote>
+<p><strong>原理</strong>：为什么要搞这么复杂？因为<strong>语音是”锦上添花”的功能，绝不能因为它把主流程搞崩</strong>。<br>我在代码里定了一条硬规矩：语音链路的任何异常都必须被吞掉并降级，<strong>最坏情况只是”这条没有语音”，文字回复照常发出</strong>。做机器人是这样，做任何附加功能都该这样——<strong>附加功能永远不能拖垮主流程</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="四、关键设计决策：把语音模型做成”常驻服务”"><a href="#四、关键设计决策：把语音模型做成”常驻服务”" class="headerlink" title="四、关键设计决策：把语音模型做成”常驻服务”"></a>四、关键设计决策：把语音模型做成”常驻服务”</h2><p>这是我这章做的最重要的一个工程决定，也是和前两章思路最大的不同。</p>
+<h3 id="问题：每句话都重新启动一次模型，行不行？"><a href="#问题：每句话都重新启动一次模型，行不行？" class="headerlink" title="问题：每句话都重新启动一次模型，行不行？"></a>问题：每句话都重新启动一次模型，行不行？</h3><p>不行。我实测这个语音模型<strong>加载一次要 13~18 秒</strong>。如果沿用前面”每条消息启动一个进程”的做法，用户发一句”说”，要等将近 20 秒才听到第一帧声音——而且这 20 秒里大部分时间<strong>根本不是在合成，只是在加载</strong>。</p>
+<h3 id="解决：让它一直开着"><a href="#解决：让它一直开着" class="headerlink" title="解决：让它一直开着"></a>解决：让它一直开着</h3><p>我把它改造成了一个<strong>常驻的本地服务</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开机 → 启动服务 → 加载一次模型（十几秒）→ 之后一直等着</span><br><span class="line">                                              ↑</span><br><span class="line">机器人要说话时：发一句 HTTP 请求过去 → 直接合成 → 拿回音频</span><br></pre></td></tr></table></figure>
+
+<p>服务只监听 <code>127.0.0.1:8765</code>，<strong>不对外暴露</strong>，文本也绝不出本机。</p>
+<blockquote>
+<p><strong>原理</strong>：这个取舍的本质是——<strong>把”一次性的启动成本”摊到”多次使用”上</strong>。<br>只要你会反复用到一个很重的东西，就应该考虑让它常驻。这个思路不只适用于 TTS：模型服务、数据库、爬虫池子，都是同一类问题。<br>代价是它会一直占着资源（我这个约 2GB 显存），所以要想清楚”值不值”。对我这种机器人 7×24 在线的场景，显然值。</p>
+</blockquote>
+<h3 id="服务里还做了一个小优化：预热"><a href="#服务里还做了一个小优化：预热" class="headerlink" title="服务里还做了一个小优化：预热"></a>服务里还做了一个小优化：预热</h3><p>服务启动后，我会先用两句短文本<strong>空跑一遍</strong>再正式对外提供服务。</p>
+<p>为什么？因为第一次真正推理时，显卡要做一堆初始化（编译计算核、自动调优），这部分开销可能有好几秒。<strong>提前把它跑掉</strong>，用户第一次请求就不会撞上这个冷启动。</p>
+<p>做了预热之后，服务对外可用的时间点会晚几秒，但<strong>用户感知到的第一次延迟明显下降</strong>——这个交换是划算的。</p>
+<h3 id="服务长什么样"><a href="#服务长什么样" class="headerlink" title="服务长什么样"></a>服务长什么样</h3><p>我这个服务是用 Python 标准库写的，对外只有两个常用接口。你照着这个结构做就行：</p>
+<p><strong>检查服务活着没</strong>（<strong>Windows PowerShell</strong>，记得加 <code>--noproxy &quot;*&quot;</code>）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl.exe <span class="literal">-s</span> <span class="literal">--noproxy</span> <span class="string">&quot;*&quot;</span> http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8765</span>/health</span><br></pre></td></tr></table></figure>
+
+<p>正常会返回一段 JSON，里面有 <code>&quot;status&quot;: &quot;ready&quot;</code>，表示模型已加载完毕。如果返回 <code>loading</code>，说明还在加载，等等再试。</p>
+<p><strong>让它说话</strong>（<strong>Python</strong>，这就是机器人里实际调用的那几行）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;把文字发给本地 TTS 服务，拿回 wav 音频的二进制内容。&quot;&quot;&quot;</span></span><br><span class="line">    payload = json.dumps(&#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: text,</span><br><span class="line">        <span class="string">&quot;speaker&quot;</span>: <span class="string">&quot;Vivian&quot;</span>,                              <span class="comment"># 音色</span></span><br><span class="line">        <span class="string">&quot;instruct&quot;</span>: <span class="string">&quot;用明亮的年轻女声，语气清冷、略带傲娇地说&quot;</span>,   <span class="comment"># 语气指令</span></span><br><span class="line">        <span class="string">&quot;language&quot;</span>: <span class="string">&quot;Chinese&quot;</span>,</span><br><span class="line">    &#125;).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line">    req = urllib.request.Request(</span><br><span class="line">        <span class="string">&quot;http://127.0.0.1:8765/tts&quot;</span>,</span><br><span class="line">        data=payload,</span><br><span class="line">        headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json; charset=utf-8&quot;</span>&#125;,</span><br><span class="line">        method=<span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">with</span> urllib.request.urlopen(req, timeout=<span class="number">60</span>) <span class="keyword">as</span> resp:</span><br><span class="line">        <span class="keyword">return</span> resp.read()      <span class="comment"># 拿到的是 wav 二进制，直接写文件就能播放</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：这段代码里有两个细节值得学。<br>一是<strong>超时必须设</strong>（我给的 60 秒）——网络调用不设超时，程序可能永远卡在那儿；<br>二是<strong>调用别人的服务前先探活</strong>（前面那个 <code>/health</code>），这样服务没起来时你能立刻知道原因，而不是等一个莫名其妙的报错。这两个习惯在做分布式&#x2F;多进程的东西时能救命。</p>
+</blockquote>
+<hr>
+<h2 id="五、QQ-机器人里的完整调用流程"><a href="#五、QQ-机器人里的完整调用流程" class="headerlink" title="五、QQ 机器人里的完整调用流程"></a>五、QQ 机器人里的完整调用流程</h2><p>把语音接进机器人，链路是这样的：</p>
+<div class="mermaid">graph LR
+    A[&quot;AI 生成回复文字&quot;] --&gt; B[&quot;判断要不要发声&lt;br&#x2F;&gt;（我设成带触发词才发）&quot;]
+    B --&gt; C[&quot;文字先发出去&lt;br&#x2F;&gt;（不让人干等）&quot;]
+    C --&gt; D[&quot;清洗文本&lt;br&#x2F;&gt;去掉表情、链接等&quot;]
+    D --&gt; E{&quot;缓存里有吗？&quot;}
+    E --&gt;|&quot;有&quot;| I[&quot;直接用，0 秒&quot;]
+    E --&gt;|&quot;没有&quot;| F[&quot;调常驻 TTS 服务&quot;]
+    F --&gt; G[&quot;拿到 .wav 音频&quot;]
+    G --&gt; H[&quot;作为语音消息发出&quot;]
+    H --&gt; I</div>
+
+<p>几个设计细节，都是踩过才想到的：</p>
+<p><strong>1. 文字先发，语音后到</strong></p>
+<p>代码里的顺序是：先把文字回复发出去，<strong>再</strong>去合成语音。这样用户马上就能看到回复，语音晚几秒到也无妨——体验上像是”对方又补发了一条语音”。</p>
+<blockquote>
+<p><strong>注意</strong>：这个顺序很重要。如果反过来（先合成再一起发），用户就要干等整个合成过程，体感差非常多。<strong>凡是”锦上添花”的东西，都要排在主体内容之后。</strong></p>
+</blockquote>
+<p><strong>2. 缓存</strong></p>
+<p>合成很慢，但<strong>相同文本的结果是固定的</strong>。所以我把合成结果按”文本内容 + 音色 + 语气指令”做哈希缓存起来。同一句话第二次说，是 <strong>0 秒</strong>返回。</p>
+<blockquote>
+<p><strong>注意</strong>：缓存的 key 一定要把<strong>影响输出的所有因素</strong>都算进去。我一开始漏了语气指令，结果改了语气指令后仍命中旧音频，听起来”改了没生效”——和第二章那个”配置没读进去”是同一类错误。</p>
+</blockquote>
+<p><strong>3. 文本清洗</strong></p>
+<p>表情、链接、特殊符号要念出来会很怪，所以合成前会做清洗；如果清洗完没有任何可读内容（比如对方只发了一串符号），就直接跳过，不合成。</p>
+<p><strong>4. 触发方式</strong></p>
+<p>我做成了”带触发词才发语音”（比如发”说”或”语音”），而不是每条都发——语音会刷屏，而且每次都要等合成。<strong>功能设计上的克制，也是体验的一部分。</strong></p>
+<hr>
+<h2 id="六、常见问题与排查"><a href="#六、常见问题与排查" class="headerlink" title="六、常见问题与排查"></a>六、常见问题与排查</h2><h3 id="问题-1：声音延迟很高，怎么优化？"><a href="#问题-1：声音延迟很高，怎么优化？" class="headerlink" title="问题 1：声音延迟很高，怎么优化？"></a>问题 1：声音延迟很高，怎么优化？</h3><p>这是本地 TTS 最现实的问题。我实测的结果是：<strong>20 个字大约要 20 秒</strong>（RTF ≈ 4，意思是生成 1 秒音频需要 4 秒时间）。</p>
+<p><strong>先说结论：大部分你以为有用的优化手段，实测都没用。</strong> 我把排查过程写下来，比直接给结论更有价值。</p>
+<p><strong>第一步：先判断瓶颈在哪（这一步不能跳）</strong></p>
+<p><strong>Windows PowerShell</strong>（在合成过程中采样）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia<span class="literal">-smi</span> <span class="literal">--query-gpu</span>=utilization.gpu,memory.used <span class="literal">--format</span>=csv <span class="literal">-l</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我看到的結果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">utilization.gpu [%]     memory.used [MiB]</span><br><span class="line">35 %                    4865</span><br><span class="line">39 %                    5969</span><br><span class="line">39 %                    5953</span><br></pre></td></tr></table></figure>
+
+<p><strong>GPU 利用率只有 35~40%</strong> ——这说明显卡大部分时间在<strong>空转等 CPU</strong>。也就是说瓶颈在 CPU 侧的 Python 代码循环，不在显卡算力。</p>
+<p>这个判断直接决定了后面该试什么：</p>
+<table>
+<thead>
+<tr>
+<th>优化手段</th>
+<th>我的实测结论</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关掉随机采样（贪婪解码）</td>
+<td><strong>无效</strong>，反而略慢</td>
+<td>瓶颈不在采样这一步</td>
+</tr>
+<tr>
+<td>装 flash-attn 加速注意力</td>
+<td><strong>基本无效</strong></td>
+<td>它加速的是 GPU 侧，而 GPU 本来就在闲着</td>
+</tr>
+<tr>
+<td>模型量化（8bit &#x2F; fp16）</td>
+<td><strong>无效</strong></td>
+<td>显存带宽不是瓶颈</td>
+</tr>
+<tr>
+<td>多进程并行</td>
+<td><strong>不改善延迟</strong></td>
+<td>只提升吞吐，单条请求还是那么久</td>
+</tr>
+<tr>
+<td><strong>限制合成字数</strong></td>
+<td><strong>有效</strong></td>
+<td>延迟和字数近似成正比，最直接的杠杆</td>
+</tr>
+<tr>
+<td><strong>启用缓存</strong></td>
+<td><strong>有效</strong>（重复句 0 秒）</td>
+<td>绕过计算本身</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>原理</strong>：<strong>先测量再优化</strong>。如果我不看 GPU 利用率就跑去装 flash-attn，可能折腾半天什么都没改变。<br>判断”是算力不够还是有人在等”，只需要看一眼利用率：接近 100% 说明算力吃满（加硬件&#x2F;降模型），只有 30% 说明有东西在空转（查调度和代码路径）。<strong>这一个动作能省掉你 80% 的无效尝试。</strong></p>
+</blockquote>
+<p><strong>最后怎么解决的</strong>：接受这个延迟，但把<strong>合成字数上限调小</strong>，并充分利用缓存。再加上前面说的”文字先发”，实际体验完全可以接受。</p>
+<h3 id="问题-2：模型太大，磁盘-显存吃不消"><a href="#问题-2：模型太大，磁盘-显存吃不消" class="headerlink" title="问题 2：模型太大，磁盘&#x2F;显存吃不消"></a>问题 2：模型太大，磁盘&#x2F;显存吃不消</h3><ul>
+<li><strong>磁盘</strong>：所有模型、缓存、临时音频都放到非系统盘（我的都在 <code>D:\AI_Models\...</code>）。很多工具默认会把缓存写进用户目录（C 盘），需要显式改环境变量把它们指走</li>
+<li><strong>显存</strong>：常驻服务会一直占着显存。我这个约 2GB，和本地大模型并存没问题（合计约 6GB &#x2F; 8GB），但如果你显存更小，可以考虑用纯 CPU 的轻量方案（如方案 A&#x2F;B）</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：改缓存位置这件事要<strong>在下载第一个模型之前</strong>做。事后搬家很麻烦，而且容易漏掉某个工具的缓存目录。具体做法和第一章 5.2 节设置环境变量是一样的思路——凡是”下载&#x2F;缓存”，先问一句”它会写到哪去”。</p>
+</blockquote>
+<h3 id="问题-3：CPU-占用高-电脑变卡"><a href="#问题-3：CPU-占用高-电脑变卡" class="headerlink" title="问题 3：CPU 占用高 &#x2F; 电脑变卡"></a>问题 3：CPU 占用高 &#x2F; 电脑变卡</h3><p>语音合成是重计算任务，合成时 CPU 或 GPU 会有一阵子满载，这是正常的。</p>
+<p>如果影响使用：</p>
+<ul>
+<li>限制并发（我用一个锁保证同一时刻只有一个合成任务在跑）</li>
+<li>限制合成字数</li>
+<li>把触发方式设成”手动触发”而不是”每条都发”</li>
+</ul>
+<hr>
+<h2 id="七、总结与未来扩展"><a href="#七、总结与未来扩展" class="headerlink" title="七、总结与未来扩展"></a>七、总结与未来扩展</h2><p>到这里，这个机器人就完整了：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>由什么提供</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>听（收消息）</td>
+<td>NapCat + OneBot</td>
+</tr>
+<tr>
+<td>想（生成回复）</td>
+<td>Ollama + Qwen3.5-4B</td>
+</tr>
+<tr>
+<td>说（语音）</td>
+<td>本地 TTS 常驻服务</td>
+</tr>
+</tbody></table>
+<p><strong>全部跑在本机，不依赖任何在线服务，聊天内容一步都没有离开过这台电脑。</strong></p>
+<h3 id="回看这三章，我真正学到的东西"><a href="#回看这三章，我真正学到的东西" class="headerlink" title="回看这三章，我真正学到的东西"></a>回看这三章，我真正学到的东西</h3><p>技术细节会忘，但有几个判断习惯我觉得比命令更值钱：</p>
+<ol>
+<li><strong>先分清”是哪两个东西之间的连接出了问题”</strong>——我这章遇到的报错，几乎全是连接问题，不是 AI 的问题</li>
+<li><strong>先测量再优化</strong>——一句 <code>nvidia-smi</code> 就能避免半天无用功；不知道瓶颈在哪的优化都是猜</li>
+<li><strong>附加功能不能拖垮主流程</strong>——语音挂了就只发文字，这条规矩让整个系统稳定了很多</li>
+<li><strong>重复用到重东西时，考虑让它常驻</strong>——把启动成本摊薄</li>
+<li><strong>合规边界要自己守住</strong>——能用合规方案达到 80 分，就别为了 90 分去踩线</li>
+</ol>
+<h3 id="还能往哪扩展"><a href="#还能往哪扩展" class="headerlink" title="还能往哪扩展"></a>还能往哪扩展</h3><ul>
+<li><strong>记忆系统</strong>：现在对话历史有窗口限制，可以把重要信息存进数据库，让机器人记住你很久以前说过的话</li>
+<li><strong>主动行为</strong>：我给机器人加了定时问候（早安&#x2F;午饭&#x2F;晚饭&#x2F;晚安），用任务调度 + 数据库去重保证不会重复发</li>
+<li><strong>图片能力</strong>：本地模型支持视觉输入的话，可以让它看图说话</li>
+<li><strong>换个更强的模型</strong>：显存更大可以考虑 7B&#x2F;8B，对话质量会再上一个台阶</li>
+<li><strong>多端接入</strong>：因为中间用的是标准协议，把 QQ 换成其他平台，机器人逻辑基本不用改</li>
+</ul>
+<hr>
+<h2 id="系列总结"><a href="#系列总结" class="headerlink" title="系列总结"></a>系列总结</h2><p>《从0搭建属于自己的AI QQ机器人》三章到这里结束：</p>
+<ul>
+<li><strong>第一章</strong>：让电脑跑起本地大模型（Ollama）</li>
+<li><strong>第二章</strong>：把它接进 QQ（NapCat + OneBot + 机器人框架）</li>
+<li><strong>第三章</strong>：让它开口说话（本地 TTS）</li>
+</ul>
+<p>我最初只是想搞清楚”这些 AI 到底是怎么跑起来的”。做完之后最大的感受是：</p>
+<blockquote>
+<p><strong>这些看起来很唬人的东西，拆开之后每一步都是普通人能理解的。</strong> 难的从来不是某个具体命令，而是你不知道”这一步为什么要做”。所以这个系列的每一节我都尽量先说清楚”为什么”，再说”怎么做”。</p>
+</blockquote>
+<p>如果你跟着做下来了，那么恭喜——你现在有了一个完全属于自己的 AI 机器人，而且你知道它的每一个零件是怎么工作的。这比直接用现成服务，要有意思得多。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" class="">
+              技术
+            </a>
+          
+            <a href="/tags/AI/" class="">
+              AI
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Alioth</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2026/10/11/qqbot-03-tts/" target="_blank" title="第三章：让AI开口说话——本地TTS语音合成部署">http://example.com/2026/10/11/qqbot-03-tts/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2026/10/11/qqbot-02-napcat-onebot/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">第二章：使用 NapCat 和 OneBot 给AI接入QQ聊天能力</div>
+      </div>
+      <!-- <div class="content">
+        
+上一章我们让电脑本地跑起了一个大模型，但它只能在你自己的黑框框里陪你聊天。这一章要做的事是：让它住进 QQ，变成你列表
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://pic2.zhimg.com/80/v2-42b72d5ebee4b8d8aa70d9687effe87b_1440w.webp'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>Alioth玉衡</h2>
+        
+        
+          <p>谦谦君子温润如玉，朗朗慧心通明若衡。</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">Alioth玉衡</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:1478497708@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/Alioth-heng/Alioth-heng.github.io"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1478497708"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81TTS-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9A%E6%96%87%E5%AD%97%E6%80%8E%E4%B9%88%E5%8F%98%E6%88%90%E5%A3%B0%E9%9F%B3"><span class="toc-text">一、TTS 是什么：文字怎么变成声音</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-%E2%91%A0-%E6%AD%A5%EF%BC%9A%E6%96%87%E6%9C%AC%E5%88%86%E6%9E%90%EF%BC%88%E6%8A%8A%E5%AD%97%E5%8F%98%E6%88%90%E2%80%9D%E6%80%8E%E4%B9%88%E8%AF%BB%E2%80%9D%EF%BC%89"><span class="toc-text">第 ① 步：文本分析（把字变成”怎么读”）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-%E2%91%A1-%E6%AD%A5%EF%BC%9A%E5%A3%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B%EF%BC%88%E7%AE%97%E5%87%BA%E5%A3%B0%E9%9F%B3%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%EF%BC%89"><span class="toc-text">第 ② 步：声学模型（算出声音长什么样）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-%E2%91%A2-%E6%AD%A5%EF%BC%9A%E7%94%9F%E6%88%90%E6%B3%A2%E5%BD%A2%EF%BC%88%E7%9C%9F%E6%AD%A3%E5%87%BA%E5%A3%B0%EF%BC%89"><span class="toc-text">第 ③ 步：生成波形（真正出声）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%AD%E9%9F%B3%E4%B9%9F%E8%A6%81%E5%9D%9A%E6%8C%81%E6%9C%AC%E5%9C%B0"><span class="toc-text">二、为什么语音也要坚持本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%88%91%E7%9A%84%E9%9F%B3%E8%89%B2%E9%80%89%E5%9E%8B%E4%B9%8B%E8%B7%AF%EF%BC%88%E8%BF%99%E4%B8%80%E6%AE%B5%E6%9C%80%E6%9C%89%E5%8F%82%E8%80%83%E4%BB%B7%E5%80%BC%EF%BC%89"><span class="toc-text">三、我的音色选型之路（这一段最有参考价值）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-A%EF%BC%9APiper%EF%BC%88%E8%BD%BB%E9%87%8F%EF%BC%8C%E7%BA%AF-CPU%EF%BC%89"><span class="toc-text">方案 A：Piper（轻量，纯 CPU）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-B%EF%BC%9AKokoro-82M%EF%BC%88%E8%BD%BB%E9%87%8F%EF%BC%8C%E8%87%AA%E7%84%B6%E5%BA%A6%E6%9B%B4%E5%A5%BD%EF%BC%89"><span class="toc-text">方案 B：Kokoro-82M（轻量，自然度更好）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-C%EF%BC%9AGPT-SoVITS%EF%BC%88%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86%E8%B7%AF%E7%BA%BF%EF%BC%89"><span class="toc-text">方案 C：GPT-SoVITS（声音克隆路线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E2%80%9D%E8%A7%92%E8%89%B2%E9%9F%B3%E8%89%B2%E2%80%9D%E5%92%8C%E2%80%9D%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86%E2%80%9D%EF%BC%8C%E5%BF%85%E9%A1%BB%E8%AE%B2%E6%B8%85%E6%A5%9A%E7%9A%84%E4%B8%80%E4%BB%B6%E4%BA%8B"><span class="toc-text">关于”角色音色”和”声音克隆”，必须讲清楚的一件事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88-D%EF%BC%9AQwen3-TTS-0-6B%EF%BC%88%E6%9C%80%E7%BB%88%E9%80%89%E6%8B%A9%EF%BC%89"><span class="toc-text">方案 D：Qwen3-TTS 0.6B（最终选择）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E9%94%AE%E8%AE%BE%E8%AE%A1%E5%86%B3%E7%AD%96%EF%BC%9A%E6%8A%8A%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B%E5%81%9A%E6%88%90%E2%80%9D%E5%B8%B8%E9%A9%BB%E6%9C%8D%E5%8A%A1%E2%80%9D"><span class="toc-text">四、关键设计决策：把语音模型做成”常驻服务”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A%E6%AF%8F%E5%8F%A5%E8%AF%9D%E9%83%BD%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E4%B8%80%E6%AC%A1%E6%A8%A1%E5%9E%8B%EF%BC%8C%E8%A1%8C%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-text">问题：每句话都重新启动一次模型，行不行？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%EF%BC%9A%E8%AE%A9%E5%AE%83%E4%B8%80%E7%9B%B4%E5%BC%80%E7%9D%80"><span class="toc-text">解决：让它一直开着</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%87%8C%E8%BF%98%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E5%B0%8F%E4%BC%98%E5%8C%96%EF%BC%9A%E9%A2%84%E7%83%AD"><span class="toc-text">服务里还做了一个小优化：预热</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7"><span class="toc-text">服务长什么样</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81QQ-%E6%9C%BA%E5%99%A8%E4%BA%BA%E9%87%8C%E7%9A%84%E5%AE%8C%E6%95%B4%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">五、QQ 机器人里的完整调用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8E%92%E6%9F%A5"><span class="toc-text">六、常见问题与排查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1%EF%BC%9A%E5%A3%B0%E9%9F%B3%E5%BB%B6%E8%BF%9F%E5%BE%88%E9%AB%98%EF%BC%8C%E6%80%8E%E4%B9%88%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-text">问题 1：声音延迟很高，怎么优化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2%EF%BC%9A%E6%A8%A1%E5%9E%8B%E5%A4%AA%E5%A4%A7%EF%BC%8C%E7%A3%81%E7%9B%98-%E6%98%BE%E5%AD%98%E5%90%83%E4%B8%8D%E6%B6%88"><span class="toc-text">问题 2：模型太大，磁盘&#x2F;显存吃不消</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-3%EF%BC%9ACPU-%E5%8D%A0%E7%94%A8%E9%AB%98-%E7%94%B5%E8%84%91%E5%8F%98%E5%8D%A1"><span class="toc-text">问题 3：CPU 占用高 &#x2F; 电脑变卡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93%E4%B8%8E%E6%9C%AA%E6%9D%A5%E6%89%A9%E5%B1%95"><span class="toc-text">七、总结与未来扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E7%9C%8B%E8%BF%99%E4%B8%89%E7%AB%A0%EF%BC%8C%E6%88%91%E7%9C%9F%E6%AD%A3%E5%AD%A6%E5%88%B0%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-text">回看这三章，我真正学到的东西</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E8%83%BD%E5%BE%80%E5%93%AA%E6%89%A9%E5%B1%95"><span class="toc-text">还能往哪扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E6%80%BB%E7%BB%93"><span class="toc-text">系列总结</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-03-tts/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-03-tts/">第三章：让AI开口说话——本地TTS语音合成部署</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-02-napcat-onebot/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-02-napcat-onebot/">第二章：使用 NapCat 和 OneBot 给AI接入QQ聊天能力</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-01-ollama/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-01-ollama/">第一章：使用 Ollama 在普通电脑上运行自己的本地AI大模型</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/12-full-picture/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/12-full-picture/">12 MoE + MLA + RL：DeepSeek 全景图与总结</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/11-r1-zero-vs-r1/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/11-r1-zero-vs-r1/">11 R1-Zero vs R1：到底发生了什么？</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js
+  class=""
+  server="netease"
+  type="song"
+  id="1141882"
+  api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script async src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script async src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

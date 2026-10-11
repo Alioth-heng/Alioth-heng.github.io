@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>第一章：使用 Ollama 在普通电脑上运行自己的本地AI大模型 | Alioth玉衡</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>
+mjx-container[jax="SVG"] mjx-break{white-space:normal;line-height:0;clip-path:rect(0 0 0 0);font-family:MJX-ZERO !important}
+mjx-break[size="0"]{letter-spacing:-0.999em}
+mjx-break[size="1"]{letter-spacing:-0.889em}
+mjx-break[size="2"]{letter-spacing:-0.833em}
+mjx-break[size="3"]{letter-spacing:-0.778em}
+mjx-break[size="4"]{letter-spacing:-0.722em}
+mjx-break[size="5"]{letter-spacing:-0.667em}
+mjx-container[jax="SVG"] mjx-break[newline]::before{white-space:pre;content:"\A"}
+mjx-break[newline] + svg[width="0.054ex"]{margin-right:-1px}
+mjx-break[prebreak]{letter-spacing:-.999em}
+@font-face{font-family:MJX-ZERO;src:url(data:application/x-font-woff;charset=utf-8;base64,T1RUTwAJAIAAAwAQQ0ZGIGnFMZkAAARQAAAAlE9TLzJpUWOBAAABAAAAAGBjbWFwAAwAUwAABAQAAAAsaGVhZCFRvpAAAACcAAAANmhoZWEC8AD9AAAA1AAAACRobXR4A+gAAAAABOQAAAAIbWF4cAACUAAAAAD4AAAABm5hbWVNb8+2AAABYAAAAqNwb3N0AAMAAAAABDAAAAAgAAEAAAABAABVWOu4Xw889QADA+gAAAAA3ym+2AAAAADfKb7YAAAAAAPoAAAAAAADAAIAAAAAAAAAAQAAAu79EgAAA+gAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAADA+gB9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABYWFhYAEAAIAAgAu79EgAAAu4C7gAAAAEAAAAAAXcAAAAgACAAAAAAACIBngABAAAAAAAAAAEAQQABAAAAAAABAAsAAAABAAAAAAACAAcAIQABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQQABAAAAAAAIAAEAQQABAAAAAAAJAAEAQQABAAAAAAAKAAEAQQABAAAAAAALAAEAQQABAAAAAAAMAAEAQQABAAAAAAANAAEAQQABAAAAAAAOAAEAQQABAAAAAAAQAAsAAAABAAAAAAARAAcAIQADAAEECQAAAAIAXwADAAEECQABABYACwADAAEECQACAA4AKAADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAXwADAAEECQAIAAIAXwADAAEECQAJAAIAXwADAAEECQAKAAIAXwADAAEECQALAAIAXwADAAEECQAMAAIAXwADAAEECQANAAIAXwADAAEECQAOAAIAXwADAAEECQAQABYACwADAAEECQARAA4AKG1qeC1sbS16ZXJvAG0AagB4AC0AbABtAC0AegBlAHIAb1JlZ3VsYXIAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvIFJlZ3VsYXIAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcm1qeC1sbS16ZXJvUmVndWxhcgBtAGoAeAAtAGwAbQAtAHoAZQByAG8AUgBlAGcAdQBsAGEAclZlcnNpb24gMC4xAFYAZQByAHMAaQBvAG4AIAAwAC4AMSA6bWp4LWxtLXplcm8gUmVndWxhcgAgADoAbQBqAHgALQBsAG0ALQB6AGUAcgBvACAAUgBlAGcAdQBsAGEAcgAAAAABAAMAAQAAAAwABAAgAAAABAAEAAEAAAAg//8AAAAg////4QABAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEAQABAQETbWp4LWxtLXplcm9SZWd1bGFyAAEBASf4GwD4HAL4HQP4HgSLi/mC+nwFHQAAAIYPHQAAAIkRix0AAACUEgAFAQEMHyoxNlZlcnNpb24gMC4xbWp4LWxtLXplcm8gUmVndWxhcm1qeC1sbS16ZXJvUmVndWxhcnNwYWNlAAAAAYsAAgEBAwaLDvp8DgAAAAAD6AAA) format("woff") format("woff")}
+</style></head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_6" id="loader">
+  <div class="loader"></div>
+</div>
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">Alioth玉衡</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Alioth玉衡</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        第一章：使用 Ollama 在普通电脑上运行自己的本地AI大模型
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2026-10-11 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" class="post-detail-header_category">
+              技术学习
+            </a>
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/AI-%E5%BA%94%E7%94%A8/" class="post-detail-header_category">
+              AI 应用
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <blockquote>
+<p>这是《从0搭建属于自己的AI QQ机器人》系列的第一章。整套系列记录的是我——一个只会基本电脑操作、没有 Linux 基础的大学生——把一个能聊天的 AI 装进自己电脑、接进 QQ、最后让它开口说话的全过程。</p>
+<p>我不会假设你懂任何术语。每出现一个新词，我都会先用大白话说一遍它”是干什么的”，再去碰它。</p>
+</blockquote>
+<h2 id="写在前面：我为什么要折腾这个"><a href="#写在前面：我为什么要折腾这个" class="headerlink" title="写在前面：我为什么要折腾这个"></a>写在前面：我为什么要折腾这个</h2><p>最开始只是因为好奇：那些能聊天的 AI，到底能不能跑在我自己的电脑上，不联网、不花钱、也没人看得到我说了什么？</p>
+<p>查了一圈发现能，而且门槛比想象中低得多。于是就有了这个系列：</p>
+<ul>
+<li><strong>第一章</strong>：让电脑本地跑起一个大模型（本篇）</li>
+<li><strong>第二章</strong>：把这个模型接进 QQ，变成一个能聊天的机器人</li>
+<li><strong>第三章</strong>：让它不仅能打字，还能开口说话</li>
+</ul>
+<p>每一章都能独立跑起来，不用担心跟不上。</p>
+<hr>
+<h2 id="一、先搞懂：大语言模型到底是个什么东西"><a href="#一、先搞懂：大语言模型到底是个什么东西" class="headerlink" title="一、先搞懂：大语言模型到底是个什么东西"></a>一、先搞懂：大语言模型到底是个什么东西</h2><p>先别管什么神经网络、Transformer。你只需要知道一件事：</p>
+<blockquote>
+<p><strong>原理</strong>：大语言模型做的是一件特别朴素的工作——<strong>“给你一句话的前半段，猜下一个字该是什么”</strong>。</p>
+</blockquote>
+<p>举个例子。你对它说：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">今天天气真不错，我们一起去</span><br></pre></td></tr></table></figure>
+
+<p>它心里的计算是：在人类写过的海量文本里，”今天天气真不错，我们一起去”后面最常接的是什么？可能是”公园””逛街””吃饭”。它算出概率最高的那个，输出来。</p>
+<p>然后，它把刚输出的那个字<strong>拼回句子末尾</strong>，再猜下一个字。如此循环。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：今天天气真不错，我们一起去</span><br><span class="line">                                  ↓ 猜一个字</span><br><span class="line">输出：今</span><br><span class="line">                                  ↓ 拼回去再猜</span><br><span class="line">输出：今天天气真不错，我们一起去公园</span><br><span class="line">                                  ↓ 继续</span><br><span class="line">输出：今天天气真不错，我们一起去公园玩吧</span><br></pre></td></tr></table></figure>
+
+<p>** chatbot 之所以”能回答问题”，本质上就是这一个动作重复几百次。** 它并不是真的在”思考”，也没有一个数据库在查答案——它只是在一个字一个字地往下接，而因为它”读过”的东西足够多，接出来的话看起来就像人在回答。</p>
+<p>理解这一点很重要，因为它能解释后面你会遇到的很多现象：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>真正的原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>它会一本正经地胡说八道</td>
+<td>它不是在查事实，只是在接”概率上最像”的字</td>
+</tr>
+<tr>
+<td>同一个问题每次答案不一样</td>
+<td>每次都在概率里抽样，不是固定答案</td>
+</tr>
+<tr>
+<td>问它长篇大论要等很久</td>
+<td>一个字一个字生成，几百个字就是几百次计算</td>
+</tr>
+<tr>
+<td>聊太久它会忘事</td>
+<td>它能”看到”的上下文有长度上限</td>
+</tr>
+</tbody></table>
+<p>模型文件里存的，就是这些”概率”的参数。所以我们常说模型有多少”参数”——参数越多，它记住的规律越细，但也越占内存、跑得越慢。</p>
+<hr>
+<h2 id="二、为什么我要把它装在自己电脑上"><a href="#二、为什么我要把它装在自己电脑上" class="headerlink" title="二、为什么我要把它装在自己电脑上"></a>二、为什么我要把它装在自己电脑上</h2><p>市面上能聊天的 AI 一堆，为什么要自己装？把两种方式的账算清楚你就明白了。</p>
+<h3 id="云端-AI（比如网页版、App）"><a href="#云端-AI（比如网页版、App）" class="headerlink" title="云端 AI（比如网页版、App）"></a>云端 AI（比如网页版、App）</h3><p><strong>优点</strong>：</p>
+<ul>
+<li>模型大、能力强，动辄几千亿参数，不是个人电脑能跑的</li>
+<li>不需要你有任何硬件，有网就能用</li>
+<li>开箱即用，不用折腾</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>你说的每一句话都要发到别人的服务器上</strong>。聊天内容、你粘贴的代码、你的文档，全都会离开你的电脑</li>
+<li>通常要联网、可能要付费、可能限速</li>
+<li>服务说停就停，你没法控制</li>
+</ul>
+<h3 id="本地-AI（本系列的做法）"><a href="#本地-AI（本系列的做法）" class="headerlink" title="本地 AI（本系列的做法）"></a>本地 AI（本系列的做法）</h3><p><strong>优点</strong>：</p>
+<ul>
+<li><strong>数据完全不出本机</strong>。断网也能聊，这不是比喻，是真的可以拔网线</li>
+<li>想怎么改就怎么改：换个模型、调参数、接自己的程序，没人拦你</li>
+<li>一次部署，长期免费使用，没有调用次数限制</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>需要硬件撑着，主要是<strong>显卡显存</strong></li>
+<li>能力不如最顶级的云端模型（毕竟你电脑上跑的是”小模型”）</li>
+<li>要自己折腾，会遇到各种环境问题</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：选哪条路没有对错，只有合不合适。我的判断标准很简单——<br>如果只是想找个工具干活，用云端；如果想搞懂它到底是怎么跑起来的、或者聊天内容不想给别人看，那就本地。<br>我做 QQ 机器人选本地，理由很实在：机器人的每一条聊天内容都要过模型，全发到别人服务器上，我不太舒服。</p>
+</blockquote>
+<hr>
+<h2 id="三、Ollama-是什么：给”大脑”配一台播放器"><a href="#三、Ollama-是什么：给”大脑”配一台播放器" class="headerlink" title="三、Ollama 是什么：给”大脑”配一台播放器"></a>三、Ollama 是什么：给”大脑”配一台播放器</h2><p>现在我们知道模型是一堆参数文件。但光有一堆参数文件，电脑不会自己用它——你需要一个<strong>软件</strong>来加载它、调度显卡、接收你的输入、把生成的话吐出来。</p>
+<p>这个类比最好记：</p>
+<table>
+<thead>
+<tr>
+<th>类比</th>
+<th>现实中的东西</th>
+<th>我们这里</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容</td>
+<td>电影文件（.mp4）</td>
+<td>模型文件（一堆参数）</td>
+</tr>
+<tr>
+<td>播放它的软件</td>
+<td>播放器（PotPlayer &#x2F; VLC）</td>
+<td><strong>Ollama</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>模型</strong> &#x3D; AI 的大脑（内容本身）</li>
+<li><strong>Ollama</strong> &#x3D; 运行这个大脑的软件平台（播放器）</li>
+</ul>
+<p>Ollama 帮你把几件麻烦事全包了：</p>
+<ol>
+<li><strong>下载模型</strong>：不用去各种网站找文件、猜该下哪个版本，一条命令搞定</li>
+<li><strong>自动挑硬件</strong>：有 NVIDIA 显卡就自动用显卡，没有就退回 CPU，你不用配置</li>
+<li><strong>提供统一接口</strong>：装好后它会在本机开一个服务（默认 <code>127.0.0.1:11434</code>），你的程序只要朝这个地址发一句话，就能拿回 AI 的回答</li>
+</ol>
+<p>第三点最关键——正因为有了这个统一接口，第二章我们才能把 QQ 机器人接上去。</p>
+<p>整个流程长这样：</p>
+<div class="mermaid">graph LR
+    A[&quot;你说的话&lt;br&#x2F;&gt;（文字）&quot;] --&gt; B[&quot;Ollama 服务&lt;br&#x2F;&gt;127.0.0.1:11434&quot;]
+    B --&gt; C[&quot;把模型加载进显存&lt;br&#x2F;&gt;（第一次较慢）&quot;]
+    C --&gt; D[&quot;模型逐字生成&lt;br&#x2F;&gt;一个字一个字往外吐&quot;]
+    D --&gt; E[&quot;拼成完整回答&lt;br&#x2F;&gt;返回给你&quot;]
+    E -.-&gt;|&quot;继续追问&quot;| A</div>
+
+<hr>
+<h2 id="四、我的电脑能跑吗？先算一笔账"><a href="#四、我的电脑能跑吗？先算一笔账" class="headerlink" title="四、我的电脑能跑吗？先算一笔账"></a>四、我的电脑能跑吗？先算一笔账</h2><p>这是本地部署最硬的一道门槛，但算清楚就不神秘了。</p>
+<p><strong>我的实际环境</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统</td>
+<td>Windows 11</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel i5-14600KF</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>RTX 4060 Ti <strong>8GB</strong></td>
+</tr>
+<tr>
+<td>内存</td>
+<td>16GB</td>
+</tr>
+<tr>
+<td>用的模型</td>
+<td>Qwen3.5-4B</td>
+</tr>
+</tbody></table>
+<h3 id="为什么选-4B，而不是更大的"><a href="#为什么选-4B，而不是更大的" class="headerlink" title="为什么选 4B，而不是更大的"></a>为什么选 4B，而不是更大的</h3><p>模型名字里的”4B”指的是 <strong>40 亿（4 Billion）个参数</strong>。选它的三个理由：</p>
+<ol>
+<li><strong>参数小，塞得进显存</strong>。经过量化压缩后，这个模型实际只占 <strong>约 3.3GB</strong>，我的 8GB 显存装得下，还能留出余量给系统和其他程序</li>
+<li><strong>跑得动</strong>。小模型每次生成一个字的计算量小，我实测日常问答 1~10 秒出结果，聊天可以接受</li>
+<li><strong>中文能力不错</strong>。Qwen（通义千问）系列对中文的训练比较充分，日常对话不像有些模型那样”翻译腔”</li>
+</ol>
+<blockquote>
+<p><strong>原理</strong>：模型大小怎么换算成显存？<br>粗略记：<strong>显存占用 ≈ 参数量 × 每个参数占用的字节数</strong>。<br>模型通常会做”量化”（把高精度数字压成低精度，比如 4-bit）。Qwen3.5-4B 用的是 Q4_K_M 量化，约等于每个参数 0.5 字节多一点，4.2B × 0.8 ≈ <strong>3.3GB</strong>，和我实际看到的 3.32GB 对得上。<br>所以选模型时先看显存：8GB 显存大概能舒服地跑 7B<del>8B 以下的模型；只有 4GB 显存就看看 1B</del>3B 的小模型；没有独立显卡也能跑纯 CPU，只是会慢很多。</p>
+</blockquote>
+<p><strong>一句话判断法</strong>：显存有多大，就选多大的模型。不确定的话，从小的开始试，跑得动再往上加。</p>
+<hr>
+<h2 id="五、动手：安装与配置"><a href="#五、动手：安装与配置" class="headerlink" title="五、动手：安装与配置"></a>五、动手：安装与配置</h2><p>下面每一步我都说明”为什么这么做”，不要无脑复制。</p>
+<h3 id="5-1-安装-Ollama"><a href="#5-1-安装-Ollama" class="headerlink" title="5.1 安装 Ollama"></a>5.1 安装 Ollama</h3><p>去 Ollama 官网下载 Windows 版安装包，双击安装，一路下一步即可。</p>
+<p>装完后它会在后台跑起来。验证一下（<strong>Windows PowerShell</strong> 或 <strong>CMD</strong> 都行）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama --version</span><br></pre></td></tr></table></figure>
+
+<p>能打印出版本号就说明装好了。</p>
+<blockquote>
+<p><strong>注意</strong>：Ollama 默认安装位置在 C 盘。<strong>程序本体</strong>放 C 盘没关系（就几百 MB），真正要挪走的是<strong>模型文件</strong>（动辄几 GB），见下一节。</p>
+</blockquote>
+<h3 id="5-2-把模型挪出-C-盘（重要，别偷懒）"><a href="#5-2-把模型挪出-C-盘（重要，别偷懒）" class="headerlink" title="5.2 把模型挪出 C 盘（重要，别偷懒）"></a>5.2 把模型挪出 C 盘（重要，别偷懒）</h3><p><strong>为什么</strong>：模型文件随便一个就 3~10GB，全堆在 C 盘，用不了多久系统盘就红了，而且重装系统时还会丢。这一步建议<strong>在下载第一个模型之前</strong>就做，省得事后搬家。</p>
+<p>做法是设置一个系统环境变量 <code>OLLAMA_MODELS</code>，指向你想存放的目录。</p>
+<p><strong>Windows PowerShell</strong>（<strong>以普通用户身份运行即可，不需要管理员</strong>）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置当前用户的环境变量（永久生效，重开窗口后依然在）</span></span><br><span class="line">[<span class="type">Environment</span>]::SetEnvironmentVariable(<span class="string">&quot;OLLAMA_MODELS&quot;</span>, <span class="string">&quot;D:\AI\Ollama\Models&quot;</span>, <span class="string">&quot;User&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>或者用图形界面</strong>（不喜欢敲命令就走这条）：</p>
+<ol>
+<li>Win 键搜索”编辑系统环境变量” → 打开</li>
+<li>点”环境变量”</li>
+<li>在”用户变量”区点”新建”</li>
+<li>变量名填 <code>OLLAMA_MODELS</code>，变量值填 <code>D:\AI\Ollama\Models</code></li>
+<li>一路确定，然后<strong>重新打开一个终端窗口</strong>（已有窗口读不到新变量）</li>
+</ol>
+<p>我实际用的就是 <code>D:\AI\Ollama\Models</code>。设置完之后，下载的模型都会落在这里，C 盘干干净净。</p>
+<blockquote>
+<p><strong>注意</strong>：改完环境变量后，<strong>必须重启 Ollama 进程</strong>才会生效；如果还没装模型，那就更省事，直接开始下载即可。</p>
+</blockquote>
+<h3 id="5-3-下载模型"><a href="#5-3-下载模型" class="headerlink" title="5.3 下载模型"></a>5.3 下载模型</h3><p><strong>Windows PowerShell &#x2F; CMD</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama pull qwen3.5:4b</span><br></pre></td></tr></table></figure>
+
+<p>这条命令会从模型库下载 Qwen3.5 的 4B 版本。3GB 左右，取决于网速，可能要几分钟到十几分钟。</p>
+<p>下载时你会看到进度条。看到 <code>success</code> 就完成了。验证一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama list</span><br></pre></td></tr></table></figure>
+
+<p>应该能看到类似这样的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME           ID              SIZE      MODIFIED</span><br><span class="line">qwen3.5:4b     d8b0f5e9760c    3.3 GB    ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-第一次对话"><a href="#5-4-第一次对话" class="headerlink" title="5.4 第一次对话"></a>5.4 第一次对话</h3><p><strong>Windows PowerShell &#x2F; CMD</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run qwen3.5:4b</span><br></pre></td></tr></table></figure>
+
+<p>然后直接打字提问，比如”用一句话解释什么是机器学习”。想退出输入 <code>/bye</code>。</p>
+<p><strong>第一次运行会明显慢</strong>（可能十几秒才出第一个字），这是正常的——它要把 3GB 的模型从硬盘读进显存，还要初始化显卡计算库。第二次开始就快了，因为模型会驻留在显存里。</p>
+<h3 id="5-5-用-API-方式调用（这一步是为后面接机器人做准备）"><a href="#5-5-用-API-方式调用（这一步是为后面接机器人做准备）" class="headerlink" title="5.5 用 API 方式调用（这一步是为后面接机器人做准备）"></a>5.5 用 API 方式调用（这一步是为后面接机器人做准备）</h3><p>命令行聊天只是给你玩玩的。真正要接程序，得走 HTTP 接口。</p>
+<p><strong>Windows PowerShell</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl.exe <span class="literal">-s</span> <span class="literal">--noproxy</span> <span class="string">&quot;*&quot;</span> http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">11434</span>/api/tags</span><br></pre></td></tr></table></figure>
+
+<p>这会返回你本地所有模型的信息（JSON 格式）。能返回，说明服务在正常工作。</p>
+<blockquote>
+<p><strong>注意</strong>：上面那条命令里的 <code>--noproxy &quot;*&quot;</code> 很关键，下面”踩坑”一节我会专门讲。如果你直接敲 <code>curl</code> 卡住不动，多半就是代理在捣乱。</p>
+</blockquote>
+<p>真正让模型回答问题的调用长这样（<strong>Windows PowerShell</strong>）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$body</span> = <span class="string">&#x27;&#123;&quot;model&quot;:&quot;qwen3.5:4b&quot;,&quot;messages&quot;:[&#123;&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;你好&quot;&#125;],&quot;stream&quot;:false&#125;&#x27;</span></span><br><span class="line">curl.exe <span class="literal">-s</span> <span class="literal">--noproxy</span> <span class="string">&quot;*&quot;</span> <span class="literal">-X</span> POST http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">11434</span>/v1/chat/completions `</span><br><span class="line">  <span class="literal">-H</span> <span class="string">&quot;Content-Type: application/json&quot;</span> <span class="literal">-d</span> <span class="variable">$body</span></span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>/v1/chat/completions</code> 是 OpenAI 兼容格式——意味着后面我们的机器人程序可以用现成的库直接对接，不用自己写协议解析。<strong>第二章会用到它。</strong></p>
+<h3 id="5-6-让它开机自启"><a href="#5-6-让它开机自启" class="headerlink" title="5.6 让它开机自启"></a>5.6 让它开机自启</h3><p>每次开机手动敲命令很烦。我用的是 Windows 自带的”任务计划程序”，做成开机自动启动。</p>
+<p><strong>图形界面步骤</strong>：</p>
+<ol>
+<li>Win 键搜索”任务计划程序” → 打开</li>
+<li>右侧”创建任务”（不是”创建基本任务”）</li>
+<li><strong>常规</strong>页：名称填 <code>Ollama</code>，勾选”不管用户是否登录都要运行”可以按需要选，我用的是登录时运行</li>
+<li><strong>触发器</strong>页：新建 → 开始任务选”启动时” → 延迟 30 秒（避开开机高峰）</li>
+<li><strong>操作</strong>页：新建 → 程序填你的 <code>ollama.exe</code> 路径，参数填 <code>serve</code></li>
+<li><strong>设置</strong>页：勾选”如果任务失败，按以下频率重新启动”（我设的重试 3 次，间隔 1 分钟）</li>
+</ol>
+<p>我实际是写了一个 <code>.bat</code> 脚本交给计划任务去跑，好处是可以顺手加上”先检查端口是否已被占用””把日志写到固定文件”这些逻辑。<strong>这也是第三章会反复用到的套路。</strong></p>
+<blockquote>
+<p><strong>注意</strong>：如果你写了 <code>.bat</code> 脚本，<strong>文件必须存成 GBK 编码 + CRLF 换行</strong>。我第一次就是用了 UTF-8 + LF，结果 cmd 把中文注释当成了乱码命令，任务返回 255 直接失败，而且连日志文件都没生成，排查了半天。这是我这个系列里踩得最莫名其妙的一个坑。</p>
+</blockquote>
+<hr>
+<h2 id="六、我踩过的坑（以及排查思路）"><a href="#六、我踩过的坑（以及排查思路）" class="headerlink" title="六、我踩过的坑（以及排查思路）"></a>六、我踩过的坑（以及排查思路）</h2><p>这一节比安装步骤更值钱。遇到问题时，按这里的顺序查。</p>
+<h3 id="坑-1：模型到底下载到哪了？C-盘怎么还是变小了"><a href="#坑-1：模型到底下载到哪了？C-盘怎么还是变小了" class="headerlink" title="坑 1：模型到底下载到哪了？C 盘怎么还是变小了"></a>坑 1：模型到底下载到哪了？C 盘怎么还是变小了</h3><p><strong>排查</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 看看环境变量生效了没</span></span><br><span class="line"><span class="built_in">echo</span> %OLLAMA_MODELS%</span><br></pre></td></tr></table></figure>
+
+<p>如果输出为空，说明环境变量没设置成功（或者你没重开终端）。设置好之后<strong>重新下载</strong>模型才会落到新位置——已经下载的需要手动移动，或者直接删了重下更省事。</p>
+<h3 id="坑-2：第一次运行特别慢，是不是坏了"><a href="#坑-2：第一次运行特别慢，是不是坏了" class="headerlink" title="坑 2：第一次运行特别慢，是不是坏了"></a>坑 2：第一次运行特别慢，是不是坏了</h3><p>不是坏了。两个原因：</p>
+<ol>
+<li><strong>模型加载</strong>：3GB 数据从硬盘读进显存，机械硬盘尤其慢</li>
+<li><strong>显卡初始化</strong>：第一次用 CUDA 要编译&#x2F;加载计算库</li>
+</ol>
+<p><strong>判断方法</strong>：连着问两个问题，如果第二个明显快，说明就是首次加载开销，不用管。</p>
+<h3 id="坑-3：GPU-没用上，全靠-CPU-在硬扛"><a href="#坑-3：GPU-没用上，全靠-CPU-在硬扛" class="headerlink" title="坑 3：GPU 没用上，全靠 CPU 在硬扛"></a>坑 3：GPU 没用上，全靠 CPU 在硬扛</h3><p><strong>症状</strong>：回答一个字一个字往外蹦，慢得离谱；风扇狂转但显卡很闲。</p>
+<p><strong>排查</strong>（<strong>CMD</strong>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<p>在回答生成的过程中再执行一次，看”利用率”那一栏。如果显卡利用率始终是 0%，说明模型跑在 CPU 上。</p>
+<p>常见原因：</p>
+<ul>
+<li>没装 NVIDIA 驱动，或驱动版本太老</li>
+<li>显存不够，模型被切分到内存里跑了</li>
+<li>装的是 CPU 版 Ollama（重新从官网下最新版一般能解决）</li>
+</ul>
+<h3 id="坑-4：curl-命令卡住不动-连不上-11434"><a href="#坑-4：curl-命令卡住不动-连不上-11434" class="headerlink" title="坑 4：curl 命令卡住不动 &#x2F; 连不上 11434"></a>坑 4：curl 命令卡住不动 &#x2F; 连不上 11434</h3><p><strong>这是我本机最诡异的一个坑</strong>，值得一提：Windows 注册表里配置的代理指向了一个<strong>根本没在运行</strong>的代理程序，导致 curl 等工具在访问本机地址时也要先去连代理，然后卡死。</p>
+<p><strong>解决办法</strong>：访问本机服务时一律加上 <code>--noproxy &quot;*&quot;</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl.exe -s --noproxy <span class="string">&quot;*&quot;</span> http://127.0.0.1:11434/api/tags</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>原理</strong>：<code>127.0.0.1</code> 是”本机”地址，访问自己根本不需要经过任何代理。但很多工具会无脑读系统代理配置，于是”访问自己”这件事也被送去了代理。加上 <code>--noproxy &quot;*&quot;</code> 就是明确告诉它：这次请求不要走代理。<strong>凡是你访问本机服务（Ollama、后面的机器人框架、TTS 服务）出问题，先加这个参数试一次。</strong></p>
+</blockquote>
+<h3 id="坑-5：模型回答是空的，什么都没输出"><a href="#坑-5：模型回答是空的，什么都没输出" class="headerlink" title="坑 5：模型回答是空的，什么都没输出"></a>坑 5：模型回答是空的，什么都没输出</h3><p>这个坑我卡了挺久。模型明明跑起来了，但返回内容一直是空的。</p>
+<p><strong>原因</strong>：我用的这个模型支持”先思考再回答”。它在正式回答前会先输出一大段内部的思考过程，而<strong>思考过程和最终答案共享同一个长度上限（max_tokens）</strong>。思考写得太长，把预算吃光了，最终答案一个字都没轮到输出。</p>
+<p><strong>解决办法</strong>：调用时显式关掉思考。以 Ollama 原生接口为例，<code>&quot;think&quot;: false</code>；同时把输出长度上限给够（我给的 2048）。关掉之后延迟从十几秒降到一两秒，短对话的质量反而更稳定。</p>
+<blockquote>
+<p><strong>原理</strong>：这告诉你一件事——<strong>模型”卡住”和”输出为空”往往不是模型坏了，而是输出预算被别的东西吃掉了</strong>。遇到空输出，先想想这段输出里是不是混进了你不想要的东西（思考过程、格式标记、超长前缀）。</p>
+</blockquote>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>到这里，你的电脑上已经有了一个完全本地、不联网也能聊天的大模型。回顾一下做了什么：</p>
+<ol>
+<li>装了 Ollama（模型播放器）</li>
+<li>用 <code>OLLAMA_MODELS</code> 把模型挪出了 C 盘</li>
+<li>下载了 Qwen3.5-4B，并确认它跑在显卡上</li>
+<li>用 HTTP 接口调用成功——这一步打通了程序和 AI 之间的路</li>
+</ol>
+<p><strong>这套做法适合什么人</strong>：</p>
+<ul>
+<li>想搞懂大模型到底怎么跑起来的人（本地部署能让你看见每一个环节）</li>
+<li>在意聊天隐私、不想把内容发给别人服务器的人</li>
+<li>想拿 AI 做自己的小项目（机器人、助手、工具）的人</li>
+<li>有一张还过得去的显卡（6GB 显存以上体验会好很多）</li>
+</ul>
+<p><strong>不太适合的</strong>：只是想找个工具提效、完全不想折腾环境的——直接用云端服务更划算。</p>
+<h3 id="排查问题的通用思路（比记命令更重要）"><a href="#排查问题的通用思路（比记命令更重要）" class="headerlink" title="排查问题的通用思路（比记命令更重要）"></a>排查问题的通用思路（比记命令更重要）</h3><p>我这一路遇到的问题，排查顺序基本都是这个套路：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">现象是什么？</span><br><span class="line">    ↓</span><br><span class="line">先确认&quot;服务在不在&quot;（curl 一下接口，记得加 --noproxy &quot;*&quot;）</span><br><span class="line">    ↓</span><br><span class="line">在，那就是请求的问题 → 看返回内容/日志</span><br><span class="line">    ↓</span><br><span class="line">不在，那就是进程的问题 → 看进程起没起、端口占没占</span><br><span class="line">    ↓</span><br><span class="line">起了还是不对 → 看资源（显存够不够、GPU 用没用上）</span><br></pre></td></tr></table></figure>
+
+<p><strong>“两个程序之间的事，先确认它俩连上了没有”</strong>——这个思路在第二章会变得更加重要。</p>
+<hr>
+<h2 id="下一章预告"><a href="#下一章预告" class="headerlink" title="下一章预告"></a>下一章预告</h2><p>现在模型只能在你自己的黑框框里聊天，别人看不见，QQ 里也没它什么事。</p>
+<p><strong>第二章：使用 NapCat 和 OneBot 给 AI 接入 QQ 聊天能力</strong>，我会讲清楚：</p>
+<ul>
+<li>为什么 AI 模型<strong>不能直接登录 QQ</strong>（这个原因比你想的更基础）</li>
+<li>NapCat 是个什么东西，为什么它能”代替”你去登录</li>
+<li>OneBot 协议为什么被称为”翻译语言”，有了它省了什么事</li>
+<li>反向 WebSocket 到底是谁连谁（这里最容易被绕晕）</li>
+<li>以及那个几乎所有人都会遇到的报错 <code>ECONNREFUSED 127.0.0.1:8080</code>——它到底在说什么</li>
+</ul>
+<p>到第二章结束，你的 QQ 里就会多一个能正常对话的 AI 好友。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" class="">
+              技术
+            </a>
+          
+            <a href="/tags/AI/" class="">
+              AI
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Alioth</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2026/10/11/qqbot-01-ollama/" target="_blank" title="第一章：使用 Ollama 在普通电脑上运行自己的本地AI大模型">http://example.com/2026/10/11/qqbot-01-ollama/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2026/10/11/qqbot-02-napcat-onebot/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">第二章：使用 NapCat 和 OneBot 给AI接入QQ聊天能力</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+上一章我们让电脑本地跑起了一个大模型，但它只能在你自己的黑框框里陪你聊天。这一章要做的事是：让它住进 QQ，变成你列表
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2026/09/27/12-full-picture/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">12 MoE + MLA + RL：DeepSeek 全景图与总结</div>
+      </div>
+      <!-- <div class="content">
+        最后一篇。把 12 篇的内容装回一张地图，并检验你是否真的能把整个故事讲出来。
+
+全景图
+flowchart TD
+  
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://pic2.zhimg.com/80/v2-42b72d5ebee4b8d8aa70d9687effe87b_1440w.webp'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>Alioth玉衡</h2>
+        
+        
+          <p>谦谦君子温润如玉，朗朗慧心通明若衡。</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">Alioth玉衡</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:1478497708@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/Alioth-heng/Alioth-heng.github.io"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1478497708"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8A%98%E8%85%BE%E8%BF%99%E4%B8%AA"><span class="toc-text">写在前面：我为什么要折腾这个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%90%9E%E6%87%82%EF%BC%9A%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%98%AF%E4%B8%AA%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF"><span class="toc-text">一、先搞懂：大语言模型到底是个什么东西</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%A6%81%E6%8A%8A%E5%AE%83%E8%A3%85%E5%9C%A8%E8%87%AA%E5%B7%B1%E7%94%B5%E8%84%91%E4%B8%8A"><span class="toc-text">二、为什么我要把它装在自己电脑上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%91%E7%AB%AF-AI%EF%BC%88%E6%AF%94%E5%A6%82%E7%BD%91%E9%A1%B5%E7%89%88%E3%80%81App%EF%BC%89"><span class="toc-text">云端 AI（比如网页版、App）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0-AI%EF%BC%88%E6%9C%AC%E7%B3%BB%E5%88%97%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%89"><span class="toc-text">本地 AI（本系列的做法）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Ollama-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9A%E7%BB%99%E2%80%9D%E5%A4%A7%E8%84%91%E2%80%9D%E9%85%8D%E4%B8%80%E5%8F%B0%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-text">三、Ollama 是什么：给”大脑”配一台播放器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E8%83%BD%E8%B7%91%E5%90%97%EF%BC%9F%E5%85%88%E7%AE%97%E4%B8%80%E7%AC%94%E8%B4%A6"><span class="toc-text">四、我的电脑能跑吗？先算一笔账</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89-4B%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E6%9B%B4%E5%A4%A7%E7%9A%84"><span class="toc-text">为什么选 4B，而不是更大的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8A%A8%E6%89%8B%EF%BC%9A%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">五、动手：安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%AE%89%E8%A3%85-Ollama"><span class="toc-text">5.1 安装 Ollama</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%8C%AA%E5%87%BA-C-%E7%9B%98%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%8C%E5%88%AB%E5%81%B7%E6%87%92%EF%BC%89"><span class="toc-text">5.2 把模型挪出 C 盘（重要，别偷懒）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="toc-text">5.3 下载模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AF%B9%E8%AF%9D"><span class="toc-text">5.4 第一次对话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E7%94%A8-API-%E6%96%B9%E5%BC%8F%E8%B0%83%E7%94%A8%EF%BC%88%E8%BF%99%E4%B8%80%E6%AD%A5%E6%98%AF%E4%B8%BA%E5%90%8E%E9%9D%A2%E6%8E%A5%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%81%9A%E5%87%86%E5%A4%87%EF%BC%89"><span class="toc-text">5.5 用 API 方式调用（这一步是为后面接机器人做准备）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E8%AE%A9%E5%AE%83%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-text">5.6 让它开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%EF%BC%88%E4%BB%A5%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%80%9D%E8%B7%AF%EF%BC%89"><span class="toc-text">六、我踩过的坑（以及排查思路）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-1%EF%BC%9A%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E4%B8%8B%E8%BD%BD%E5%88%B0%E5%93%AA%E4%BA%86%EF%BC%9FC-%E7%9B%98%E6%80%8E%E4%B9%88%E8%BF%98%E6%98%AF%E5%8F%98%E5%B0%8F%E4%BA%86"><span class="toc-text">坑 1：模型到底下载到哪了？C 盘怎么还是变小了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-2%EF%BC%9A%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C%E7%89%B9%E5%88%AB%E6%85%A2%EF%BC%8C%E6%98%AF%E4%B8%8D%E6%98%AF%E5%9D%8F%E4%BA%86"><span class="toc-text">坑 2：第一次运行特别慢，是不是坏了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-3%EF%BC%9AGPU-%E6%B2%A1%E7%94%A8%E4%B8%8A%EF%BC%8C%E5%85%A8%E9%9D%A0-CPU-%E5%9C%A8%E7%A1%AC%E6%89%9B"><span class="toc-text">坑 3：GPU 没用上，全靠 CPU 在硬扛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-4%EF%BC%9Acurl-%E5%91%BD%E4%BB%A4%E5%8D%A1%E4%BD%8F%E4%B8%8D%E5%8A%A8-%E8%BF%9E%E4%B8%8D%E4%B8%8A-11434"><span class="toc-text">坑 4：curl 命令卡住不动 &#x2F; 连不上 11434</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-5%EF%BC%9A%E6%A8%A1%E5%9E%8B%E5%9B%9E%E7%AD%94%E6%98%AF%E7%A9%BA%E7%9A%84%EF%BC%8C%E4%BB%80%E4%B9%88%E9%83%BD%E6%B2%A1%E8%BE%93%E5%87%BA"><span class="toc-text">坑 5：模型回答是空的，什么都没输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">七、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E6%9F%A5%E9%97%AE%E9%A2%98%E7%9A%84%E9%80%9A%E7%94%A8%E6%80%9D%E8%B7%AF%EF%BC%88%E6%AF%94%E8%AE%B0%E5%91%BD%E4%BB%A4%E6%9B%B4%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-text">排查问题的通用思路（比记命令更重要）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E7%AB%A0%E9%A2%84%E5%91%8A"><span class="toc-text">下一章预告</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-03-tts/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-03-tts/">第三章：让AI开口说话——本地TTS语音合成部署</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-02-napcat-onebot/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-02-napcat-onebot/">第二章：使用 NapCat 和 OneBot 给AI接入QQ聊天能力</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-01-ollama/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-11</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/11/qqbot-01-ollama/">第一章：使用 Ollama 在普通电脑上运行自己的本地AI大模型</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/12-full-picture/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/12-full-picture/">12 MoE + MLA + RL：DeepSeek 全景图与总结</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/09/27/11-r1-zero-vs-r1/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2026/09/27/11-r1-zero-vs-r1/">11 R1-Zero vs R1：到底发生了什么？</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js
+  class=""
+  server="netease"
+  type="song"
+  id="1141882"
+  api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script async src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script async src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

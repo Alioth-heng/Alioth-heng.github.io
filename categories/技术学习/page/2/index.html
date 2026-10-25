@@ -531,6 +531,62 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             <span class="post-time">2026-09-27</span>
           </div>
           <div class="post-title">
+            <a class="post-title-link" href="/2026/09/27/06-kv-cache/">06 KV Cache：为什么推理越来越吃显存？</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KV-Cache/" rel="tag">KV Cache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/" rel="tag">推理优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%98%BE%E5%AD%98/" rel="tag">显存</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a> <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/DeepSeek-%E6%9E%B6%E6%9E%84/">DeepSeek 架构</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2026/09/27/06-kv-cache/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            <h2 id="写文章的困境"><a href="#写文章的困境" class="headerlink" title="写文章的困境"></a>写文章的困境</h2><p>想象你在续写一篇长文。写到第 1000 个字时，你需要不断回看前面写过的内容：主题是什么、用了哪些论据、埋了什么伏笔。</p>
+<p>模型也一样：<strong>每生成一个 token，都要参考之前所有 token。</strong> 而”参考”在 Attention 里意味着——每个新 token 的 Q 要去和<strong>之前所有 token 的 K 做打分、取它们的 V 做加权</strong>。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">生成第 1 个 token：参考 [今天]</span><br><span class="line">生成第 2 个 token：参考 [今天][天气]</span><br><span class="line">生成第 3 个 token：参考 [今天][天气][很]</span><br><span class="line">生成第 4 个 token：参考 [今天][天气][很][好]</span><br><span class="line">...</span><br><span class="line">生成第 10000 个 token：参考前面全部 9999 个 token</span><br></pre></td></tr></table></figure>
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2026/09/27/06-kv-cache/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2026/09/27/06-kv-cache/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2026-09-27</span>
+          </div>
+          <div class="post-title">
             <a class="post-title-link" href="/2026/09/27/05-attention/">05 Attention 到底在干什么？</a>
           </div>
           <div class="post-meta">
@@ -564,7 +620,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         </div>
         <div class="post-more">
           <a href="/2026/09/27/05-attention/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
@@ -577,7 +633,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </article>
   
     
-    <article class="post reveal" style="   ">
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
       <div class="post-main">
         <div class="post-info">
           <div class="post-time">
@@ -618,7 +674,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         </div>
         <div class="post-more">
           <a href="/2026/09/27/04-moe-engineering/">
-            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
@@ -631,7 +687,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </article>
   
     
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
+    <article class="post reveal" style="   ">
       <div class="post-main">
         <div class="post-info">
           <div class="post-time">
@@ -672,7 +728,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
         </div>
         <div class="post-more">
           <a href="/2026/09/27/03-moe-router/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
@@ -685,7 +741,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </article>
   
     
-    <article class="post reveal" style="   ">
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
       <div class="post-main">
         <div class="post-info">
           <div class="post-time">
@@ -740,7 +796,7 @@ flowchart TD
         </div>
         <div class="post-more">
           <a href="/2026/09/27/02-moe-experts/">
-            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
@@ -753,7 +809,7 @@ flowchart TD
     </article>
   
     
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
+    <article class="post reveal" style="   ">
       <div class="post-main">
         <div class="post-info">
           <div class="post-time">
@@ -796,7 +852,7 @@ flowchart TD
         </div>
         <div class="post-more">
           <a href="/2026/09/27/01-why-new-architecture/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
           </a>
         </div>
       </div>
@@ -809,7 +865,7 @@ flowchart TD
     </article>
   
     
-    <article class="post reveal" style="   ">
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
       <div class="post-main">
         <div class="post-info">
           <div class="post-time">
@@ -852,7 +908,7 @@ flowchart TD
         </div>
         <div class="post-more">
           <a href="/2026/09/27/00-roadmap/">
-            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>

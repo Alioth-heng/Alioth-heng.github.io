@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1040" viewBox="0 0 800 1040" role="img" aria-labelledby="title desc">
+<title id="title">记事本自动化的错误检测流程</title><desc id="desc">依次检测窗口、编辑区、保存文件与正文。任何一步失败都报告原因并停止后续操作。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="800" height="1040" fill="#f8fafc"/>
+<style>text{font-family:'Microsoft YaHei',sans-serif;fill:#172033;font-size:18px} .head{font-size:26px;font-weight:bold}.sub{font-size:16px;fill:#475569}.box{fill:#e0f2fe;stroke:#0369a1;stroke-width:2}.check{fill:#fef3c7;stroke:#a16207;stroke-width:2}.bad{fill:#fee2e2;stroke:#b91c1c;stroke-width:2}.line{fill:none;stroke:#475569;stroke-width:2;marker-end:url(#arrow)}</style>
+<text x="40" y="48" class="head">每完成一个动作，就检查它的结果</text>
+<text x="40" y="80" class="sub">蓝色：执行动作　黄色：检查条件　红色：报告失败并停止</text>
+<g text-anchor="middle">
+<rect x="100" y="110" width="320" height="56" rx="10" class="box"/><text x="260" y="145">启动记事本</text>
+<path d="M260 166V192" class="line"/>
+<rect x="100" y="198" width="320" height="68" rx="10" class="check"/><text x="260" y="226">规定时间内</text><text x="260" y="251">找到了唯一的目标窗口吗？</text>
+<path d="M260 266V306" class="line"/><text x="281" y="292" class="sub">是</text>
+<rect x="100" y="312" width="320" height="56" rx="10" class="box"/><text x="260" y="347">查询编辑区控件</text>
+<path d="M260 368V394" class="line"/>
+<rect x="100" y="400" width="320" height="68" rx="10" class="check"/><text x="260" y="428">找到了唯一且可用的编辑区</text><text x="260" y="453">并确认它是空白的吗？</text>
+<path d="M260 468V508" class="line"/><text x="281" y="494" class="sub">是</text>
+<rect x="100" y="514" width="320" height="56" rx="10" class="box"/><text x="260" y="549">输入笔记，执行另存为</text>
+<path d="M260 570V596" class="line"/>
+<rect x="100" y="602" width="320" height="68" rx="10" class="check"/><text x="260" y="630">规定时间内</text><text x="260" y="655">目标文件出现了吗？</text>
+<path d="M260 670V710" class="line"/><text x="281" y="696" class="sub">是</text>
+<rect x="100" y="716" width="320" height="68" rx="10" class="check"/><text x="260" y="744">读取磁盘文件</text><text x="260" y="769">正文与预期一致吗？</text>
+<path d="M260 784V828" class="line"/><text x="281" y="810" class="sub">是</text>
+<rect x="100" y="834" width="320" height="60" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="260" y="871">成功：输出文件路径</text>
+<rect x="510" y="198" width="250" height="68" rx="10" class="bad"/><text x="635" y="226">窗口未找到或不唯一</text><text x="635" y="251">报告原因 → 停止</text>
+<rect x="510" y="400" width="250" height="68" rx="10" class="bad"/><text x="635" y="428">编辑区检查未通过</text><text x="635" y="453">报告原因 → 停止</text>
+<rect x="510" y="602" width="250" height="68" rx="10" class="bad"/><text x="635" y="630">保存结果等待超时</text><text x="635" y="655">报告原因 → 停止</text>
+<rect x="510" y="716" width="250" height="68" rx="10" class="bad"/><text x="635" y="744">正文核对未通过</text><text x="635" y="769">报告原因 → 停止</text>
+</g>
+<path d="M420 232H504" class="line"/><text x="453" y="220" class="sub">否</text>
+<path d="M420 434H504" class="line"/><text x="453" y="422" class="sub">否</text>
+<path d="M420 636H504" class="line"/><text x="453" y="624" class="sub">否</text>
+<path d="M420 750H504" class="line"/><text x="453" y="738" class="sub">否</text>
+<text x="40" y="950">安全停止：不再输入、不再保存，不自动关闭现场窗口。</text>
+<text x="40" y="986" class="sub">本图是学习目标；现有脚本尚未覆盖所有检查，如输入后的即时正文核对。</text>
+</svg>

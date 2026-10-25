@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="625" viewBox="0 0 960 625" role="img"><title>03 / 从启动到保存的完整闭环</title>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="960" height="625" rx="16" fill="#f8fafc"/>
+<style>text{font-family:Microsoft YaHei,sans-serif;fill:#172033;font-size:22px}.title{font-size:30px;font-weight:bold}.small{font-size:18px;fill:#475569}</style>
+<text x="40" y="52" class="title">03 / 从启动到保存的完整闭环</text><text x="40" y="88" class="small">动作完成后检查结果，不把“发出命令”当成“目标完成”。</text>
+<rect x="40" y="120" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="154">1. 启动 → 确认唯一的新窗口</text><text x="64" y="185" class="small">记录启动前窗口句柄；无法确认新目标时停止。</text>
+<path d="M480 210V232" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="240" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="274">2. 找编辑区 → 检查空白 → 输入笔记</text><text x="64" y="305" class="small">本机优先找 Document；输入需要焦点，期间不切换窗口。</text>
+<path d="M480 330V352" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="360" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="394">3. 另存为 → 核对路径 → 调用保存按钮</text><text x="64" y="425" class="small">检查保存对话框归属，使用唯一文件名。</text>
+<path d="M480 450V472" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="480" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="514">4. 读取磁盘 → 比较正文 → 报告结果</text><text x="64" y="545" class="small">文件存在且正文一致，才算本次任务验收通过。</text>
+</svg>

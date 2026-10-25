@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="660" viewBox="0 0 800 660" role="img" aria-labelledby="title desc">
+<title id="title">模拟一次编辑区未找到</title><desc id="desc">故意使用错误的编辑区类型，让查找返回空，等待超时后输出原因并停止，验证失败分支。</desc>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="800" height="660" fill="#f8fafc"/>
+<style>text{font-family:'Microsoft YaHei',sans-serif;font-size:18px;fill:#172033}.h{font-size:26px;font-weight:bold}.s{font-size:16px;fill:#475569}.b{fill:#e0f2fe;stroke:#0369a1;stroke-width:2}.r{fill:#fee2e2;stroke:#b91c1c;stroke-width:2}.l{stroke:#475569;stroke-width:2;marker-end:url(#a)}</style>
+<text x="40" y="48" class="h">故意制造一个小错误，检验程序能否正确失败</text>
+<g text-anchor="middle">
+<rect x="110" y="90" width="580" height="64" rx="10" class="b"/><text x="400" y="128">复制练习脚本，仅在副本中修改编辑区查询条件</text>
+<path d="M400 154V184" class="l"/>
+<rect x="110" y="190" width="580" height="72" rx="10" class="b"/><text x="400" y="220">把 Document 和 Edit 都替换为不存在的匹配条件</text><text x="400" y="246" class="s">原来的两个条件都要替换，否则可能被备用条件找到</text>
+<path d="M400 262V292" class="l"/>
+<rect x="110" y="298" width="580" height="64" rx="10" fill="#fef3c7" stroke="#a16207" stroke-width="2"/><text x="400" y="336">窗口找到，但编辑区查询始终没有结果</text>
+<path d="M400 362V392" class="l"/>
+<rect x="110" y="398" width="580" height="80" rx="10" class="r"/><text x="400" y="430">达到超时时间：输出“文本编辑区等待超时”</text><text x="400" y="458">停止执行，返回非零退出码</text>
+<path d="M400 478V508" class="l"/>
+<rect x="110" y="514" width="580" height="72" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="400" y="545">验收：没有输入笔记，没有执行保存</text><text x="400" y="572">记事本窗口保留，错误原因可以定位</text>
+</g>
+<text x="40" y="630" class="s">这是建议的模拟练习流程，本次未修改你的脚本，也未实际运行失败模拟。</text>
+</svg>

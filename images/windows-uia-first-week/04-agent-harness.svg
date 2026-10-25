@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="625" viewBox="0 0 960 625" role="img"><title>04 / Agent、Harness、工具怎样分工？</title>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="960" height="625" rx="16" fill="#f8fafc"/>
+<style>text{font-family:Microsoft YaHei,sans-serif;fill:#172033;font-size:22px}.title{font-size:30px;font-weight:bold}.small{font-size:18px;fill:#475569}</style>
+<text x="40" y="52" class="title">04 / Agent、Harness、工具怎样分工？</text><text x="40" y="88" class="small">以下是为了理解本练习所采用的职责划分，具体系统边界可能不同。</text>
+<rect x="40" y="120" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="154">用户目标：保存今天的学习笔记</text><text x="64" y="185" class="small">指定结果，不必把所有按键步骤逐条交给模型。</text>
+<path d="M480 210V232" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="240" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="274">Agent：观察结果，选择下一步</text><text x="64" y="305" class="small">例如：窗口没出现，决定重新查询还是停止并报告。</text>
+<path d="M480 330V352" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="360" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="394">Harness：组织运行与工具调用</text><text x="64" y="425" class="small">提供状态、日志、超时、权限边界和总步数限制。</text>
+<path d="M480 450V472" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="480" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="514">工具 → 环境 → 结果返回 Agent</text><text x="64" y="545" class="small">Python/UIA 执行动作；Windows 返回状态；循环直到验收或停止。</text>
+</svg>

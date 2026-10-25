@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="625" viewBox="0 0 960 625" role="img"><title>01 / Python 怎样操作 Windows 界面？</title>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="960" height="625" rx="16" fill="#f8fafc"/>
+<style>text{font-family:Microsoft YaHei,sans-serif;fill:#172033;font-size:22px}.title{font-size:30px;font-weight:bold}.small{font-size:18px;fill:#475569}</style>
+<text x="40" y="52" class="title">01 / Python 怎样操作 Windows 界面？</text><text x="40" y="88" class="small">从程序到应用控件，中间有一座统一的访问桥梁。</text>
+<rect x="40" y="120" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="154">Python 脚本：描述想做的事</text><text x="64" y="185" class="small">例如：查找窗口、读取编辑区、调用保存按钮。</text>
+<path d="M480 210V232" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="240" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="274">pywinauto：Python 工具库</text><text x="64" y="305" class="small">backend=&quot;uia&quot; 选择 Windows UI Automation 后端。</text>
+<path d="M480 330V352" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="360" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="394">UI Automation：属性、结构、操作能力</text><text x="64" y="425" class="small">Provider 暴露界面信息；Client 查询信息并请求操作。</text>
+<path d="M480 450V472" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="40" y="480" width="880" height="88" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/><text x="64" y="514">应用控件：窗口、编辑区、菜单、按钮</text><text x="64" y="545" class="small">能否访问取决于应用暴露的信息；并非所有界面都支持完整 UIA。</text>
+</svg>

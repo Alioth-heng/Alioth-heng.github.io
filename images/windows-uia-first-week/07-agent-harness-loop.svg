@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1080" viewBox="0 0 1000 1080" role="img"><title>07 / 决定、执行、反馈：不是一句“帮我保存”就结束</title>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="1000" height="1080" rx="16" fill="#f8fafc"/>
+<style>text{font-family:Microsoft YaHei,sans-serif;font-size:21px;fill:#172033}.title{font-size:29px;font-weight:bold}.small{font-size:18px;fill:#475569}.line{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#a)}</style>
+<text x="40" y="48" class="title">07 / 决定、执行、反馈：不是一句“帮我保存”就结束</text><text x="40" y="82" class="small">教学假设：第一次保存后没有文件，重新观察发现路径提示。</text>
+<rect x="40" y="110" width="280" height="52" rx="8" fill="#dbeafe"/><text x="180" y="143" text-anchor="middle">Agent：选择下一步</text>
+<rect x="360" y="110" width="280" height="52" rx="8" fill="#ede9fe"/><text x="500" y="143" text-anchor="middle">Harness：校验与调度</text>
+<rect x="680" y="110" width="280" height="52" rx="8" fill="#dcfce7"/><text x="820" y="143" text-anchor="middle">工具与环境：真实执行</text>
+<rect x="40" y="200" width="280" height="70" rx="8" fill="#dbeafe"/><text x="180" y="241" text-anchor="middle" class="small">观察窗口与编辑区</text>
+<rect x="360" y="200" width="280" height="70" rx="8" fill="#ede9fe"/><text x="500" y="241" text-anchor="middle" class="small">检查工具请求并调用</text>
+<rect x="680" y="200" width="280" height="70" rx="8" fill="#dcfce7"/><text x="820" y="241" text-anchor="middle" class="small">返回窗口和空白编辑区</text>
+<path d="M320 235H354M640 235H674" class="line"/>
+<path d="M820 270V306H180V354" class="line"/><text x="500" y="298" text-anchor="middle" class="small">结果返回，进入下一轮</text>
+<rect x="40" y="360" width="280" height="70" rx="8" fill="#dbeafe"/><text x="180" y="401" text-anchor="middle" class="small">输入笔记，尝试保存</text>
+<rect x="360" y="360" width="280" height="70" rx="8" fill="#ede9fe"/><text x="500" y="401" text-anchor="middle" class="small">检查路径及操作范围</text>
+<rect x="680" y="360" width="280" height="70" rx="8" fill="#dcfce7"/><text x="820" y="401" text-anchor="middle" class="small">输入成功，但文件未出现</text>
+<path d="M320 395H354M640 395H674" class="line"/>
+<path d="M820 430V466H180V514" class="line"/><text x="500" y="458" text-anchor="middle" class="small">结果返回，进入下一轮</text>
+<rect x="40" y="520" width="280" height="70" rx="8" fill="#dbeafe"/><text x="180" y="561" text-anchor="middle" class="small">重新观察保存对话框</text>
+<rect x="360" y="520" width="280" height="70" rx="8" fill="#ede9fe"/><text x="500" y="561" text-anchor="middle" class="small">执行查询，返回证据</text>
+<rect x="680" y="520" width="280" height="70" rx="8" fill="#dcfce7"/><text x="820" y="561" text-anchor="middle" class="small">发现路径不存在提示</text>
+<path d="M320 555H354M640 555H674" class="line"/>
+<path d="M820 590V626H180V674" class="line"/><text x="500" y="618" text-anchor="middle" class="small">结果返回，进入下一轮</text>
+<rect x="40" y="680" width="280" height="70" rx="8" fill="#dbeafe"/><text x="180" y="721" text-anchor="middle" class="small">在授权范围内修复重试</text>
+<rect x="360" y="680" width="280" height="70" rx="8" fill="#ede9fe"/><text x="500" y="721" text-anchor="middle" class="small">检查权限与重试预算</text>
+<rect x="680" y="680" width="280" height="70" rx="8" fill="#dcfce7"/><text x="820" y="721" text-anchor="middle" class="small">保存文件并读取正文</text>
+<path d="M320 715H354M640 715H674" class="line"/>
+<path d="M820 750V786H180V834" class="line"/><text x="500" y="778" text-anchor="middle" class="small">结果返回，进入下一轮</text>
+<rect x="40" y="840" width="280" height="70" rx="8" fill="#dbeafe"/><text x="180" y="881" text-anchor="middle" class="small">根据核对证据报告完成</text>
+<rect x="360" y="840" width="280" height="70" rx="8" fill="#ede9fe"/><text x="500" y="881" text-anchor="middle" class="small">接受验收，记录结果</text>
+<rect x="680" y="840" width="280" height="70" rx="8" fill="#dcfce7"/><text x="820" y="881" text-anchor="middle" class="small">文件路径和正文一致</text>
+<path d="M320 875H354M640 875H674" class="line"/>
+<text x="40" y="1040" class="small">模型请求不是实际动作；工具动作不是完成证明；验收不通过就不能宣布成功。</text></svg>

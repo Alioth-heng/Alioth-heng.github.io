@@ -653,43 +653,203 @@ mjx-break[prebreak]{letter-spacing:-.999em}
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="literal">None</span>  <span class="comment"># 仅用于模拟“编辑区始终没有出现”，实验后删除。</span></span><br></pre></td></tr></table></figure>
 
 <p>预期：记事本启动，查编辑区超时，输出明确原因，不继续输入和保存。任务失败了，但如果错误清楚且停止正确，<strong>错误检测实验就通过了</strong>。这是一项建议实验，本文不将它描述为已经执行的实测。</p>
-<h2 id="五、Agent-和-Harness：谁判断，谁支撑运行？"><a href="#五、Agent-和-Harness：谁判断，谁支撑运行？" class="headerlink" title="五、Agent 和 Harness：谁判断，谁支撑运行？"></a>五、Agent 和 Harness：谁判断，谁支撑运行？</h2><p><img src="/images/windows-uia-first-week/04-agent-harness.svg" class="lazyload placeholder" data-srcset="/images/windows-uia-first-week/04-agent-harness.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Agent、Harness、工具与环境的职责"></p>
+<h2 id="五、深入理解-Agent-和-Harness：一个会做判断的同学，为什么还需要实验室？"><a href="#五、深入理解-Agent-和-Harness：一个会做判断的同学，为什么还需要实验室？" class="headerlink" title="五、深入理解 Agent 和 Harness：一个会做判断的同学，为什么还需要实验室？"></a>五、深入理解 Agent 和 Harness：一个会做判断的同学，为什么还需要实验室？</h2><p>我们已经能让 Python 操作记事本。现在把问题往前推一步：用户只说“把今天的学习笔记保存好”，谁把目标拆成行动？遇到弹窗谁来判断？谁真的按下保存，又是谁确认没有保存错？</p>
+<p>先约定用词：<strong>本文讨论的是以语言模型参与决策的 Agent。</strong> 更广泛的计算机科学中，Agent 不一定依赖大模型。不同产品也会把“Agent”用于整个系统，而不只是决策部分。</p>
+<p><img src="/images/windows-uia-first-week/04-agent-harness.svg" class="lazyload placeholder" data-srcset="/images/windows-uia-first-week/04-agent-harness.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Agent、Harness、工具与环境的职责概览"></p>
+<h3 id="1-先去一次大学实验室：理解四个角色"><a href="#1-先去一次大学实验室：理解四个角色" class="headerlink" title="1. 先去一次大学实验室：理解四个角色"></a>1. 先去一次大学实验室：理解四个角色</h3><p>老师布置实验：“测出这根金属丝的电阻，并提交可信的实验记录。”老师给的是目标，没有告诉你每次该转哪个旋钮。</p>
+<p><strong>Agent 像做实验的同学。</strong> 他读任务、看仪器读数，判断该换量程、重新测量，还是整理结果。关键不是“会说实验怎么做”，而是能根据反馈继续选择行动。</p>
+<p><strong>Harness 像实验室围绕这位同学提供的一整套运行安排。</strong> 它不只是一张桌子：还有仪器使用接口、实验记录、可用设备清单、操作限制、超时规则，以及把新读数交回来的机制。它让判断能持续接上实际行动。</p>
+<p><strong>工具像具体仪器。</strong> 万用表负责测量，电源负责供电；对应我们的 <code>list_windows()</code>、<code>inspect_controls()</code>、<code>save_as()</code>。工具执行明确动作，不需要承担整个任务规划。</p>
+<p><strong>环境像被测电路。</strong> 它是会被操作、会发生变化的外部对象。在本项目中，就是 Windows、记事本和磁盘文件。</p>
 <table>
 <thead>
 <tr>
-<th>角色</th>
-<th>职责</th>
-<th>例子</th>
+<th>实验室比喻</th>
+<th>本项目对应</th>
+<th>主要回答</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Agent</td>
-<td>根据目标与观察选择下一步</td>
-<td>决定重新查询、保存或报告失败</td>
+<td>老师的实验要求</td>
+<td>用户目标与验收标准</td>
+<td>最后要得到什么？</td>
 </tr>
 <tr>
+<td>做实验的同学</td>
+<td>Agent 的决策部分</td>
+<td>根据目前情况，下一步做什么？</td>
+</tr>
+<tr>
+<td>实验室运行安排</td>
 <td>Harness</td>
-<td>提供工具和运行管理</td>
-<td>状态、超时、日志、权限、步数上限</td>
+<td>怎样把决定执行、记录并接回结果？</td>
 </tr>
 <tr>
-<td>工具</td>
-<td>执行明确动作并返回结果</td>
-<td>列窗口、查控件、输入、读文件</td>
+<td>万用表等仪器</td>
+<td>Python&#x2F;UIA 工具</td>
+<td>这一个具体操作怎样完成？</td>
 </tr>
 <tr>
-<td>环境</td>
-<td>被观察和改变的外部世界</td>
-<td>Windows、记事本、磁盘</td>
+<td>被测电路</td>
+<td>Windows 和记事本</td>
+<td>外部实际发生了什么？</td>
 </tr>
 </tbody></table>
-<p>把 Agent 想成做实验的同学，Harness 想成实验台、仪器接口和记录系统。真实系统边界并不完全统一：验证器可以由 Harness 执行，重试策略也可以由运行代码控制。这里是为了本练习给出的职责设计。</p>
-<p>我们的脚本按预设路线执行，即使有循环和分支，也不因此自动成为模型 Agent。后者常见的循环是：<strong>观察 → 判断 → 调用工具 → 接收结果 → 再判断</strong>。它也可以遵循固定路线；引入模型不保证可靠性提升。</p>
-<p>例如工具返回结构化错误：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;ok&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;EDITOR_NOT_FOUND&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;未找到唯一且可用的编辑区&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这个比喻有边界：Harness 不是另一个“无所不知的老师”，也不必是第二个模型。它主要是软件机制；是否提供强制限制，取决于实际实现，不能因为叫 Harness 就假定已经安全可靠。</p>
+<h3 id="2-为什么“有个聪明模型”还不够？再想想司机和汽车"><a href="#2-为什么“有个聪明模型”还不够？再想想司机和汽车" class="headerlink" title="2. 为什么“有个聪明模型”还不够？再想想司机和汽车"></a>2. 为什么“有个聪明模型”还不够？再想想司机和汽车</h3><p>让一个很懂交通规则的人坐在空地上，说“开到图书馆”，他也到不了。<strong>会判断路线，不等于拥有发动机、方向盘和路面反馈。</strong></p>
+<p>在这个比喻里：模型提供判断能力，工具接口像方向盘和踏板，外部环境是道路，Harness 则像把驾驶输入、传感信息、仪表记录和执行机制接起来的软件控制系统。用户给出目的地，Agent 的决策部分持续选择路线和行动。</p>
+<p>同样，模型输出“我已经点击保存”只是文字。必须有运行程序识别操作请求、调用工具、拿到真实结果，再交回模型。否则它只是在描述开车，没有车真的移动。</p>
+<p>也别把两者想成互相独立的两个机器人：实际系统中，决策循环往往正是由 Harness 驱动的。<strong>一次模型调用给出下一步；Harness 让下一次观察和调用继续发生。</strong></p>
+<h3 id="3-澄清一个容易混淆的边界：Agent-不是只有模型，Harness-也不等于电脑"><a href="#3-澄清一个容易混淆的边界：Agent-不是只有模型，Harness-也不等于电脑" class="headerlink" title="3. 澄清一个容易混淆的边界：Agent 不是只有模型，Harness 也不等于电脑"></a>3. 澄清一个容易混淆的边界：Agent 不是只有模型，Harness 也不等于电脑</h3><p>“Agent 负责判断、Harness 负责运行”是职责划分，不是说每个系统一定有两个同名文件夹。常见语境里，Agent 指模型、指令、工具与循环共同构成的系统；我们为了讲清分工，才把里面的决策部分单独拿出来。</p>
+<p>可以把下面两行当作示意，不能当成严格公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可工作的模型 Agent ≈ 模型的决策能力 + 任务指令 + Harness + 可用工具</span><br><span class="line">Harness 的核心工作 ≈ 组织上下文 → 调模型 → 执行工具请求 → 回传结果 → 管理循环</span><br></pre></td></tr></table></figure>
 
-<p>Agent 据此选择重新观察还是停止；Harness 则要落实调用次数、路径范围和覆盖限制。仅在提示词里写“遵守限制”，不等于已经实施了限制。</p>
-<p><strong>本次完成的是桌面自动化学习与职责设计，还没有接入模型自主决策循环。</strong> 下一步可以把函数封装成工具再接模型，但固定小任务也完全可以继续用脚本。</p>
+<p>Python 解释器是运行基础，Windows 是被操作的环境，沙箱是执行隔离；它们可以被 Harness 管理，但不能直接画等号。一个现成框架也不等于你的完整 Harness，你自己的工具注册、验收和恢复代码仍可能很重要。</p>
+<p><a target="_blank" rel="noopener" href="https://www.anthropic.com/research/managed-agents">Anthropic 的 Managed Agents 工程文章</a>就把会话记录、Harness 和执行沙箱分开描述。这支持我们区分“组织运行”与“实际执行环境”，而不是把一切都塞进一个模糊的盒子。</p>
+<h3 id="4-跟着一次保存失败，看清谁在做什么"><a href="#4-跟着一次保存失败，看清谁在做什么" class="headerlink" title="4. 跟着一次保存失败，看清谁在做什么"></a>4. 跟着一次保存失败，看清谁在做什么</h3><p>下面是<strong>用于教学的假设过程，不是已经接入模型运行的日志</strong>。用户目标是“保存今天的学习笔记”，而第一次保存后文件没有出现。</p>
+<p><img src="/images/windows-uia-first-week/07-agent-harness-loop.svg" class="lazyload placeholder" data-srcset="/images/windows-uia-first-week/07-agent-harness-loop.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="一次保存任务中 Agent 与 Harness 的往返过程"></p>
+<table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>Agent 的选择</th>
+<th>Harness 与工具实际做的事</th>
+<th>返回的证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>先看看有哪些窗口</td>
+<td>调用窗口查询工具</td>
+<td>找到一个明确的记事本窗口</td>
+</tr>
+<tr>
+<td>2</td>
+<td>查看它的编辑区</td>
+<td>查询目标控件树并返回属性</td>
+<td>发现可用的 Document，正文为空</td>
+</tr>
+<tr>
+<td>3</td>
+<td>输入笔记，然后读取确认</td>
+<td>工具设置焦点、输入、读取正文</td>
+<td>编辑区正文与预期一致</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求另存为到目标路径</td>
+<td>检查路径与窗口归属，执行保存</td>
+<td>保存动作已提交，文件尚未出现</td>
+</tr>
+<tr>
+<td>5</td>
+<td>不急着宣布完成，先检查弹窗</td>
+<td>再查询目标窗口及其对话框</td>
+<td>发现路径不存在的提示</td>
+</tr>
+<tr>
+<td>6</td>
+<td>在允许目录内创建所需子目录后重试</td>
+<td>若工具权限允许则执行，并限制次数</td>
+<td>文件生成，读取后正文一致</td>
+</tr>
+<tr>
+<td>7</td>
+<td>根据证据报告完成</td>
+<td>记录最终状态、路径与验收结果</td>
+<td>完成记录可追溯</td>
+</tr>
+</tbody></table>
+<p>第 6 步不是“模型想做什么都能做”：没有授权的目录创建工具，就应该停止并说明缺少的能力。遇到陌生弹窗也不是一律点确定，而是先观察、确认含义和允许范围。</p>
+<p>还要注意：Agent 决定重试，不代表 Harness 必须放行。如果已经超过最多重试次数，Harness 应返回限制错误，避免一直绕圈。</p>
+<h3 id="5-Harness-具体忙些什么？把它当成实验室的六本台账"><a href="#5-Harness-具体忙些什么？把它当成实验室的六本台账" class="headerlink" title="5. Harness 具体忙些什么？把它当成实验室的六本台账"></a>5. Harness 具体忙些什么？把它当成实验室的六本台账</h3><p><img src="/images/windows-uia-first-week/08-harness-responsibilities.svg" class="lazyload placeholder" data-srcset="/images/windows-uia-first-week/08-harness-responsibilities.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Harness 的六类运行职责"></p>
+<p><strong>第一本：任务本——目标和上下文。</strong> 把用户要求、已观察到的状态、工具说明组织成模型能读取的输入。就像实验前知道“测电阻”，而不是只拿到一句“继续”。上下文不是把所有日志无限堆进去，而是保留当前决策需要的信息。</p>
+<p><strong>第二本：工具借用登记——工具协议与调度。</strong> 列清工具名称、参数、返回值，检查模型给出的参数，再调用真实函数。模型提出 <code>save_as(path=...)</code>，不等于操作系统已经执行了保存。</p>
+<p><strong>第三本：实验记录——状态与历史。</strong> 保存已选择的窗口、目标路径、输入结果和错误。状态不是永久正确的：上次窗口句柄有效，不代表这次还有效；恢复任务后要重新观察。</p>
+<p><strong>第四本：操作规程——运行边界。</strong> 例如只允许写入学习目录、已有正文时拒绝替换、文件存在时拒绝覆盖。实际检查应在可信工具或运行层落实。提示词像“请遵守实验室规则”的告示，路径校验才像门禁；告示不能代替门禁。</p>
+<p><strong>第五本：计时和故障登记——预算、超时与恢复。</strong> 限制工具等待、循环步数和重试次数，区分可重试错误与需要停止的错误。模型请求“再试一次”时，预算仍然有效。重复输入文字可能把正文写两遍，所以重试前应检查已有状态，不能盲目重放所有动作。</p>
+<p><strong>第六本：验收单——验证与完成条件。</strong> 让确定性代码检查文件路径和正文，把证据返回决策部分。Agent 可以提出“完成”，但系统可以要求先通过验证器，再接受完成状态。模型说得自信不是验收证据。</p>
+<p>这些职责可以拆成多个模块，不一定全写在一个类中。有些简单项目只实现其中几项，因此我们应该问“它具体管理了什么”，而不只问“它有没有 Harness”。</p>
+<h3 id="6-模型怎么接进来？看一段不依赖具体产品的伪代码"><a href="#6-模型怎么接进来？看一段不依赖具体产品的伪代码" class="headerlink" title="6. 模型怎么接进来？看一段不依赖具体产品的伪代码"></a>6. 模型怎么接进来？看一段不依赖具体产品的伪代码</h3><p>下面只解释机制，<strong>不是可直接运行的 SDK 示例，也没有给现有下载脚本加入模型</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">state = load_task_state()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(MAX_STEPS):                  <span class="comment"># Harness 限制循环次数</span></span><br><span class="line">    context = build_context(goal, state, tools)</span><br><span class="line">    decision = call_model(context)             <span class="comment"># 决策部分提出下一步</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> decision.kind == <span class="string">&quot;finish&quot;</span>:</span><br><span class="line">        verdict = verify_goal(state)           <span class="comment"># 确定性验收，而不是只听模型说完成</span></span><br><span class="line">        <span class="keyword">if</span> verdict.ok:</span><br><span class="line">            <span class="keyword">return</span> report_success(verdict)</span><br><span class="line">        state.record(verdict)                  <span class="comment"># 不通过，就把证据交回下一轮</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    validate_request(decision)                 <span class="comment"># 工具名、参数、路径和权限</span></span><br><span class="line">    result = execute_with_budget(decision)     <span class="comment"># 调用真实工具，管理预算和错误</span></span><br><span class="line">    state.record(decision, result)             <span class="comment"># 为下一次观察保存结果</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> report_stopped(<span class="string">&quot;超过最大步数，尚未通过验收&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>call_model()</code> 决定“下一步是什么”，但外面的 <code>for</code> 循环、工具调用、结果记录和终止机制不会凭空出现。搭建 Agent 时，很多工程工作就落在这些地方。</p>
+<p>真正实现中还要处理请求解析失败、异常、取消和持久化；若底层调用可能卡死，<code>execute_with_budget</code> 需要真正的超时机制，不能只给函数取个好听的名字。</p>
+<h3 id="7-长任务为什么更需要-Harness？想想小组作业交班"><a href="#7-长任务为什么更需要-Harness？想想小组作业交班" class="headerlink" title="7. 长任务为什么更需要 Harness？想想小组作业交班"></a>7. 长任务为什么更需要 Harness？想想小组作业交班</h3><p>两分钟完成的记事本任务，你还记得刚做了什么；持续几小时的项目，则像小组成员轮班写课程设计。新同学接班时，如果只听到“前面做了一些，你继续”，很容易重复劳动或误把半成品当完成品。</p>
+<p>所以要留交班单：目标是什么、完成到哪里、哪些检查通过、哪里失败、下一步建议做什么。Harness 可以保存这些记录，并在恢复时重新提供必要上下文。记录能帮助继续工作，但不能保证摘要没有遗漏，也不能代替重新核实环境。</p>
+<p>Anthropic 的<a target="_blank" rel="noopener" href="https://www.anthropic.com/research/effective-harnesses-for-long-running-agents">长任务 Harness 文章</a>讨论了跨会话进度衔接与过早宣布完成的问题。对应到我们的练习，哪怕记录写着“已经保存”，恢复后也应检查文件，而不是直接相信一句历史结论。</p>
+<h3 id="8-脚本、工作流、Agent-怎么选？像菜谱和厨师"><a href="#8-脚本、工作流、Agent-怎么选？像菜谱和厨师" class="headerlink" title="8. 脚本、工作流、Agent 怎么选？像菜谱和厨师"></a>8. 脚本、工作流、Agent 怎么选？像菜谱和厨师</h3><p>照着确定的菜谱做同一道菜，固定脚本通常很合适。菜谱允许根据温度和时间走不同分支，也仍然可以是脚本，不需要因为有 <code>if</code> 就叫 Agent。</p>
+<p>如果厨房用预先定义的流程安排多个模型步骤，例如“模型生成笔记 → 固定脚本保存 → 固定代码验收”，这是带模型的工作流。<strong>用了模型，也不一定由模型决定流程。</strong></p>
+<p>如果食材和现场情况不断变化，需要“厨师”观察后选择做法，就更接近本文的模型 Agent：它在允许范围内决定调用哪个工具、补查什么信息、何时停止。厨师仍然要遵守厨房设备与操作边界。</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>谁主要决定执行路线？</th>
+<th>适合什么情况？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>固定脚本</td>
+<td>预先写好的代码</td>
+<td>记事本结构稳定、重复保存同类内容</td>
+</tr>
+<tr>
+<td>带模型的工作流</td>
+<td>代码组织步骤，模型完成局部任务</td>
+<td>内容生成灵活，保存和验收步骤确定</td>
+</tr>
+<tr>
+<td>模型 Agent</td>
+<td>模型根据观察动态选择，Harness 管理执行</td>
+<td>路径不固定，需要多轮调查与判断</td>
+</tr>
+</tbody></table>
+<p>这与 <a target="_blank" rel="noopener" href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> 对预定义工作流和模型动态控制流程的区分一致。选择 Agent 会增加成本、延迟和调试难度；应从任务需求出发，不是越自主越高级。</p>
+<h3 id="9-回到现有-Python-代码：哪些积木已经有了？"><a href="#9-回到现有-Python-代码：哪些积木已经有了？" class="headerlink" title="9. 回到现有 Python 代码：哪些积木已经有了？"></a>9. 回到现有 Python 代码：哪些积木已经有了？</h3><table>
+<thead>
+<tr>
+<th>现有实现</th>
+<th>将来可以承担的职责</th>
+<th>还缺什么？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>窗口与控件查询</td>
+<td>观察工具</td>
+<td>稳定的工具协议与结构化结果</td>
+</tr>
+<tr>
+<td>输入、另存为</td>
+<td>动作工具</td>
+<td>更明确的权限和重复执行策略</td>
+</tr>
+<tr>
+<td><code>wait_for()</code></td>
+<td>局部等待与超时管理</td>
+<td>严格底层超时、任务总预算</td>
+</tr>
+<tr>
+<td>磁盘正文比较</td>
+<td>验证器</td>
+<td>统一的任务完成状态</td>
+</tr>
+<tr>
+<td>终端错误与诊断文件</td>
+<td>日志和故障线索</td>
+<td>结构化状态与恢复机制</td>
+</tr>
+<tr>
+<td><code>main()</code> 的固定步骤</td>
+<td>当前脚本的流程控制</td>
+<td>尚未加入模型选择下一步的循环</td>
+</tr>
+</tbody></table>
+<p>因此，我们已经造出了部分工具和运行积木，<strong>还没有因此完成一个模型 Agent</strong>。下一次实验可以先把“观察”“输入”“保存”“验证”拆成清晰接口，再考虑接入模型，不必推倒已有代码。</p>
+<h3 id="10-用三个场景检验自己是否理解"><a href="#10-用三个场景检验自己是否理解" class="headerlink" title="10. 用三个场景检验自己是否理解"></a>10. 用三个场景检验自己是否理解</h3><p><strong>窗口没出现，谁决定换一种查询方式？</strong> 决策部分可以根据错误选择新策略；Harness 返回查询结果并限制总尝试次数。如果恢复策略事先写死在代码里，也可以由运行层直接完成，并非每次重试都必须经过模型。</p>
+<p><strong>Agent 请求保存到不允许的目录，谁阻止？</strong> 可信运行层或工具实现拒绝请求。就像实验室门禁不因为同学说“我觉得可以”就放行。</p>
+<p><strong>Agent 说完成了，但磁盘正文不一致，信谁？</strong> 信验证证据，保留“未完成”状态。像交实验报告，不能用“我感觉测好了”代替测量数据。</p>
+<p>读完之后，希望你能把这段话讲给室友：<strong>Agent 的决策部分像做实验的人；Harness 负责把观察、工具、记录、边界和循环接起来；工具是真正执行具体操作的仪器；是否完成，要看外部结果和验收。</strong> 这几个角色协作，才让“会回答”走向“能持续做事”。</p>
 <h2 id="六、下载代码，自己走一遍"><a href="#六、下载代码，自己走一遍" class="headerlink" title="六、下载代码，自己走一遍"></a>六、下载代码，自己走一遍</h2><ul>
 <li><a href="/downloads/windows-uia-first-week/inspect_uia.py">窗口和控件树观察脚本</a></li>
 <li><a href="/downloads/windows-uia-first-week/notepad_notes.py">输入学习笔记并保存的完整注释脚本</a></li>
@@ -711,13 +871,24 @@ mjx-break[prebreak]{letter-spacing:-.999em}
 <p>从记事本学起，就是把简单任务拆成可观察的状态、可执行的动作、可说明的失败和可检查的结果。这些基础会一直用到后面的 Agent 项目。</p>
 <h2 id="参考与延伸阅读"><a href="#参考与延伸阅读" class="headerlink" title="参考与延伸阅读"></a>参考与延伸阅读</h2><p>本文结合本次学习重新组织，没有搬用社区配图或整段教程代码。技术解释依据官方文档；社区博客用于对照入门路径和版本差异。</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview">Microsoft：UI Automation Overview</a></li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-treeoverview">Microsoft：UI Automation Tree Overview</a></li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-controlpatternsoverview">Microsoft：Control Patterns Overview</a></li>
-<li><a target="_blank" rel="noopener" href="https://pywinauto.readthedocs.io/en/latest/getting_started.html">pywinauto：Getting Started Guide</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/du-hong/p/18826978">北京-宏哥：pywinauto 操作应用程序窗口的控件</a>（社区教程）</li>
+<li><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-uiautomationoverview">Microsoft：UI Automation Overview</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-treeoverview">Microsoft：UI Automation Tree Overview</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-controlpatternsoverview">Microsoft：Control Patterns Overview</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pywinauto.readthedocs.io/en/latest/getting_started.html">pywinauto：Getting Started Guide</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/du-hong/p/18826978">北京-宏哥：pywinauto 操作应用程序窗口的控件</a>（社区教程）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.anthropic.com/research/building-effective-agents">Anthropic：Building effective agents</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.anthropic.com/research/effective-harnesses-for-long-running-agents">Anthropic：Effective harnesses for long-running agents</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.anthropic.com/research/managed-agents">Anthropic：Scaling Managed Agents</a></p>
+</li>
 </ol>
-<p>配图说明：封面为 AI 生成的概念插画；其余六张为 SVG 教学图，均非真实运行截图。短代码片段用于讲解，下载脚本包含更完整的等待与错误处理，仍需按本机记事本版本验证。</p>
+<p>配图说明：封面为 AI 生成的概念插画；其余八张为 SVG 教学图，均非真实运行截图。短代码片段用于讲解，下载脚本包含更完整的等待与错误处理，仍需按本机记事本版本验证。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -1012,7 +1183,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81UIA%EF%BC%9A%E7%BB%99%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2%E6%8F%90%E4%BE%9B%E5%8F%AF%E6%9F%A5%E8%AF%A2%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">一、UIA：给软件界面提供可查询的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC%E4%B8%80%E8%AF%BE%E5%85%88%E8%A7%82%E5%AF%9F%EF%BC%9A%E7%A8%8B%E5%BA%8F%E3%80%81%E7%AA%97%E5%8F%A3%E3%80%81TXT-%E4%B8%8D%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B"><span class="toc-text">二、第一课先观察：程序、窗口、TXT 不是一回事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%97%E7%AA%97%E5%8F%A3%EF%BC%8C%E4%B8%8D%E7%AD%89%E4%BA%8E%E5%88%97%E6%89%80%E6%9C%89%E8%BF%90%E8%A1%8C%E8%BF%9B%E7%A8%8B"><span class="toc-text">1. 列窗口，不等于列所有运行进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8E%A7%E4%BB%B6%E6%A0%91%E5%B1%9E%E4%BA%8E%E8%AE%B0%E4%BA%8B%E6%9C%AC%EF%BC%8CTXT-%E6%9C%AC%E8%BA%AB%E6%B2%A1%E6%9C%89%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE"><span class="toc-text">2. 控件树属于记事本，TXT 本身没有关闭按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%92%E5%BD%92%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">3. 递归到底是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BB%8E%E5%90%AF%E5%8A%A8%E5%88%B0%E4%BF%9D%E5%AD%98%EF%BC%9A%E5%8A%A8%E4%BD%9C%E4%B9%8B%E5%A4%96%EF%BC%8C%E8%BF%98%E8%A6%81%E6%A3%80%E6%9F%A5%E7%BB%93%E6%9E%9C"><span class="toc-text">三、从启动到保存：动作之外，还要检查结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%91%E5%87%BA%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B8%8D%E4%BB%A3%E8%A1%A8%E7%AA%97%E5%8F%A3%E5%B7%B2%E5%B0%B1%E7%BB%AA"><span class="toc-text">1. 发出启动命令，不代表窗口已就绪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%88%E7%A1%AE%E8%AE%A4%E7%BC%96%E8%BE%91%E5%8C%BA%EF%BC%8C%E5%86%8D%E8%BE%93%E5%85%A5"><span class="toc-text">2. 先确认编辑区，再输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%9D%E5%AD%98%E9%9C%80%E8%A6%81%E6%98%8E%E7%A1%AE%E8%B7%AF%E5%BE%84%E5%92%8C%E6%AD%A3%E7%A1%AE%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="toc-text">3. 保存需要明确路径和正确对话框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%BF%98%E4%B8%8D%E7%AE%97%E5%AE%8C%E6%88%90"><span class="toc-text">4. 文件存在，还不算完成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A2%9E%E5%8A%A0%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%EF%BC%9A%E8%AE%A9%E5%A4%B1%E8%B4%A5%E6%9C%89%E6%B8%85%E6%A5%9A%E7%9A%84%E5%87%BA%E5%8F%A3"><span class="toc-text">四、增加错误检测：让失败有清楚的出口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E6%84%8F%E5%A4%B1%E8%B4%A5%E4%B8%80%E6%AC%A1%EF%BC%8C%E6%A3%80%E6%9F%A5%E9%94%99%E8%AF%AF%E8%B7%AF%E7%BA%BF"><span class="toc-text">故意失败一次，检查错误路线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Agent-%E5%92%8C-Harness%EF%BC%9A%E8%B0%81%E5%88%A4%E6%96%AD%EF%BC%8C%E8%B0%81%E6%94%AF%E6%92%91%E8%BF%90%E8%A1%8C%EF%BC%9F"><span class="toc-text">五、Agent 和 Harness：谁判断，谁支撑运行？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%87%AA%E5%B7%B1%E8%B5%B0%E4%B8%80%E9%81%8D"><span class="toc-text">六、下载代码，自己走一遍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E4%B8%8E%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="toc-text">参考与延伸阅读</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81UIA%EF%BC%9A%E7%BB%99%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2%E6%8F%90%E4%BE%9B%E5%8F%AF%E6%9F%A5%E8%AF%A2%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">一、UIA：给软件界面提供可查询的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC%E4%B8%80%E8%AF%BE%E5%85%88%E8%A7%82%E5%AF%9F%EF%BC%9A%E7%A8%8B%E5%BA%8F%E3%80%81%E7%AA%97%E5%8F%A3%E3%80%81TXT-%E4%B8%8D%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B"><span class="toc-text">二、第一课先观察：程序、窗口、TXT 不是一回事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%97%E7%AA%97%E5%8F%A3%EF%BC%8C%E4%B8%8D%E7%AD%89%E4%BA%8E%E5%88%97%E6%89%80%E6%9C%89%E8%BF%90%E8%A1%8C%E8%BF%9B%E7%A8%8B"><span class="toc-text">1. 列窗口，不等于列所有运行进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8E%A7%E4%BB%B6%E6%A0%91%E5%B1%9E%E4%BA%8E%E8%AE%B0%E4%BA%8B%E6%9C%AC%EF%BC%8CTXT-%E6%9C%AC%E8%BA%AB%E6%B2%A1%E6%9C%89%E5%85%B3%E9%97%AD%E6%8C%89%E9%92%AE"><span class="toc-text">2. 控件树属于记事本，TXT 本身没有关闭按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%92%E5%BD%92%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">3. 递归到底是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BB%8E%E5%90%AF%E5%8A%A8%E5%88%B0%E4%BF%9D%E5%AD%98%EF%BC%9A%E5%8A%A8%E4%BD%9C%E4%B9%8B%E5%A4%96%EF%BC%8C%E8%BF%98%E8%A6%81%E6%A3%80%E6%9F%A5%E7%BB%93%E6%9E%9C"><span class="toc-text">三、从启动到保存：动作之外，还要检查结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%91%E5%87%BA%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B8%8D%E4%BB%A3%E8%A1%A8%E7%AA%97%E5%8F%A3%E5%B7%B2%E5%B0%B1%E7%BB%AA"><span class="toc-text">1. 发出启动命令，不代表窗口已就绪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%88%E7%A1%AE%E8%AE%A4%E7%BC%96%E8%BE%91%E5%8C%BA%EF%BC%8C%E5%86%8D%E8%BE%93%E5%85%A5"><span class="toc-text">2. 先确认编辑区，再输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%9D%E5%AD%98%E9%9C%80%E8%A6%81%E6%98%8E%E7%A1%AE%E8%B7%AF%E5%BE%84%E5%92%8C%E6%AD%A3%E7%A1%AE%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="toc-text">3. 保存需要明确路径和正确对话框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%BF%98%E4%B8%8D%E7%AE%97%E5%AE%8C%E6%88%90"><span class="toc-text">4. 文件存在，还不算完成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A2%9E%E5%8A%A0%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%EF%BC%9A%E8%AE%A9%E5%A4%B1%E8%B4%A5%E6%9C%89%E6%B8%85%E6%A5%9A%E7%9A%84%E5%87%BA%E5%8F%A3"><span class="toc-text">四、增加错误检测：让失败有清楚的出口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E6%84%8F%E5%A4%B1%E8%B4%A5%E4%B8%80%E6%AC%A1%EF%BC%8C%E6%A3%80%E6%9F%A5%E9%94%99%E8%AF%AF%E8%B7%AF%E7%BA%BF"><span class="toc-text">故意失败一次，检查错误路线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Agent-%E5%92%8C-Harness%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%BC%9A%E5%81%9A%E5%88%A4%E6%96%AD%E7%9A%84%E5%90%8C%E5%AD%A6%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E5%AE%9E%E9%AA%8C%E5%AE%A4%EF%BC%9F"><span class="toc-text">五、深入理解 Agent 和 Harness：一个会做判断的同学，为什么还需要实验室？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%88%E5%8E%BB%E4%B8%80%E6%AC%A1%E5%A4%A7%E5%AD%A6%E5%AE%9E%E9%AA%8C%E5%AE%A4%EF%BC%9A%E7%90%86%E8%A7%A3%E5%9B%9B%E4%B8%AA%E8%A7%92%E8%89%B2"><span class="toc-text">1. 先去一次大学实验室：理解四个角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E6%9C%89%E4%B8%AA%E8%81%AA%E6%98%8E%E6%A8%A1%E5%9E%8B%E2%80%9D%E8%BF%98%E4%B8%8D%E5%A4%9F%EF%BC%9F%E5%86%8D%E6%83%B3%E6%83%B3%E5%8F%B8%E6%9C%BA%E5%92%8C%E6%B1%BD%E8%BD%A6"><span class="toc-text">2. 为什么“有个聪明模型”还不够？再想想司机和汽车</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%BE%84%E6%B8%85%E4%B8%80%E4%B8%AA%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E8%BE%B9%E7%95%8C%EF%BC%9AAgent-%E4%B8%8D%E6%98%AF%E5%8F%AA%E6%9C%89%E6%A8%A1%E5%9E%8B%EF%BC%8CHarness-%E4%B9%9F%E4%B8%8D%E7%AD%89%E4%BA%8E%E7%94%B5%E8%84%91"><span class="toc-text">3. 澄清一个容易混淆的边界：Agent 不是只有模型，Harness 也不等于电脑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B7%9F%E7%9D%80%E4%B8%80%E6%AC%A1%E4%BF%9D%E5%AD%98%E5%A4%B1%E8%B4%A5%EF%BC%8C%E7%9C%8B%E6%B8%85%E8%B0%81%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">4. 跟着一次保存失败，看清谁在做什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Harness-%E5%85%B7%E4%BD%93%E5%BF%99%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F%E6%8A%8A%E5%AE%83%E5%BD%93%E6%88%90%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%9A%84%E5%85%AD%E6%9C%AC%E5%8F%B0%E8%B4%A6"><span class="toc-text">5. Harness 具体忙些什么？把它当成实验室的六本台账</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%A8%A1%E5%9E%8B%E6%80%8E%E4%B9%88%E6%8E%A5%E8%BF%9B%E6%9D%A5%EF%BC%9F%E7%9C%8B%E4%B8%80%E6%AE%B5%E4%B8%8D%E4%BE%9D%E8%B5%96%E5%85%B7%E4%BD%93%E4%BA%A7%E5%93%81%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-text">6. 模型怎么接进来？看一段不依赖具体产品的伪代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%95%BF%E4%BB%BB%E5%8A%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E9%9C%80%E8%A6%81-Harness%EF%BC%9F%E6%83%B3%E6%83%B3%E5%B0%8F%E7%BB%84%E4%BD%9C%E4%B8%9A%E4%BA%A4%E7%8F%AD"><span class="toc-text">7. 长任务为什么更需要 Harness？想想小组作业交班</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%84%9A%E6%9C%AC%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E3%80%81Agent-%E6%80%8E%E4%B9%88%E9%80%89%EF%BC%9F%E5%83%8F%E8%8F%9C%E8%B0%B1%E5%92%8C%E5%8E%A8%E5%B8%88"><span class="toc-text">8. 脚本、工作流、Agent 怎么选？像菜谱和厨师</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%9B%9E%E5%88%B0%E7%8E%B0%E6%9C%89-Python-%E4%BB%A3%E7%A0%81%EF%BC%9A%E5%93%AA%E4%BA%9B%E7%A7%AF%E6%9C%A8%E5%B7%B2%E7%BB%8F%E6%9C%89%E4%BA%86%EF%BC%9F"><span class="toc-text">9. 回到现有 Python 代码：哪些积木已经有了？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E7%94%A8%E4%B8%89%E4%B8%AA%E5%9C%BA%E6%99%AF%E6%A3%80%E9%AA%8C%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%A6%E7%90%86%E8%A7%A3"><span class="toc-text">10. 用三个场景检验自己是否理解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%87%AA%E5%B7%B1%E8%B5%B0%E4%B8%80%E9%81%8D"><span class="toc-text">六、下载代码，自己走一遍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E4%B8%8E%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="toc-text">参考与延伸阅读</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

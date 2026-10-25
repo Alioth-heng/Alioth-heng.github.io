@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1010" viewBox="0 0 1000 1010" role="img"><title>08 / Harness 像实验室的六本台账</title>
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8" fill="#475569"/></marker></defs>
+<rect width="1000" height="1010" rx="16" fill="#f8fafc"/>
+<style>text{font-family:Microsoft YaHei,sans-serif;font-size:21px;fill:#172033}.title{font-size:29px;font-weight:bold}.small{font-size:18px;fill:#475569}.line{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#a)}</style>
+<text x="40" y="48" class="title">08 / Harness 像实验室的六本台账</text><text x="40" y="82" class="small">不只是“给模型几个工具”，还要让任务能够持续、受约束、可核查地运行。</text>
+<rect x="40" y="115" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="147">任务本：上下文</text><text x="64" y="180" class="small">目标、工具说明、当前观察和必要历史</text><text x="64" y="211" class="small">对应的问题：给决策者看什么？</text>
+<rect x="40" y="255" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="287">工具登记：调用协议</text><text x="64" y="320" class="small">校验参数，把模型请求交给真实工具</text><text x="64" y="351" class="small">对应的问题：请求怎样变成行动？</text>
+<rect x="40" y="395" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="427">实验记录：状态历史</text><text x="64" y="460" class="small">保留进度、错误和目标，但恢复后重新核实</text><text x="64" y="491" class="small">对应的问题：刚才发生过什么？</text>
+<rect x="40" y="535" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="567">操作规程：边界</text><text x="64" y="600" class="small">目录范围、覆盖限制和可用操作</text><text x="64" y="631" class="small">对应的问题：哪些请求必须拒绝？</text>
+<rect x="40" y="675" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="707">计时记录：预算恢复</text><text x="64" y="740" class="small">等待上限、总步数、重试与中断策略</text><text x="64" y="771" class="small">对应的问题：还能继续多久？</text>
+<rect x="40" y="815" width="920" height="116" rx="12" fill="#e0f2fe"/><text x="64" y="847">验收单：完成证据</text><text x="64" y="880" class="small">核对文件路径和正文，不只听口头结论</text><text x="64" y="911" class="small">对应的问题：目标真的达成了吗？</text>
+<text x="40" y="987" class="small">这是职责设计清单，不表示所有 Harness 或现有练习脚本都已实现以上能力。</text></svg>

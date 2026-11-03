@@ -11,8 +11,6 @@ function wrapImageWithFancyBox() {
     .not(".swiper-slide img")
     .not(".sidebar-image img")
     .not("#author-avatar img")
-    .not(".post-donate img")
-    .not(".post-donate img")
     .not(".friend-avatar img")
     .not("[title=notice]")
     .not("#myComment img")

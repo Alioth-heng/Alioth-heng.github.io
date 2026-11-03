@@ -1020,7 +1020,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 }
 @media (min-width: 992px) {
   .bars {
-    display: none;
+    display: block;
   }
 }
 @media (max-width: 992px) {

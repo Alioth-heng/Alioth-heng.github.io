@@ -68,7 +68,7 @@
         
     
 
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/series.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -322,6 +322,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     <div class="drawer-box-content">
       <ul class="drawer-box-content_menu">
         
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/deepseek/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
+        
         
           <li class="drawer-box-content_item">
             <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
@@ -391,6 +437,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </div>
     <nav class="navbar">
       <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/deepseek/" class="menu-item-link" title="DeepSeek专题">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="menu-item-link" title="量化策略专题">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="menu-item-link" title="日常">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
         
       </ul>
       
@@ -545,7 +637,11 @@ mjx-break[prebreak]{letter-spacing:-.999em}
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="写文章的困境"><a href="#写文章的困境" class="headerlink" title="写文章的困境"></a>写文章的困境</h2><p>想象你在续写一篇长文。写到第 1000 个字时，你需要不断回看前面写过的内容：主题是什么、用了哪些论据、埋了什么伏笔。</p>
+        <!-- series-navigation:start -->
+<nav class="series-chapter-nav" aria-label="DeepSeek专题导航"><div class="series-chapter-heading"><a href="/deepseek/">返回DeepSeek专题总览</a><span>正文 06 / 12</span></div><div class="series-chapter-steps"><a href="/2026/09/27/05-attention/">← 上一篇：05 Attention 到底在干什么？</a><a href="/2026/09/27/07-mla/">下一篇：07 MLA：DeepSeek 为什么要重新设计 Attention？ →</a></div></nav>
+<!-- series-navigation:end -->
+
+<h2 id="写文章的困境"><a href="#写文章的困境" class="headerlink" title="写文章的困境"></a>写文章的困境</h2><p>想象你在续写一篇长文。写到第 1000 个字时，你需要不断回看前面写过的内容：主题是什么、用了哪些论据、埋了什么伏笔。</p>
 <p>模型也一样：<strong>每生成一个 token，都要参考之前所有 token。</strong> 而”参考”在 Attention 里意味着——每个新 token 的 Q 要去和<strong>之前所有 token 的 K 做打分、取它们的 V 做加权</strong>。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">生成第 1 个 token：参考 [今天]</span><br><span class="line">生成第 2 个 token：参考 [今天][天气]</span><br><span class="line">生成第 3 个 token：参考 [今天][天气][很]</span><br><span class="line">生成第 4 个 token：参考 [今天][天气][很][好]</span><br><span class="line">...</span><br><span class="line">生成第 10000 个 token：参考前面全部 9999 个 token</span><br></pre></td></tr></table></figure>
 
@@ -648,6 +744,9 @@ flowchart TD
 <li>缓存线性增长 32 倍；一是显存占用暴涨、可并发请求数下降（吞吐&#x2F;成本），二是每步需要读取的缓存数据变多、生成速度下降（延迟）。</li>
 <li>每生成一个 token，都要把参数和全部 KV Cache 从 HBM 读入计算单元；数据搬运总量巨大且受显存带宽限制，GPU 常在”等数据”，所以优化方向是减少搬运量（如 MLA 压缩 KV）。</li>
 </ol>
+<!-- series-navigation:start -->
+<nav class="series-chapter-nav" aria-label="DeepSeek专题导航"><div class="series-chapter-heading"><a href="/deepseek/">返回DeepSeek专题总览</a><span>正文 06 / 12</span></div><div class="series-chapter-steps"><a href="/2026/09/27/05-attention/">← 上一篇：05 Attention 到底在干什么？</a><a href="/2026/09/27/07-mla/">下一篇：07 MLA：DeepSeek 为什么要重新设计 Attention？ →</a></div></nav>
+<!-- series-navigation:end -->
 
       </div>
       <div class="post-tags-categories">
@@ -690,51 +789,7 @@ flowchart TD
     </article>
     <!-- 上一篇文章和下一篇文章 -->
     
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2026/09/27/07-mla/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">07 MLA：DeepSeek 为什么要重新设计 Attention？</div>
-      </div>
       
-      <!-- <div class="content">
-        承接上一篇的困境MoE 把”计算”变便宜了，但 KV Cache 问题原封不动地留在那里：
-
-V3 有 61 层、128
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
-    </div>
-    <a href="/2026/09/27/05-attention/" class="post-nav-link">
-      <div class="title">
-        Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">05 Attention 到底在干什么？</div>
-      </div>
-      <!-- <div class="content">
-        接下来两篇为 MLA 铺路。要理解 MLA，必须先彻底搞懂 Attention（注意力机制） 和 KV Cache。这一
-      </div> -->
-    </a>
-  </div>
-
-</div>
 
     
     
@@ -898,18 +953,18 @@ V3 有 61 层、128
             
 
             <div class="post-img-box">
-              <a href="/investing/strategies/iwencai/" class="post-img " style="background-size: cover; 
+              <a href="/deepseek/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/images/series/deepseek.svg" class="lazyload placeholder" data-srcset="/images/series/deepseek.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">11-14</span>
+                  <span class="post-date">11-17</span>
                 
               </div>
-              <a class="post-title" href="/investing/strategies/iwencai/">问财策略：会说选股要求之后，还要把交易规则说完整</a>
+              <a class="post-title" href="/deepseek/">DeepSeek 专题总览：从零串起 12 篇架构与训练笔记</a>
             </div>
           </div>
         
@@ -919,7 +974,70 @@ V3 有 61 层、128
             
 
             <div class="post-img-box">
-              <a href="/investing/strategies/basics/" class="post-img " style="background-size: cover; 
+              <a href="/investing/strategies/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/images/series/quant.svg" class="lazyload placeholder" data-srcset="/images/series/quant.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-17</span>
+                
+              </div>
+              <a class="post-title" href="/investing/strategies/">量化策略专题总览：7 类 31 个策略的零基础学习地图</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/11/02/agent-04-function-calling-podcast/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-02</span>
+                
+              </div>
+              <a class="post-title" href="/2026/11/02/agent-04-function-calling-podcast/">Agent 第四课｜用一集播客讲懂 Function Calling：模型怎样选工具、填参数，再真正完成任务</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/25/windows-uia-agent-harness-first-week/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-25</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/25/windows-uia-agent-harness-first-week/">从记事本开始理解桌面 Agent：Python、UI Automation 与 Harness 入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-03-tts/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -927,73 +1045,10 @@ V3 有 61 层、128
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">11-14</span>
+                  <span class="post-date">10-11</span>
                 
               </div>
-              <a class="post-title" href="/investing/strategies/basics/">入门教材策略：用六道小菜学会读投资程序</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/timing/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/timing/">量化择时：选好目的地之后，研究什么时候出门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/patterns/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/patterns/">形态策略：从脚印猜方向，先学会承认不确定</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/multifactor/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/multifactor/">多因子选股：像给学生评成绩，也像招聘店长</a>
+              <a class="post-title" href="/2026/10/11/qqbot-03-tts/">第三章：让AI开口说话——本地TTS语音合成部署</a>
             </div>
           </div>
         

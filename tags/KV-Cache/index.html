@@ -68,7 +68,7 @@
         
     
 
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/series.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -322,6 +322,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     <div class="drawer-box-content">
       <ul class="drawer-box-content_menu">
         
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/deepseek/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
+        
         
           <li class="drawer-box-content_item">
             <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
@@ -391,6 +437,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </div>
     <nav class="navbar">
       <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/deepseek/" class="menu-item-link" title="DeepSeek专题">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="menu-item-link" title="量化策略专题">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="menu-item-link" title="日常">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
         
       </ul>
       
@@ -560,7 +652,11 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             </a>
           </div>
           <div class="post-content">
-            <h2 id="写文章的困境"><a href="#写文章的困境" class="headerlink" title="写文章的困境"></a>写文章的困境</h2><p>想象你在续写一篇长文。写到第 1000 个字时，你需要不断回看前面写过的内容：主题是什么、用了哪些论据、埋了什么伏笔。</p>
+            <!-- series-navigation:start -->
+<nav class="series-chapter-nav" aria-label="DeepSeek专题导航"><div class="series-chapter-heading"><a href="/deepseek/">返回DeepSeek专题总览</a><span>正文 06 / 12</span></div><div class="series-chapter-steps"><a href="/2026/09/27/05-attention/">← 上一篇：05 Attention 到底在干什么？</a><a href="/2026/09/27/07-mla/">下一篇：07 MLA：DeepSeek 为什么要重新设计 Attention？ →</a></div></nav>
+<!-- series-navigation:end -->
+
+<h2 id="写文章的困境"><a href="#写文章的困境" class="headerlink" title="写文章的困境"></a>写文章的困境</h2><p>想象你在续写一篇长文。写到第 1000 个字时，你需要不断回看前面写过的内容：主题是什么、用了哪些论据、埋了什么伏笔。</p>
 <p>模型也一样：<strong>每生成一个 token，都要参考之前所有 token。</strong> 而”参考”在 Attention 里意味着——每个新 token 的 Q 要去和<strong>之前所有 token 的 K 做打分、取它们的 V 做加权</strong>。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">生成第 1 个 token：参考 [今天]</span><br><span class="line">生成第 2 个 token：参考 [今天][天气]</span><br><span class="line">生成第 3 个 token：参考 [今天][天气][很]</span><br><span class="line">生成第 4 个 token：参考 [今天][天气][很][好]</span><br><span class="line">...</span><br><span class="line">生成第 10000 个 token：参考前面全部 9999 个 token</span><br></pre></td></tr></table></figure>
           </div>

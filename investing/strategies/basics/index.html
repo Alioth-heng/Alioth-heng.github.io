@@ -68,7 +68,7 @@
         
     
 
-<meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/series.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -322,6 +322,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     <div class="drawer-box-content">
       <ul class="drawer-box-content_menu">
         
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/deepseek/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
+        
         
           <li class="drawer-box-content_item">
             <a target="_blank" rel="noopener" href="https://github.com/Alioth-heng/Alioth-heng.github.io">
@@ -391,6 +437,52 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </div>
     <nav class="navbar">
       <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/deepseek/" class="menu-item-link" title="DeepSeek专题">
+                  
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                  
+                  <span class="name">DeepSeek专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/investing/strategies/" class="menu-item-link" title="量化策略专题">
+                  
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                  
+                  <span class="name">量化策略专题</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/DailyStuff/" class="menu-item-link" title="日常">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">日常</span>
+                </a>
+              
+            </li>
+          
         
       </ul>
       
@@ -545,7 +637,11 @@ mjx-break[prebreak]{letter-spacing:-.999em}
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <blockquote>
+        <!-- series-navigation:start -->
+<nav class="series-chapter-nav" aria-label="量化策略专题导航"><div class="series-chapter-heading"><a href="/investing/strategies/">返回量化策略专题总览</a><span>第 1 / 7 篇</span></div><div class="series-chapter-steps"><span>从这里开始</span><a href="/investing/strategies/master/">下一篇：大师系列：像买下一家小店那样理解股票 →</a></div></nav>
+<!-- series-navigation:end -->
+
+<blockquote>
 <p>本篇依据保存的SuperMind示例源码解释思路。图中数字为假设例子；策略尚未完成回测或自动模拟验证，不能据此判断收益。</p>
 </blockquote>
 <p>第一次进厨房，不必先学最复杂的宴席。先认识食材、火候、份量和出锅时间，就有能力读懂更多菜谱。这6个入门示例，展示了量化策略的基本骨架。</p>
@@ -584,20 +680,15 @@ mjx-break[prebreak]{letter-spacing:-.999em}
 <h2 id="一个适合零基础的读码方法"><a href="#一个适合零基础的读码方法" class="headerlink" title="一个适合零基础的读码方法"></a>一个适合零基础的读码方法</h2><p>先不逐字读Python，而是拿纸画四格：候选是什么、如何排序、怎样分钱、何时退出。再找到init、选股函数、trade和handle_bar，把每段放进对应格子。</p>
 <p>你能用日常语言解释四格之后，再运行一个固定区间的模拟回测，对照日志看程序有没有照菜谱做。先学会核对过程，再比较最后的收益数字，这样后续复杂模型也不会把你绕晕。</p>
 <hr>
-<h2 id="七篇图解系列导航"><a href="#七篇图解系列导航" class="headerlink" title="七篇图解系列导航"></a>七篇图解系列导航</h2><ul>
-<li><a href="/investing/strategies/master/">第1篇：大师系列</a></li>
-<li><a href="/investing/strategies/technical/">第2篇：技术指标</a></li>
-<li><a href="/investing/strategies/multifactor/">第3篇：多因子选股</a></li>
-<li><a href="/investing/strategies/patterns/">第4篇：形态策略</a></li>
-<li><a href="/investing/strategies/timing/">第5篇：量化择时</a></li>
-<li><a href="/investing/strategies/basics/">第6篇：入门教材策略</a></li>
-<li><a href="/investing/strategies/iwencai/">第7篇：问财策略</a></li>
-</ul>
+<h2 id="专题总览"><a href="#专题总览" class="headerlink" title="专题总览"></a>专题总览</h2><p><a href="/investing/strategies/">查看七类策略的完整目录与建议阅读顺序</a></p>
 <h2 id="阅读依据"><a href="#阅读依据" class="headerlink" title="阅读依据"></a>阅读依据</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://quant.10jqka.com.cn/view/strategylib.html#/">SuperMind策略库</a>：根据2026年11月13日保存的对应示例源码解读。</li>
 <li><a target="_blank" rel="noopener" href="https://quant.10jqka.com.cn/view/help/16">SuperMind帮助文档</a>：数据接口与运行配置需要按平台定义核对。</li>
 <li>本篇SVG为原创教学图，不是行情截图或经过验证的策略表现。原作者信息保留于原始源码，策略名称不代表本人背书。</li>
 </ul>
+<!-- series-navigation:start -->
+<nav class="series-chapter-nav" aria-label="量化策略专题导航"><div class="series-chapter-heading"><a href="/investing/strategies/">返回量化策略专题总览</a><span>第 1 / 7 篇</span></div><div class="series-chapter-steps"><span>从这里开始</span><a href="/investing/strategies/master/">下一篇：大师系列：像买下一家小店那样理解股票 →</a></div></nav>
+<!-- series-navigation:end -->
 
       </div>
       <div class="post-tags-categories">
@@ -640,51 +731,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
     </article>
     <!-- 上一篇文章和下一篇文章 -->
     
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/investing/strategies/iwencai/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">问财策略：会说选股要求之后，还要把交易规则说完整</div>
-      </div>
       
-      <!-- <div class="content">
-        
-本篇依据保存的SuperMind示例源码解释思路。图中数字为假设例子；策略尚未完成回测或自动模拟验证，不能据此判断收益
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
-    </div>
-    <a href="/investing/strategies/timing/" class="post-nav-link">
-      <div class="title">
-        Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">量化择时：选好目的地之后，研究什么时候出门</div>
-      </div>
-      <!-- <div class="content">
-        
-本篇依据保存的SuperMind示例源码解释思路。图中数字为假设例子；策略尚未完成回测或自动模拟验证，不能据此判断收益
-      </div> -->
-    </a>
-  </div>
-
-</div>
 
     
     
@@ -815,7 +862,7 @@ mjx-break[prebreak]{letter-spacing:-.999em}
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%BC%8E%E5%8D%95%E5%9B%A0%E5%AD%90%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%AD%A6%E4%BC%9A%E7%94%A8%E4%B8%80%E6%8A%8A%E5%B0%BA%E5%AD%90"><span class="toc-text">1．单因子策略（一）：先学会用一把尺子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%BC%8E%E5%A4%9A%E5%9B%A0%E5%AD%90%E7%AD%96%E7%95%A5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%87%A0%E5%BC%A0%E5%90%8D%E5%8D%95%E5%8F%96%E4%BA%A4%E9%9B%86"><span class="toc-text">2．多因子策略（二）：几张名单取交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%EF%BC%8E%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%BF%91%E6%9C%9F%E8%B7%91%E5%BE%97%E5%BF%AB%E7%9A%84%E4%BA%BA"><span class="toc-text">3．动量策略（三）：观察近期跑得快的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%EF%BC%8E%E5%8F%8D%E8%BD%AC%E6%95%88%E5%BA%94%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%90%BD%E5%90%8E%E8%80%85%E8%83%BD%E5%90%A6%E8%BF%BD%E8%B5%B6"><span class="toc-text">4．反转效应（四）：观察落后者能否追赶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%EF%BC%8E%E5%8F%8C%E6%9D%BF%E5%9D%97%E8%BD%AE%E5%8A%A8%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%9C%A8%E4%B8%A4%E6%9D%A1%E8%B7%AF%E4%B9%8B%E9%97%B4%E9%80%89%E6%8B%A9"><span class="toc-text">5．双板块轮动（五）：在两条路之间选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%EF%BC%8E%E5%A4%9A%E6%9D%BF%E5%9D%97%E8%BD%AE%E5%8A%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%8E%E4%B8%A4%E6%9D%A1%E8%B7%AF%E6%89%A9%E5%B1%95%E5%88%B0%E5%A4%9A%E4%B8%AA%E8%B5%9B%E9%81%93"><span class="toc-text">6．多板块轮动（六）：从两条路扩展到多个赛道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E4%BB%BD%E7%AD%96%E7%95%A5%E5%85%B1%E5%90%8C%E6%95%99%E4%BC%9A%E6%88%91%E4%BB%AC%E4%BB%80%E4%B9%88"><span class="toc-text">六份策略共同教会我们什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%80%82%E5%90%88%E9%9B%B6%E5%9F%BA%E7%A1%80%E7%9A%84%E8%AF%BB%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-text">一个适合零基础的读码方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E7%AF%87%E5%9B%BE%E8%A7%A3%E7%B3%BB%E5%88%97%E5%AF%BC%E8%88%AA"><span class="toc-text">七篇图解系列导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E4%BE%9D%E6%8D%AE"><span class="toc-text">阅读依据</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%BC%8E%E5%8D%95%E5%9B%A0%E5%AD%90%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%AD%A6%E4%BC%9A%E7%94%A8%E4%B8%80%E6%8A%8A%E5%B0%BA%E5%AD%90"><span class="toc-text">1．单因子策略（一）：先学会用一把尺子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%BC%8E%E5%A4%9A%E5%9B%A0%E5%AD%90%E7%AD%96%E7%95%A5%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%87%A0%E5%BC%A0%E5%90%8D%E5%8D%95%E5%8F%96%E4%BA%A4%E9%9B%86"><span class="toc-text">2．多因子策略（二）：几张名单取交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%EF%BC%8E%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%BF%91%E6%9C%9F%E8%B7%91%E5%BE%97%E5%BF%AB%E7%9A%84%E4%BA%BA"><span class="toc-text">3．动量策略（三）：观察近期跑得快的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%EF%BC%8E%E5%8F%8D%E8%BD%AC%E6%95%88%E5%BA%94%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%90%BD%E5%90%8E%E8%80%85%E8%83%BD%E5%90%A6%E8%BF%BD%E8%B5%B6"><span class="toc-text">4．反转效应（四）：观察落后者能否追赶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%EF%BC%8E%E5%8F%8C%E6%9D%BF%E5%9D%97%E8%BD%AE%E5%8A%A8%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%9C%A8%E4%B8%A4%E6%9D%A1%E8%B7%AF%E4%B9%8B%E9%97%B4%E9%80%89%E6%8B%A9"><span class="toc-text">5．双板块轮动（五）：在两条路之间选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%EF%BC%8E%E5%A4%9A%E6%9D%BF%E5%9D%97%E8%BD%AE%E5%8A%A8%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E4%BB%8E%E4%B8%A4%E6%9D%A1%E8%B7%AF%E6%89%A9%E5%B1%95%E5%88%B0%E5%A4%9A%E4%B8%AA%E8%B5%9B%E9%81%93"><span class="toc-text">6．多板块轮动（六）：从两条路扩展到多个赛道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E4%BB%BD%E7%AD%96%E7%95%A5%E5%85%B1%E5%90%8C%E6%95%99%E4%BC%9A%E6%88%91%E4%BB%AC%E4%BB%80%E4%B9%88"><span class="toc-text">六份策略共同教会我们什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%80%82%E5%90%88%E9%9B%B6%E5%9F%BA%E7%A1%80%E7%9A%84%E8%AF%BB%E7%A0%81%E6%96%B9%E6%B3%95"><span class="toc-text">一个适合零基础的读码方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E6%80%BB%E8%A7%88"><span class="toc-text">专题总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E4%BE%9D%E6%8D%AE"><span class="toc-text">阅读依据</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -848,18 +895,18 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             
 
             <div class="post-img-box">
-              <a href="/investing/strategies/iwencai/" class="post-img " style="background-size: cover; 
+              <a href="/deepseek/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/images/series/deepseek.svg" class="lazyload placeholder" data-srcset="/images/series/deepseek.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">11-14</span>
+                  <span class="post-date">11-17</span>
                 
               </div>
-              <a class="post-title" href="/investing/strategies/iwencai/">问财策略：会说选股要求之后，还要把交易规则说完整</a>
+              <a class="post-title" href="/deepseek/">DeepSeek 专题总览：从零串起 12 篇架构与训练笔记</a>
             </div>
           </div>
         
@@ -869,7 +916,70 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             
 
             <div class="post-img-box">
-              <a href="/investing/strategies/basics/" class="post-img " style="background-size: cover; 
+              <a href="/investing/strategies/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/images/series/quant.svg" class="lazyload placeholder" data-srcset="/images/series/quant.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-17</span>
+                
+              </div>
+              <a class="post-title" href="/investing/strategies/">量化策略专题总览：7 类 31 个策略的零基础学习地图</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/11/02/agent-04-function-calling-podcast/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-02</span>
+                
+              </div>
+              <a class="post-title" href="/2026/11/02/agent-04-function-calling-podcast/">Agent 第四课｜用一集播客讲懂 Function Calling：模型怎样选工具、填参数，再真正完成任务</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/25/windows-uia-agent-harness-first-week/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-25</span>
+                
+              </div>
+              <a class="post-title" href="/2026/10/25/windows-uia-agent-harness-first-week/">从记事本开始理解桌面 Agent：Python、UI Automation 与 Harness 入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2026/10/11/qqbot-03-tts/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -877,73 +987,10 @@ mjx-break[prebreak]{letter-spacing:-.999em}
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">11-14</span>
+                  <span class="post-date">10-11</span>
                 
               </div>
-              <a class="post-title" href="/investing/strategies/basics/">入门教材策略：用六道小菜学会读投资程序</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/timing/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/timing/">量化择时：选好目的地之后，研究什么时候出门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/patterns/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/patterns/">形态策略：从脚印猜方向，先学会承认不确定</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/investing/strategies/multifactor/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">11-14</span>
-                
-              </div>
-              <a class="post-title" href="/investing/strategies/multifactor/">多因子选股：像给学生评成绩，也像招聘店长</a>
+              <a class="post-title" href="/2026/10/11/qqbot-03-tts/">第三章：让AI开口说话——本地TTS语音合成部署</a>
             </div>
           </div>
         
